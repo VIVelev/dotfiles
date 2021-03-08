@@ -17,11 +17,11 @@ let g:DARK3  = "#303030"
 let g:primary_color         = g:GREEN  " Will be redefined, just a placeholder
 let g:primary_color_txt     = g:DARK
 let g:secondary_color       = g:DARK3
-let g:secondary_colot_txt   = g:LIGHT
+let g:secondary_color_txt   = g:LIGHT
 let g:bg_color              = g:DARK2
 
 "" Create highlight groups
-exe 'hi StatuslineSecColor   guifg=' . g:secondary_colot_txt . ' guibg=' . g:secondary_color
+exe 'hi StatuslineSecColor   guifg=' . g:secondary_color_txt . ' guibg=' . g:secondary_color
 exe 'hi StatuslineSecColorFG guifg=' . g:secondary_color     . ' guibg=' . g:bg_color
 exe 'hi StatuslineIconColor  guifg=' . g:YELLOW              . ' guibg=' . g:bg_color
 
@@ -40,19 +40,20 @@ set termguicolors
 function! ActivateStatusline()
     call Filetype()
 
-    setlocal statusline  =%#StatuslinePriColor#\ %{Mode()}                                  " VIM mode
-    setlocal statusline +=%#StatuslineSecColor#\ %{Branch()!=\"\"?\"\ \":\"\"}%{Branch()}  " Git Branch?
-    setlocal statusline +=%#StatuslinePriColorFG#%F                                         " Current File Path
-    setlocal statusline +=\ %#IStatuslineconColor#                                          " File Info Icons
-    setlocal statusline +=\ %{&readonly?\"\ \":\"\"}                                           " Read-only?
-    setlocal statusline +=%{&modified?\"\ \":\"\"}                                             " Modified?
+    setlocal statusline  =%#StatuslinePriColor#\ %{Mode()}                                          " VIM mode
+    setlocal statusline +=%#StatuslineSecColor#\ %{GitBranch()!=\"\"?\"\ \":\"\"}%{GitBranch()}    " Git branch
+    setlocal statusline +=\ %{GitStatus()}                                                          " Git status
+    setlocal statusline +=\ %#StatuslinePriColorFG#\ %F                                             " Current File Path
+    setlocal statusline +=\ %#StatuslineIconColor#                                                  " File Info Icons
+    setlocal statusline +=\ %{&readonly?\"\ \":\"\"}                                                   " Read-only?
+    setlocal statusline +=%{&modified?\"\ \":\"\"}                                                     " Modified?
 
-    setlocal statusline +=%=                                                                " Align to the right:
-    setlocal statusline +=%#StatuslinePriColorFG#\ %{b:FiletypeIcon}%{&filetype}                " File Icon & Type
-    setlocal statusline +=\ %#StatuslineSecColorFG#%#StatuslinePriColorFGSecColorBG#          " Some cool arrows
-    setlocal statusline +=%#StatuslinePriColor#\ %p\%%                                          " Percentage %
-    setlocal statusline +=\ %#StatuslinePriColorBold#%l%#StatuslinePriColor#/%L                 " Current Line / Total Lines
-    setlocal statusline +=\ :%c                                                                 " Current Column
+    setlocal statusline +=%=                                                                        " Align to the right:
+    setlocal statusline +=%#StatuslinePriColorFG#\ %{b:FiletypeIcon}%{&filetype}                        " File Icon & Type
+    setlocal statusline +=\ %#StatuslineSecColorFG#%#StatuslinePriColorFGSecColorBG#                  " Some cool arrows
+    setlocal statusline +=%#StatuslinePriColor#\ %p\%%                                                  " Percentage %
+    setlocal statusline +=\ %#StatuslinePriColorBold#%l%#StatuslinePriColor#/%L                         " Current Line / Total Lines
+    setlocal statusline +=\ :%c                                                                         " Current Column
 
 endfunction
 
@@ -67,9 +68,15 @@ function! DeactivateStatusline()
 endfunction
 
 " Get the current git branch
-function! Branch()
+function! GitBranch()
     let b:branch = matchstr(FugitiveStatusline(), '\((.*)\)')[1:-2]
     return b:branch
+endfunction
+
+" Git status: # of added, modified, removed lines
+function! GitStatus()
+  let [a,m,r] = GitGutterGetHunkSummary()
+  return printf('+%d ~%d -%d', a, m, r)
 endfunction
 
 " Get Statusline mode & also set primary color for that mode
