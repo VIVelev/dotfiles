@@ -49,9 +49,9 @@ set -g mouse on
 # enable vi mode keys
 set-window-option -g mode-keys vi
 
-#set default terminal mode to 256 colors
+# set default terminal mode to 256 colors
 set -g default-terminal 'screen-256color'
-set-option -ga terminal-overrides ',xterm-256color:Tc'
+set-option -sa terminal-overrides ',xterm-256color:RGB'
 
 ######################
 ### DESIGN CHANGES ###

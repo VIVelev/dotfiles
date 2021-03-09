@@ -1,26 +1,24 @@
 " Default colorscheme
-colorscheme spacecamp
+colorscheme ayu
+
+" Enable GUI colors for terminals
+set termguicolors
 
 " Set font
 set guifont=FiraMono\ Nerd\ Font:h12
 
 " Plug
 source ~/.config/nvim/plug.vim
-
 " CoC
 source ~/.config/nvim/coc.vim
-
 " Python
-source ~/.config/nvim//python.vim
-
+source ~/.config/nvim/python.vim
 " Mappings
-source ~/.config/nvim//mappings.vim
-
+source ~/.config/nvim/mappings.vim
 " Status line
 source ~/.config/nvim/statusline.vim
-
-" Line numbers
-set rnu
+" NERDTree
+source ~/.config/nvim/nerdtree.vim
 
 " --------------------------------------------------------------------------------
 " configure editor with tabs and nice stuff...
@@ -33,9 +31,6 @@ set shiftwidth=4        " number of spaces to use for auto indent
 set autoindent          " copy indent from current line when starting a new line
 set smartindent
 
-" Fix python double autoindent after opening brackets
-let g:pyindent_open_paren = 'shiftwidth()'
-
 " make backspaces more powerfull
 set backspace=indent,eol,start
 
@@ -44,5 +39,12 @@ set backspace=indent,eol,start
 set listchars=tab:>-,trail:-,nbsp:_
 set list
 
+" Line numbers
+set rnu
+
 " VSplit right by default
 set splitright
+
+" Transparent background
+hi Normal guibg=none
+hi NonText guibg=none

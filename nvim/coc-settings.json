@@ -1,8 +1,6 @@
 {
     "coc.preferences.formatOnSaveFiletypes": ["python"],
 
-    "suggest.enablePreselect": true,
-    "suggest.minTriggerInputLength": 3,
     "suggest.completionItemKindLabels": {
         "keyword": "\uf1de",
         "variable": "\ue79b",

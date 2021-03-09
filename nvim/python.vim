@@ -4,3 +4,9 @@ if !empty($VIRTUAL_ENV)
 else
     let g:python3_host_prog = '~/.pyenv/shims/python'
 endif
+
+" Fix python double autoindent after opening brackets
+let g:pyindent_open_paren = 4
+
+" Semshi
+let g:semshi#mark_selected_nodes = 0

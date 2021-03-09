@@ -9,8 +9,8 @@ env:
 window:
   # Window dimensions in character columns and lines
   dimensions:
-    columns: 184
-    lines: 54
+    columns: 194
+    lines: 44
 
   # Window padding
   #
@@ -18,7 +18,7 @@ window:
   # by DPI and the specified value is always added at both opposing sides.
   padding:
     x: 10
-    y: 40
+    y: 10
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
@@ -28,10 +28,10 @@ window:
   # Values for `decorations`:
   #     - full: Borders and title bar
   #     - none: Neither borders nor title bar
-  #     - buttonless: Title bar, transparent background and title bar buttons
-  #     - transparent: Title bar, transparent background, but no title bar buttons
+  #     - buttonless: Title bar, transparent background, but no title bar buttons
+  #     - transparent: Title bar, transparent background and title bar buttons
   #
-  decorations: transparent
+  decorations: buttonless
 
   # Startup Mode
   #
@@ -109,42 +109,58 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# Colors (Base16 Default Dark)
-colors:
-  # Default colors
-  primary:
-    background: '0x121212'
-    foreground: '0xd8d8d8'
+schemes:
+  ayu: &ayu
+    primary:
+      background: '#0A0E14'
+      foreground: '#B3B1AD'
 
-  # Normal colors
-  normal:
-    black:   '0x181818'
-    red:     '0xab4642'
-    green:   '0xa1b56c'
-    yellow:  '0xf7ca88'
-    blue:    '0x7cafc2'
-    magenta: '0xba8baf'
-    cyan:    '0x86c1b9'
-    white:   '0xd8d8d8'
+    normal:
+      black: '#01060E'
+      red: '#EA6C73'
+      green: '#91B362'
+      yellow: '#F9AF4F'
+      blue: '#53BDFA'
+      magenta: '#FAE994'
+      cyan: '#90E1C6'
+      white: '#C7C7C7'
 
-  # Bright colors
-  bright:
-    black:   '0x585858'
-    red:     '0xab4642'
-    green:   '0xa1b56c'
-    yellow:  '0xf7ca88'
-    blue:    '0x7cafc2'
-    magenta: '0xba8baf'
-    cyan:    '0x86c1b9'
-    white:   '0xf8f8f8'
+    bright:
+      black: '#686868'
+      red: '#F07178'
+      green: '#C2D94C'
+      yellow: '#FFB454'
+      blue: '#59C2FF'
+      magenta: '#FFEE99'
+      cyan: '#95E6CB'
+      white: '#FFFFFF'
 
-  cursor:
-    text: '0x2a2e38'
-    cursor: '0xffd17f'
+  substrata: &substrata
+    primary:
+      background: '#191c25'
+      foreground: '#b5b4c9'
 
-  selection:
-    text: '0x2a2e38'
-    cursor: '0xF0FDFF'
+    normal:
+      black:   '#2e313d'
+      red:     '#cf8164'
+      green:   '#76a065'
+      yellow:  '#ab924c'
+      blue:    '#8296b0'
+      magenta: '#a18daf'
+      cyan:    '#659ea2'
+      white:   '#b5b4c9'
+
+    bright:
+      black:   '#5b5f71'
+      red:     '#fe9f7c'
+      green:   '#92c47e'
+      yellow:  '#d2b45f'
+      blue:    '#a0b9d8'
+      magenta: '#c6aed7'
+      cyan:    '#7dc2c7'
+      white:   '#f0ecfe'
+
+colors: *ayu
 
 # Bell
 #
@@ -172,7 +188,7 @@ bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.95
+background_opacity: 0.90
 
 selection:
   # This string contains all characters that are used as separators for

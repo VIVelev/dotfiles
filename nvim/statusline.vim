@@ -33,9 +33,6 @@ set laststatus=2
 " Disable showmode - i.e. Don't show mode like --INSERT-- in current statusline.
 set noshowmode
 
-" Enable GUI colors for terminals
-set termguicolors
-
 " Define Activate Statusline
 function! ActivateStatusline()
     call Filetype()
@@ -45,7 +42,7 @@ function! ActivateStatusline()
     setlocal statusline +=\ %{GitStatus()}                                                          " Git status
     setlocal statusline +=\ %#StatuslinePriColorFG#\ %F                                             " Current File Path
     setlocal statusline +=\ %#StatuslineIconColor#                                                  " File Info Icons
-    setlocal statusline +=\ %{&readonly?\"\ \":\"\"}                                                   " Read-only?
+    setlocal statusline +=%{&readonly?\"\ \":\"\"}                                                     " Read-only?
     setlocal statusline +=%{&modified?\"\ \":\"\"}                                                     " Modified?
 
     setlocal statusline +=%=                                                                        " Align to the right:
@@ -54,6 +51,7 @@ function! ActivateStatusline()
     setlocal statusline +=%#StatuslinePriColor#\ %p\%%                                                  " Percentage %
     setlocal statusline +=\ %#StatuslinePriColorBold#%l%#StatuslinePriColor#/%L                         " Current Line / Total Lines
     setlocal statusline +=\ :%c                                                                         " Current Column
+    setlocal statusline +=\                                                                             " END
 
 endfunction
 
@@ -61,9 +59,9 @@ endfunction
 " Define Deactive Statusline
 function! DeactivateStatusline()
     setlocal statusline  =%#StatuslineSecColor#\ NOTACTIVE  " Display that the current buffer is not active
-    setlocal statusline +=%#StatuslinePriColorFG#%F         " Current File Path
+    setlocal statusline +=\ %#StatuslineSecColorFG#\ %F     " Current File Path
     setlocal statusline +=\ %#StatuslineIconColor#          " File Info Icons
-    setlocal statusline +=\ %{&readonly?\"\ \":\"\"}           " Read-only?
+    setlocal statusline +=%{&readonly?\"\ \":\"\"}             " Read-only?
     setlocal statusline +=%{&modified?\"\ \":\"\"}             " Modified?
 endfunction
 
@@ -75,8 +73,12 @@ endfunction
 
 " Git status: # of added, modified, removed lines
 function! GitStatus()
-  let [a,m,r] = GitGutterGetHunkSummary()
-  return printf('+%d ~%d -%d', a, m, r)
+    if GitBranch() == ''
+        return ''
+    endif
+
+    let [a,m,r] = GitGutterGetHunkSummary()
+    return printf('+%d ~%d -%d', a, m, r)
 endfunction
 
 " Get Statusline mode & also set primary color for that mode

@@ -13,7 +13,7 @@ nmap ghs <Plug>(GitGutterStageHunk)
 nmap ghu <Plug>(GitGutterUndoHunk)
 
 " NERDTree Mappings
-map <c-t> :NERDTreeCWD<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
 
 " IPython Mappings
 let g:nvim_ipy_perform_mappings = 0
