@@ -6,7 +6,7 @@ else
 endif
 
 " Fix python double autoindent after opening brackets
-let g:pyindent_open_paren = 4
+let g:pyindent_open_paren = 0
 
 " Semshi
 let g:semshi#mark_selected_nodes = 0

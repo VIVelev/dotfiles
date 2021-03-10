@@ -1,12 +1,12 @@
 " Initialisation:"{{{
 " ----------------------------------------------------------------------------
 hi clear
-if exists("syntax_on")
+if exists('syntax_on')
   syntax reset
 endif
 
-let s:style = get(g:, 'ayucolor', 'dark')
-let g:colors_name = "ayu"
+let g:ayucolor = get(g:, 'ayucolor', 'dark')
+let g:colors_name = 'ayu'
 "}}}
 
 " Palettes:"{{{
@@ -43,7 +43,7 @@ let s:palette.fg_idle   = {'dark': "#3E4B59",  'light': "#828C99",  'mirage': "#
 
 function s:build_prim(hi_elem, field)
   let l:vname = "s:" . a:hi_elem . "_" . a:field " s:bg_gray
-  let l:gui_assign = "gui".a:hi_elem."=".s:palette[a:field][s:style] " guibg=...
+  let l:gui_assign = "gui".a:hi_elem."=".s:palette[a:field][g:ayucolor] " guibg=...
   exe "let " . l:vname . " = ' " . l:gui_assign . "'"
 endfunction
 
@@ -194,24 +194,24 @@ exe "hi CursorLineConceal" .s:fg_guide   .s:bg_line        .s:fmt_none
 
 " Terminal
 " ---------
-let g:terminal_color_0 =  s:palette.bg[s:style]
-let g:terminal_color_1 =  s:palette.markup[s:style]
-let g:terminal_color_2 =  s:palette.string[s:style]
-let g:terminal_color_3 =  s:palette.accent[s:style]
-let g:terminal_color_4 =  s:palette.tag[s:style]
-let g:terminal_color_5 =  s:palette.constant[s:style]
-let g:terminal_color_6 =  s:palette.regexp[s:style]
+let g:terminal_color_0 =  s:palette.bg[g:ayucolor] 
+let g:terminal_color_1 =  s:palette.markup[g:ayucolor] 
+let g:terminal_color_2 =  s:palette.string[g:ayucolor] 
+let g:terminal_color_3 =  s:palette.accent[g:ayucolor] 
+let g:terminal_color_4 =  s:palette.tag[g:ayucolor] 
+let g:terminal_color_5 =  s:palette.constant[g:ayucolor] 
+let g:terminal_color_6 =  s:palette.regexp[g:ayucolor] 
 let g:terminal_color_7 =  "#FFFFFF"
-let g:terminal_color_8 =  s:palette.fg_idle[s:style]
-let g:terminal_color_9 =  s:palette.error[s:style]
-let g:terminal_color_10 = s:palette.string[s:style]
-let g:terminal_color_11 = s:palette.accent[s:style]
-let g:terminal_color_12 = s:palette.tag[s:style]
-let g:terminal_color_13 = s:palette.constant[s:style]
-let g:terminal_color_14 = s:palette.regexp[s:style]
-let g:terminal_color_15 = s:palette.comment[s:style]
+let g:terminal_color_8 =  s:palette.fg_idle[g:ayucolor] 
+let g:terminal_color_9 =  s:palette.error[g:ayucolor] 
+let g:terminal_color_10 = s:palette.string[g:ayucolor] 
+let g:terminal_color_11 = s:palette.accent[g:ayucolor] 
+let g:terminal_color_12 = s:palette.tag[g:ayucolor] 
+let g:terminal_color_13 = s:palette.constant[g:ayucolor] 
+let g:terminal_color_14 = s:palette.regexp[g:ayucolor] 
+let g:terminal_color_15 = s:palette.comment[g:ayucolor] 
 let g:terminal_color_background = g:terminal_color_0
-let g:terminal_color_foreground = s:palette.fg[s:style]
+let g:terminal_color_foreground = s:palette.fg[g:ayucolor] 
 
 
 " NerdTree
@@ -235,6 +235,6 @@ exe "hi GitGutterChangeDelete" .s:fg_function   .s:bg_none        .s:fmt_none
 
 " This is needed for some reason: {{{
 
-let &background = s:style
+let &background = g:ayucolor  
 
 "}}}
