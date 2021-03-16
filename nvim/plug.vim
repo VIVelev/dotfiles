@@ -25,5 +25,8 @@ Plug 'chrisbra/Colorizer'
 " IPython
 Plug 'bfredl/nvim-ipy'
 
+" SLIME
+Plug 'jpalardy/vim-slime'
+
 " Initialize plugin system
 call plug#end()

@@ -31,5 +31,6 @@
     },
 
     "python.formatting.provider": "black",
+    "pyright.organizeimports.provider": "pyright",
     "python.linting.flake8Enabled": true
 }

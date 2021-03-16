@@ -41,6 +41,7 @@ set list
 
 " Line numbers
 set rnu
+set cursorline
 
 " VSplit right by default
 set splitright
