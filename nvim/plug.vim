@@ -26,7 +26,7 @@ Plug 'chrisbra/Colorizer'
 Plug 'bfredl/nvim-ipy'
 
 " SLIME
-Plug 'jpalardy/vim-slime'
+Plug 'vlime/vlime', {'rtp': 'vim/'}
 
 " Initialize plugin system
 call plug#end()
