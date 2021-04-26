@@ -31,10 +31,13 @@ set shiftwidth=4        " number of spaces to use for auto indent
 set autoindent          " copy indent from current line when starting a new line
 set smartindent
 
+set clipboard+=unnamedplus
+
+let g:rainbow_active = 1
+
 " make backspaces more powerfull
 set backspace=indent,eol,start
 
-" ---- Bonus for proving the setting
 " Displays '-' for trailing space, '>-' for tabs and '_' for non breakable space
 set listchars=tab:>-,trail:-,nbsp:_
 set list
@@ -42,6 +45,12 @@ set list
 " Line numbers
 set rnu
 set cursorline
+
+set mouse=a
+
+" Performance tweaks
+set lazyredraw
+set synmaxcol=120
 
 " VSplit right by default
 set splitright

@@ -21,6 +21,7 @@ Plug 'tpope/vim-commentary'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'vimwiki/vimwiki'
 Plug 'chrisbra/Colorizer'
+Plug 'luochen1990/rainbow'
 
 " IPython
 Plug 'bfredl/nvim-ipy'

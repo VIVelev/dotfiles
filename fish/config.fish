@@ -53,7 +53,7 @@ function dSetup
     end
     set -x NVM_DIR ~/.nvm
     nvm use default --silent
-    
+
     # Pyenv Setup
     pyenv init - | source
     ## NOTE: this is a tmp fix to *pyenv not finding zlib & bzip3 in macos 11*
