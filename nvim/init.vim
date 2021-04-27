@@ -44,13 +44,12 @@ set list
 
 " Line numbers
 set rnu
-set cursorline
 
 set mouse=a
 
 " Performance tweaks
 set lazyredraw
-set synmaxcol=120
+set synmaxcol=100
 
 " VSplit right by default
 set splitright

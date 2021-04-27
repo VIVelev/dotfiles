@@ -7,4 +7,4 @@ email = victorivelev@gmail.com
 [github]
     user = VIVelev
 [init]
-	defaultBranch = main
+    defaultBranch = main
