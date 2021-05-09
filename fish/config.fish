@@ -1,6 +1,9 @@
 # Language
 set -gx LANG en_US.UTF-8
 
+# GOPATH
+set -x GOPATH ~/golang/
+
 # FUN
 abbr starwars nc towel.blinkenlights.nl 23
 abbr stress yes > /dev/null &

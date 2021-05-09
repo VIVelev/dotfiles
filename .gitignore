@@ -1,7 +1,8 @@
 .DS_Store
 .netrwhist
 
-coc/
 configstore/
 binwalk/
 spotify-tui/
+
+_*
