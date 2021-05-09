@@ -2,8 +2,8 @@ require("plugins")
 require("treesitter")
 require("completion")
 require("tree")
-
-require("settings")
+require("theme")
+require("evil_lualine")
 
 require("lsp")
 require("lsp.lua-ls")

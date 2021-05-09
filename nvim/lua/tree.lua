@@ -9,8 +9,6 @@ vim.g.nvim_tree_bindings = {
     -- default mappings
     ["<CR>"]           = tree_cb("edit"),
     ["o"]              = tree_cb("edit"),
-    ["<2-LeftMouse>"]  = tree_cb("edit"),
-    ["<2-RightMouse>"] = tree_cb("cd"),
     ["<C-]>"]          = tree_cb("cd"),
     ["<C-v>"]          = tree_cb("vsplit"),
     ["<C-x>"]          = tree_cb("split"),
