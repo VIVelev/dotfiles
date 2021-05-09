@@ -13,6 +13,10 @@ return require'packer'.startup(
     -- Explorer
     use 'kyazdani42/nvim-tree.lua'
     use 'kyazdani42/nvim-web-devicons'
+    use {
+      'nvim-telescope/telescope.nvim',
+      requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+    }
 
     -- Theme
     use 'marko-cerovac/material.nvim'

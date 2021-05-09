@@ -1,6 +1,6 @@
 vim.o.shell = '/usr/local/bin/bash'
 vim.cmd('set termguicolors')
-vim.cmd('set syntax')
+vim.cmd('syntax on')
 vim.o.guifont = 'FiraMono Nerd Font:h12'
 
 vim.cmd('set expandtab')      -- enter spaces when tab is pressed

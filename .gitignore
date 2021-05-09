@@ -3,7 +3,9 @@
 
 configstore/
 binwalk/
-spotify-tui/
 nvim/plugin/
+
+spicetify/Backup/
+spicetify/Extracted/
 
 _*
