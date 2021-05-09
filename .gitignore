@@ -4,5 +4,6 @@
 configstore/
 binwalk/
 spotify-tui/
+nvim/plugin/
 
 _*

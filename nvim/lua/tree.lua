@@ -1,3 +1,9 @@
+vim.g.nvim_tree_follow          = 1  -- 0 by default, this option allows the cursor to be updated when entering a buffer
+vim.g.nvim_tree_indent_markrs   = 1  -- 0 by default, this option shows indent markers when folders are open
+vim.g.nvim_tree_git_hl          = 1  -- 0 by default, will enable file highlight for git attributes (can be used without the icons)
+vim.g.nvim_tree_add_trailing    = 1  -- 0 by default, append a trailing slash to folder names
+vim.g.nvim_tree_lsp_diagnostics = 1  -- 0 by default, will show lsp diagnostics in the signcolumn; see :help nvim_tree_lsp_diagnostics
+
 local tree_cb = require"nvim-tree.config".nvim_tree_callback
 vim.g.nvim_tree_bindings = {
     -- default mappings
@@ -29,3 +35,7 @@ vim.g.nvim_tree_bindings = {
     ["-"]              = tree_cb("dir_up"),
     ["q"]              = tree_cb("close"),
 }
+
+vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<leader>r", ":NvimTreeRefresh<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<leader>n", ":NvimTreeFindFile<CR>", {noremap = true})

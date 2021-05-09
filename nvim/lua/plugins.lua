@@ -12,5 +12,6 @@ return require("packer").startup(
 
 	-- Explorer
 	use "kyazdani42/nvim-tree.lua"
+	use "kyazdani42/nvim-web-devicons"
     end
 )
