@@ -38,15 +38,9 @@ local conditions = {
 local config = {
   options = {
     -- Disable sections and component separators
-    component_separators = "",
-    section_separators = "",
-    theme = {
-      -- We are going to use lualine_c and lualine_x as left and
-      -- right section. Both are highlighted by c theme .  So we
-      -- are just setting default looks o statusline
-      normal = { c = {fg = colors.fg, bg = colors.bg}},
-      inactive = { c = {fg = colors.fg, bg = colors.bg}}
-    },
+    component_separators = '',
+    section_separators = '',
+    theme = 'material-nvim',
   },
   sections = {
     -- these are to remove the defaults
@@ -111,10 +105,10 @@ ins_left {
       ['!']  = colors.red,
       t      = colors.red
     }
-    vim.api.nvim_command('hi! LualineMode guifg='..mode_color[vim.fn.mode()] .. " guibg="..colors.bg)
+    vim.api.nvim_command('hi! LualineMode guifg='..mode_color[vim.fn.mode()] .. ' guibg='..colors.bg)
     return ''
   end,
-  color = "LualineMode",
+  color = 'LualineMode',
   left_padding = 0,
 }
 
