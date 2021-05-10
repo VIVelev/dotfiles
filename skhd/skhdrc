@@ -10,6 +10,18 @@ shift + alt - j : yabai -m window --warp south
 shift + alt - k : yabai -m window --warp north
 shift + alt - l : yabai -m window --warp east
 
+# Stack Related
+shift + cmd - h : yabai -m window --stack west
+shift + cmd - j : yabai -m window --stack south
+shift + cmd - k : yabai -m window --stack north
+shift + cmd - l : yabai -m window --stack east
+
+# focus the prev window in a stack
+alt - p : yabai -m window --focus stack.prev
+
+# focus the next window in a stack
+alt - n : yabai -m window --focus stack.next
+
 # Move focus container to workspace
 shift + alt - m : yabai -m window --space last; yabai -m space --focus last
 shift + alt - p : yabai -m window --space prev; yabai -m space --focus prev
