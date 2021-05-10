@@ -4,6 +4,8 @@ set -gx LANG en_US.UTF-8
 # GOPATH
 set -x GOPATH ~/golang/
 
+set -x EDITOR nvim
+
 # FUN
 abbr starwars nc towel.blinkenlights.nl 23
 abbr stress yes > /dev/null &
