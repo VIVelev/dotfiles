@@ -64,6 +64,9 @@ function dSetup
     ## NOTE: this is a tmp fix to *pyenv not finding zlib & bzip3 in macos 11*
     set -gx LDFLAGS -L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib
     set -gx CPPFLAGS -I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include
+
+
+    zoxide init fish | source
 end
 dSetup
 
