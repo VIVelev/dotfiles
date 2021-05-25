@@ -18,6 +18,10 @@ vim.o.backspace = 'indent,eol,start'
 vim.o.listchars = 'tab:>-,trail:-,nbsp:_'
 vim.cmd('set list')
 
+-- Using tabs for:
+vim.cmd('autocmd FileType go setlocal noexpandtab')
+vim.cmd('autocmd FileType go setlocal nolist')
+
 vim.cmd('set rnu')
 vim.cmd('set cursorline')
 vim.o.mouse = 'a'

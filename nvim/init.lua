@@ -1,6 +1,7 @@
 require('plugins')
 require('treesitter')
 require('completion')
+require('npairs')
 require('tree')
 require('fuzzy')
 require('git')
@@ -11,7 +12,7 @@ require('settings')
 require('keymaps')
 
 require('python')
-require('lsp')
-require('lsp.saga')
+
 require('lsp.lua-ls')
 require('lsp.python-ls')
+require('lsp.go-ls')

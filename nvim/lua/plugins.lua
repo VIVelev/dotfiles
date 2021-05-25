@@ -12,12 +12,7 @@ return require'packer'.startup(
     use 'psf/black'
 
     -- Pairs
-    use {
-      'windwp/nvim-autopairs',
-      config = function ()
-        require('nvim-autopairs').setup()
-      end
-    }
+    use 'windwp/nvim-autopairs'
 
     -- Treesitter
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
@@ -28,6 +23,13 @@ return require'packer'.startup(
     use {
       'nvim-telescope/telescope.nvim',
       requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+    }
+    use {
+      'nvim-telescope/telescope-frecency.nvim',
+      requires = {'tami5/sql.nvim'},
+      config = function()
+        require'telescope'.load_extension('frecency')
+      end
     }
 
     -- Theme
