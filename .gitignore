@@ -2,9 +2,5 @@
 .netrwhist
 
 configstore/
-nvim/plugin/
-
-spicetify/Backup/
-spicetify/Extracted/
 
 _*

@@ -22,10 +22,9 @@ vim.cmd('set list')
 vim.cmd('autocmd FileType go setlocal noexpandtab')
 vim.cmd('autocmd FileType go setlocal nolist')
 
-vim.cmd('set rnu')
+vim.cmd('set nornu')
 vim.cmd('set cursorline')
 vim.o.mouse = 'a'
-vim.cmd('set clipboard+=unnamedplus')
 vim.cmd('set splitright')
 
 -- Performance tweaks
@@ -40,7 +39,7 @@ vim.cmd('set cmdheight=2')
 
 -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 -- delays and poor user experience.
-vim.cmd('set updatetime=1000')
+vim.cmd('set updatetime=500')
 
 -- Always show the signcolumn, otherwise it would shift the text each time
 -- diagnostics appear/become resolved.

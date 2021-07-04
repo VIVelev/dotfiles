@@ -1,9 +1,7 @@
 # Language
 set -gx LANG en_US.UTF-8
 
-# GOPATH
-set -x GOPATH ~/golang/
-
+set -x LS_COLORS (vivid generate ayu)
 set -x EDITOR nvim
 
 # FUN
@@ -38,6 +36,8 @@ alias xa "exa -la"
 # pip update
 alias pip-up "pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U"
 
+# Zoxide
+alias d "z"
 
 # Utils
 function remove_from_path
@@ -59,12 +59,8 @@ function dSetup
     set -x NVM_DIR ~/.nvm
     nvm use default --silent
 
-    # Pyenv Setup
+    status is-login; and pyenv init --path | source
     pyenv init - | source
-    ## NOTE: this is a tmp fix to *pyenv not finding zlib & bzip3 in macos 11*
-    set -gx LDFLAGS -L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib
-    set -gx CPPFLAGS -I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include
-
 
     zoxide init fish | source
 end

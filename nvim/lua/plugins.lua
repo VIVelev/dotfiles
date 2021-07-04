@@ -3,16 +3,19 @@ return require'packer'.startup(
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    -- LSP & Completion
+    -- LSP
     use 'neovim/nvim-lspconfig'
     use 'glepnir/lspsaga.nvim'
+
+    -- Completion
     use 'hrsh7th/nvim-compe'
 
     -- Formatting
     use 'psf/black'
 
-    -- Pairs
+    -- Utils
     use 'windwp/nvim-autopairs'
+    use 'b3nj5m1n/kommentary'
 
     -- Treesitter
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
@@ -32,22 +35,31 @@ return require'packer'.startup(
       end
     }
 
+    -- Movement
+    use {
+      'phaazon/hop.nvim',
+      as = 'hop',
+      config = function()
+        -- you can configure Hop the way you like here; see :h hop-config
+        require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+      end
+    }
+
     -- Theme
     use 'marko-cerovac/material.nvim'
 
     -- Statusline
-    use {
-      'hoob3rt/lualine.nvim',
-      requires = {'kyazdani42/nvim-web-devicons', opt = true}
-    }
+    use 'hoob3rt/lualine.nvim'
 
     -- Git
     use {
       'lewis6991/gitsigns.nvim',
-      requires = {'nvim-lua/plenary.nvim'}
+      requires = {'nvim-lua/plenary.nvim'},
+    }
+    use {
+      'TimUntersberger/neogit',
+      requires = {'nvim-lua/plenary.nvim'},
     }
 
-    -- Utils
-    use 'tweekmonster/startuptime.vim'
   end
 )
