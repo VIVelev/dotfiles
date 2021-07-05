@@ -1,21 +1,26 @@
-local opts = { noremap = true }
+local map = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
 
 -- I hate Escape
-vim.api.nvim_set_keymap('i', 'jk', '<Esc>', {})
-vim.api.nvim_set_keymap('i', 'kj', '<Esc>', {})
+map('i', 'jk', '<Esc>', {})
+map('i', 'kj', '<Esc>', {})
 
  -- Easier movement
-vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', opts)
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', opts)
-vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', opts)
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', opts)
-vim.api.nvim_set_keymap('n', '<C-p>', ':b #<CR>', opts)
+map('n', '<C-h>', '<C-w>h', opts)
+map('n', '<C-j>', '<C-w>j', opts)
+map('n', '<C-k>', '<C-w>k', opts)
+map('n', '<C-l>', '<C-w>l', opts)
+map('n', '<C-p>', ':b #<CR>', opts)
 -- Hop
-vim.api.nvim_set_keymap('n', 's', ":HopChar2<cr>", opts)
-vim.api.nvim_set_keymap('n', 'S', ":HopWord<cr>", opts)
+map('n', 's', ":HopChar2<cr>", opts)
+map('n', 'S', ":HopWord<cr>", opts)
 
 -- No arrows
-vim.api.nvim_set_keymap('n', '<Up>', '<Nop>', opts)
-vim.api.nvim_set_keymap('n', '<Down>', '<Nop>', opts)
-vim.api.nvim_set_keymap('n', '<Left>', '<Nop>', opts)
-vim.api.nvim_set_keymap('n', '<Right>', '<Nop>', opts)
+map('n', '<Up>', '<Nop>', opts)
+map('n', '<Down>', '<Nop>', opts)
+map('n', '<Left>', '<Nop>', opts)
+map('n', '<Right>', '<Nop>', opts)
+
+-- Terminal
+map('n', '<C-t>', '<CMD>lua require("FTerm").toggle()<CR>', opts)
+map('t', '<C-t>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)

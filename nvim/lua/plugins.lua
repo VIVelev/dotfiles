@@ -34,6 +34,7 @@ return require'packer'.startup(
         require'telescope'.load_extension('frecency')
       end
     }
+    use 'folke/trouble.nvim'
 
     -- Movement
     use {
@@ -59,6 +60,14 @@ return require'packer'.startup(
     use {
       'TimUntersberger/neogit',
       requires = {'nvim-lua/plenary.nvim'},
+    }
+
+    -- Floating Terminal
+    use {
+      'numtostr/FTerm.nvim',
+      config = function()
+        require('FTerm').setup()
+      end
     }
 
   end
