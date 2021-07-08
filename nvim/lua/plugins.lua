@@ -12,6 +12,9 @@ require 'paq' {
   -- Formatting
   'psf/black';
 
+  -- Markdown
+  {'npxbr/glow.nvim', run = ':GlowInstall'};
+
   -- Utils
   'windwp/nvim-autopairs';
   'b3nj5m1n/kommentary';
@@ -30,14 +33,7 @@ require 'paq' {
   'folke/trouble.nvim';
 
   -- Movement
-  {
-    'phaazon/hop.nvim',
-    as = 'hop',
-    run = function()
-      -- you can configure Hop the way you like here; see :h hop-config
-      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-    end
-  };
+  {'phaazon/hop.nvim', as = 'hop'};
 
   -- Theme
   'marko-cerovac/material.nvim';
@@ -50,10 +46,5 @@ require 'paq' {
   'TimUntersberger/neogit';
 
   -- Floating Terminal
-  {
-    'numtostr/FTerm.nvim',
-    run = function()
-      require('FTerm').setup()
-    end
-  };
+  'numtostr/FTerm.nvim';
 }
