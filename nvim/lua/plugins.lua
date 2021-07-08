@@ -1,74 +1,59 @@
-return require'packer'.startup(
-  function (use)
-    -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
+require 'paq' {
+  -- Paq can manage itself
+  'savq/paq-nvim';
 
-    -- LSP
-    use 'neovim/nvim-lspconfig'
-    use 'glepnir/lspsaga.nvim'
+  -- LSP
+  'neovim/nvim-lspconfig';
+  'glepnir/lspsaga.nvim';
 
-    -- Completion
-    use 'hrsh7th/nvim-compe'
+  -- Completion
+  'hrsh7th/nvim-compe';
 
-    -- Formatting
-    use 'psf/black'
+  -- Formatting
+  'psf/black';
 
-    -- Utils
-    use 'windwp/nvim-autopairs'
-    use 'b3nj5m1n/kommentary'
+  -- Utils
+  'windwp/nvim-autopairs';
+  'b3nj5m1n/kommentary';
 
-    -- Treesitter
-    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+  -- Treesitter
+  {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'};
 
-    -- Explorer
-    use 'kyazdani42/nvim-tree.lua'
-    use 'kyazdani42/nvim-web-devicons'
-    use {
-      'nvim-telescope/telescope.nvim',
-      requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
-    }
-    use {
-      'nvim-telescope/telescope-frecency.nvim',
-      requires = {'tami5/sql.nvim'},
-      config = function()
-        require'telescope'.load_extension('frecency')
-      end
-    }
-    use 'folke/trouble.nvim'
+  -- Explorer
+  'kyazdani42/nvim-tree.lua';
+  'kyazdani42/nvim-web-devicons';
+  'nvim-lua/popup.nvim';
+  'nvim-lua/plenary.nvim';
+  'nvim-telescope/telescope.nvim';
+  'tami5/sql.nvim';
+  'nvim-telescope/telescope-frecency.nvim';
+  'folke/trouble.nvim';
 
-    -- Movement
-    use {
-      'phaazon/hop.nvim',
-      as = 'hop',
-      config = function()
-        -- you can configure Hop the way you like here; see :h hop-config
-        require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-      end
-    }
+  -- Movement
+  {
+    'phaazon/hop.nvim',
+    as = 'hop',
+    run = function()
+      -- you can configure Hop the way you like here; see :h hop-config
+      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+    end
+  };
 
-    -- Theme
-    use 'marko-cerovac/material.nvim'
+  -- Theme
+  'marko-cerovac/material.nvim';
 
-    -- Statusline
-    use 'hoob3rt/lualine.nvim'
+  -- Statusline
+  'hoob3rt/lualine.nvim';
 
-    -- Git
-    use {
-      'lewis6991/gitsigns.nvim',
-      requires = {'nvim-lua/plenary.nvim'},
-    }
-    use {
-      'TimUntersberger/neogit',
-      requires = {'nvim-lua/plenary.nvim'},
-    }
+  -- Git
+  'lewis6991/gitsigns.nvim';
+  'TimUntersberger/neogit';
 
-    -- Floating Terminal
-    use {
-      'numtostr/FTerm.nvim',
-      config = function()
-        require('FTerm').setup()
-      end
-    }
-
-  end
-)
+  -- Floating Terminal
+  {
+    'numtostr/FTerm.nvim',
+    run = function()
+      require('FTerm').setup()
+    end
+  };
+}

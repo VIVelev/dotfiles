@@ -33,7 +33,7 @@ require'telescope'.setup{
     file_sorter =  require'telescope.sorters'.get_fuzzy_file,
     file_ignore_patterns = {},
     generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
-    shorten_path = true,
+    path_display = true,
     winblend = 0,
     border = {},
     borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
@@ -48,6 +48,8 @@ require'telescope'.setup{
     buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
   }
 }
+
+require'telescope'.load_extension('frecency')
 
 local opts = { noremap = true }
 vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', opts)
