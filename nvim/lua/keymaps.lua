@@ -11,9 +11,6 @@ map('n', '<C-j>', '<C-w>j', opts)
 map('n', '<C-k>', '<C-w>k', opts)
 map('n', '<C-l>', '<C-w>l', opts)
 map('n', '<C-p>', ':b #<CR>', opts)
--- Hop
-map('n', 's', ":HopChar2<cr>", opts)
-map('n', 'S', ":HopWord<cr>", opts)
 
 -- No arrows
 map('n', '<Up>', '<Nop>', opts)

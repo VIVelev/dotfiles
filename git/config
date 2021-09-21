@@ -8,3 +8,5 @@ email = victorivelev@gmail.com
     user = VIVelev
 [init]
     defaultBranch = main
+[credential]
+	helper = osxkeychain

@@ -14,13 +14,13 @@ vim.cmd('set smartindent')
 -- make backspaces more powerfull
 vim.o.backspace = 'indent,eol,start'
 
--- Displays '-' for trailing space, '>-' for tabs and '_' for non breakable space
-vim.o.listchars = 'tab:>-,trail:-,nbsp:_'
-vim.cmd('set list')
+-- -- Displays '-' for trailing space, '>-' for tabs and '_' for non breakable space
+-- vim.o.listchars = 'tab:>-,trail:-,nbsp:_'
+-- vim.cmd('set list')
 
--- Using tabs for:
+-- Don't expand tab for:
 vim.cmd('autocmd FileType go setlocal noexpandtab')
-vim.cmd('autocmd FileType go setlocal nolist')
+-- vim.cmd('autocmd FileType go setlocal nolist')
 
 vim.cmd('set nornu')
 vim.cmd('set cursorline')
