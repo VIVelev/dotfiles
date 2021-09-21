@@ -32,9 +32,6 @@ require 'paq' {
   'nvim-telescope/telescope-frecency.nvim';
   'folke/trouble.nvim';
 
-  -- Movement
-  {'phaazon/hop.nvim', as = 'hop'};
-
   -- Theme
   'marko-cerovac/material.nvim';
 
