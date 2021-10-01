@@ -1,2 +1,0 @@
-{"event":"Run Command","properties":{"command":"rm","cpu_architecture":"amd64","keepsake_version":"0.4.2","operating_system":"darwin","replicate_version":"0.4.2"},"timestamp":"2021-06-16T17:32:43.213046+03:00"}
-{"event":"Run Command","properties":{"command":"ls","cpu_architecture":"amd64","keepsake_version":"0.4.2","operating_system":"darwin","replicate_version":"0.4.2"},"timestamp":"2021-06-16T17:32:51.25637+03:00"}

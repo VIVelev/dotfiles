@@ -10,6 +10,7 @@ require'lspconfig'.gopls.setup {
     return util.root_pattern(unpack(root_files))(filename) or util.path.dirname(filename)
   end,
   on_attach = require'lsp'.on_attach,
+  capabilities = require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
   settings = {
     gopls = {
       analyses = {

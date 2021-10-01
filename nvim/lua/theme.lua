@@ -1,6 +1,6 @@
 vim.g.material_style = 'deep ocean'
 
-require('material').setup({
+require'material'.setup {
   contrast = true, -- Enable contrast for sidebars, floating windows and popup menus like Nvim-Tree
   borders = false, -- Enable borders between verticaly split windows
 
@@ -17,6 +17,6 @@ require('material').setup({
     term_colors = true, -- Prevent the theme from setting terminal colors
     eob_lines = true -- Hide the end-of-buffer lines
   },
-})
+}
 
 vim.cmd[[colorscheme material]]

@@ -4,19 +4,18 @@ require 'paq' {
 
   -- LSP
   'neovim/nvim-lspconfig';
-  'glepnir/lspsaga.nvim';
+  'hrsh7th/cmp-nvim-lsp';
+  'hrsh7th/cmp-buffer';
+  'hrsh7th/nvim-cmp';
 
-  -- Completion
-  'hrsh7th/nvim-compe';
+  -- Snip
+  'L3MON4D3/LuaSnip';
+  'saadparwaiz1/cmp_luasnip';
 
   -- Formatting
   'psf/black';
 
-  -- Markdown
-  {'npxbr/glow.nvim', run = ':GlowInstall'};
-
   -- Utils
-  'windwp/nvim-autopairs';
   'b3nj5m1n/kommentary';
 
   -- Treesitter
