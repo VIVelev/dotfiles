@@ -39,6 +39,9 @@ alias pip-up "pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -
 # Zoxide
 alias d "z"
 
+# Neovim
+alias nv "nvim"
+
 # Utils
 function remove_from_path
     for p in $argv

@@ -21,7 +21,6 @@ brew "go"
 brew "htop"
 brew "llvm"
 brew "lolcat"
-brew "neofetch"
 brew "neovim", args: ["HEAD"]
 brew "nmap"
 brew "nvm"

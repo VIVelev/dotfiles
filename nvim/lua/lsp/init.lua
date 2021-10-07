@@ -3,34 +3,6 @@ function lsp.on_attach(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-  -- symbols for autocomplete
-  vim.lsp.protocol.CompletionItemKind = {
-    '   (Text) ',
-    '   (Method)',
-    '   (Function)',
-    '   (Constructor)',
-    ' ﴲ  (Field)',
-    '[] (Variable)',
-    '   (Class)',
-    ' ﰮ  (Interface)',
-    '   (Module)',
-    ' 襁 (Property)',
-    '   (Unit)',
-    '   (Value)',
-    ' 練 (Enum)',
-    '   (Keyword)',
-    '   (Snippet)',
-    '   (Color)',
-    '   (File)',
-    '   (Reference)',
-    '   (Folder)',
-    '   (EnumMember)',
-    ' ﲀ  (Constant)',
-    ' ﳤ  (Struct)',
-    '   (Event)',
-    '   (Operator)',
-    '   (TypeParameter)'
-  }
 
   -- Mappings
   local opts = { noremap=true, silent=true }
@@ -39,7 +11,7 @@ function lsp.on_attach(client, bufnr)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', 'S', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', '<leader>td', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<leader>mv', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)

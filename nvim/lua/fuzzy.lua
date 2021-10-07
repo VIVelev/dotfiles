@@ -1,4 +1,4 @@
-local trouble = require("trouble.providers.telescope")
+local trouble = require('trouble.providers.telescope')
 
 require'telescope'.setup{
   defaults = {
@@ -55,4 +55,4 @@ local opts = { noremap = true }
 vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', opts)
 vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', opts)
 vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>Telescope buffers<cr>', opts)
-vim.api.nvim_set_keymap('n', '<leader><leader>', '<cmd>lua require(\'telescope\').extensions.frecency.frecency()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader><leader>', '<cmd>lua require(\'telescope\').extensions.frecency.frecency()<cr>', opts)
