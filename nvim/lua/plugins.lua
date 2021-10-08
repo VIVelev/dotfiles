@@ -18,6 +18,7 @@ require 'paq' {
 
   -- Utils
   'b3nj5m1n/kommentary';
+  'windwp/nvim-autopairs';
 
   -- Treesitter
   {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'};
