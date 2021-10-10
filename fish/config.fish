@@ -42,6 +42,10 @@ alias d "z"
 # Neovim
 alias nv "nvim"
 
+# fzf.fish
+set fzf_fd_opts --hidden --exclude=.git
+fzf_configure_bindings --directory=\cf --git_log=\cg --git_status=\cs
+
 # Utils
 function remove_from_path
     for p in $argv
@@ -53,17 +57,10 @@ end
 
 # Dynamic Setup of libraries
 function dSetup
-    remove_from_path /Users/vivelev/.pyenv/shims /Users/vivelev/.nvm/versions/node/v14.15.1/bin
-
-    # NVM Setup
-    function nvm
-       bass source /usr/local/opt/nvm/nvm.sh --no-use ';' nvm $argv
-    end
-    set -x NVM_DIR ~/.nvm
-    nvm use default --silent
+    remove_from_path /Users/vivelev/.pyenv/shims
 
     status is-login; and pyenv init --path | source
-    pyenv init - | source
+    status is-interactive; and pyenv init - | source
 
     zoxide init fish | source
 end

@@ -23,7 +23,6 @@ brew "llvm"
 brew "lolcat"
 brew "neovim", args: ["HEAD"]
 brew "nmap"
-brew "nvm"
 brew "pyenv"
 brew "ripgrep"
 brew "koekeishiya/formulae/skhd"
