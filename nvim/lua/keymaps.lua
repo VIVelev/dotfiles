@@ -6,8 +6,8 @@ map('i', 'jk', '<Esc>', {})
 map('i', 'kj', '<Esc>', {})
 
 -- Easy save
-map('n', '<C-s>', ':w<cr>', opts)
-map('i', '<C-s>', '<Esc>:w<cr>', opts)
+map('n', '<C-w>', ':w<cr>', opts)
+map('i', '<C-w>', '<Esc>:w<cr>', opts)
 
  -- Easier movement
 map('n', '<C-h>', '<C-w>h', opts)
@@ -15,6 +15,10 @@ map('n', '<C-j>', '<C-w>j', opts)
 map('n', '<C-k>', '<C-w>k', opts)
 map('n', '<C-l>', '<C-w>l', opts)
 map('n', '<C-p>', ':b #<cr>', opts)
+
+-- Easy motion
+map('n', 'w', ':HopChar2<cr>', opts)
+map('n', 'ww', ':HopWord<cr>', opts)
 
 -- No arrows
 map('n', '<Up>', '<Nop>', opts)

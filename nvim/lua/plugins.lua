@@ -4,6 +4,8 @@ require 'paq' {
 
   -- LSP
   'neovim/nvim-lspconfig';
+
+  -- Autocomplete
   'hrsh7th/cmp-nvim-lsp';
   'hrsh7th/cmp-path';
   'hrsh7th/cmp-buffer';
@@ -13,36 +15,44 @@ require 'paq' {
   'L3MON4D3/LuaSnip';
   'saadparwaiz1/cmp_luasnip';
 
+  -- Co-pilot
+  'github/copilot.vim';
+
   -- Formatting
   'psf/black';
 
   -- Utils
-  'b3nj5m1n/kommentary';
+  'numToStr/Comment.nvim';
   'windwp/nvim-autopairs';
+
+  -- Floating Terminal
+  'numToStr/FTerm.nvim';
+
+  -- Git
+  'lewis6991/gitsigns.nvim';
+  'TimUntersberger/neogit';
+  'sindrets/diffview.nvim';
 
   -- Treesitter
   {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'};
 
-  -- Explorer
-  'kyazdani42/nvim-tree.lua';
-  'kyazdani42/nvim-web-devicons';
+  -- Lua dev
   'nvim-lua/popup.nvim';
   'nvim-lua/plenary.nvim';
+
+  -- Tree
+  'kyazdani42/nvim-tree.lua';
+  'kyazdani42/nvim-web-devicons';
+
+  -- Telescope
   'nvim-telescope/telescope.nvim';
+  {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'};
   'tami5/sql.nvim';
   'nvim-telescope/telescope-frecency.nvim';
-  'folke/trouble.nvim';
 
   -- Theme
   'marko-cerovac/material.nvim';
 
   -- Statusline
   'hoob3rt/lualine.nvim';
-
-  -- Git
-  'lewis6991/gitsigns.nvim';
-  'TimUntersberger/neogit';
-
-  -- Floating Terminal
-  'numtostr/FTerm.nvim';
 }

@@ -1,11 +1,5 @@
-local trouble = require('trouble.providers.telescope')
-
-require'telescope'.setup{
+require'telescope'.setup {
   defaults = {
-    mappings = {
-      i = { ['<c-t>'] = trouble.open_with_trouble },
-      n = { ['<c-t>'] = trouble.open_with_trouble },
-    },
     vimgrep_arguments = {
       'rg',
       '--color=never',
@@ -33,7 +27,6 @@ require'telescope'.setup{
     file_sorter =  require'telescope.sorters'.get_fuzzy_file,
     file_ignore_patterns = {},
     generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
-    path_display = { "shorten" },
     winblend = 0,
     border = {},
     borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
@@ -46,10 +39,20 @@ require'telescope'.setup{
 
     -- Developer configurations: Not meant for general override
     buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
+  },
+  extensions = {
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = true,  -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                       -- the default case_mode is "smart_case"
+    }
   }
 }
 
 require'telescope'.load_extension('frecency')
+require'telescope'.load_extension('fzf')
 
 local opts = { noremap = true }
 vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', opts)

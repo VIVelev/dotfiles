@@ -46,4 +46,14 @@ vim.o.updatetime = 250
 vim.o.signcolumn = 'yes'
 
 -- Copy once, paste multiple times.
-vim.cmd("xnoremap p pgvy")
+vim.cmd('xnoremap p pgvy')
+
+-- Co-pilot
+vim.cmd([[
+    let g:copilot_filetypes = {
+      \ '*': v:false,
+      \ 'go': v:true,
+      \ 'rust': v:true,
+      \ 'python': v:true,
+  \ }
+]])
