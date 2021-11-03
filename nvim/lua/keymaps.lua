@@ -29,3 +29,6 @@ map('n', '<Right>', '<Nop>', opts)
 -- Terminal
 map('n', '<C-t>', '<cmd>lua require("FTerm").toggle()<CR>', opts)
 map('t', '<C-t>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
+
+-- Copilot
+map('i', 'q', 'copilot#Accept()', { silent = true, script = true, expr = true })

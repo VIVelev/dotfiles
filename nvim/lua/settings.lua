@@ -48,12 +48,15 @@ vim.o.signcolumn = 'yes'
 -- Copy once, paste multiple times.
 vim.cmd('xnoremap p pgvy')
 
--- Co-pilot
+-- Copilot
 vim.cmd([[
     let g:copilot_filetypes = {
       \ '*': v:false,
       \ 'go': v:true,
       \ 'rust': v:true,
       \ 'python': v:true,
+      \ 'lua': v:true,
   \ }
 ]])
+
+vim.g.copilot_no_tab_map = true
