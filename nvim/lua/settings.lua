@@ -49,14 +49,13 @@ vim.o.signcolumn = 'yes'
 vim.cmd('xnoremap p pgvy')
 
 -- Copilot
-vim.cmd([[
-    let g:copilot_filetypes = {
-      \ '*': v:false,
-      \ 'go': v:true,
-      \ 'rust': v:true,
-      \ 'python': v:true,
-      \ 'lua': v:true,
-  \ }
-]])
-
 vim.g.copilot_no_tab_map = true
+vim.g.copilot_filetypes = {
+  ['*'] = false,
+  ['go'] = true,
+  ['lua'] = true,
+  ['rust'] = true,
+  ['python'] = true,
+  ['javascript'] = true,
+  ['typescript'] = true,
+}
