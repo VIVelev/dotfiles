@@ -25,7 +25,7 @@ require'telescope'.setup {
       },
     },
     file_sorter =  require'telescope.sorters'.get_fuzzy_file,
-    file_ignore_patterns = {},
+    file_ignore_patterns = { '**/*.min.js' },
     generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
     winblend = 0,
     border = {},
@@ -45,7 +45,7 @@ require'telescope'.setup {
       fuzzy = true,                    -- false will only do exact matching
       override_generic_sorter = true,  -- override the generic sorter
       override_file_sorter = true,     -- override the file sorter
-      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+      case_mode = 'smart_case',        -- or "ignore_case" or "respect_case"
                                        -- the default case_mode is "smart_case"
     }
   }

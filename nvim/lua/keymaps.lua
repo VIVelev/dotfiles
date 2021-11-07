@@ -16,10 +16,6 @@ map('n', '<C-k>', '<C-w>k', opts)
 map('n', '<C-l>', '<C-w>l', opts)
 map('n', '<C-p>', ':b #<cr>', opts)
 
--- Easy motion
-map('n', 'w', ':HopChar2<cr>', opts)
-map('n', 'ww', ':HopWord<cr>', opts)
-
 -- No arrows
 map('n', '<Up>', '<Nop>', opts)
 map('n', '<Down>', '<Nop>', opts)
@@ -31,4 +27,4 @@ map('n', '<C-t>', '<cmd>lua require("FTerm").toggle()<CR>', opts)
 map('t', '<C-t>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
 
 -- Copilot
-map('i', 'q', 'copilot#Accept()', { silent = true, script = true, expr = true })
+map('i', '<C-j>', 'copilot#Accept("<CR>")', { silent = true, script = true, expr = true })
