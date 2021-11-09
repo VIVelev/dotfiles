@@ -7,4 +7,6 @@ gh/hosts.yml
 configstore/
 truffle/
 
+nvim/plugin/
+
 _*

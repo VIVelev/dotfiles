@@ -1,60 +1,56 @@
-require 'paq' {
-  -- Paq can manage itself
-  'savq/paq-nvim';
+require'packer'.startup(function(use)
+  -- Packer can manage itself
+  use 'wbthomason/packer.nvim'
 
   -- LSP
-  'neovim/nvim-lspconfig';
+  use 'neovim/nvim-lspconfig'
 
   -- Autocomplete
-  'hrsh7th/cmp-nvim-lsp';
-  'hrsh7th/cmp-path';
-  'hrsh7th/cmp-buffer';
-  'hrsh7th/cmp-vsnip';
-  'hrsh7th/nvim-cmp';
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-vsnip',
+      'hrsh7th/vim-vsnip',
+    }
+  }
 
   -- Autopairs
-  {'windwp/nvim-autopairs', run = function() require'nvim-autopairs'.setup() end};
-
-  -- Snippets
-  'hrsh7th/vim-vsnip';
+  use {'windwp/nvim-autopairs', config = function() require'nvim-autopairs'.setup() end}
 
   -- Copilot
-  'github/copilot.vim';
+  use 'github/copilot.vim'
 
   -- Formatting
-  'psf/black';
+  use 'psf/black'
 
   -- Comment
-  {'numToStr/Comment.nvim', run = function() require'Comment'.setup() end};
+  use {'numToStr/Comment.nvim', config = function() require'Comment'.setup() end}
 
   -- Floating Terminal
-  'numToStr/FTerm.nvim';
+  use 'numToStr/FTerm.nvim'
 
   -- Git
-  'lewis6991/gitsigns.nvim';
-  'TimUntersberger/neogit';
-  'sindrets/diffview.nvim';
+  use {'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim'}
+  use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'}
+  use {'sindrets/diffview.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 
   -- Treesitter
-  {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'};
-
-  -- Lua dev
-  'nvim-lua/popup.nvim';
-  'nvim-lua/plenary.nvim';
+  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
   -- Tree
-  'kyazdani42/nvim-tree.lua';
-  'kyazdani42/nvim-web-devicons';
+  use {'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons'}
 
   -- Telescope
-  'nvim-telescope/telescope.nvim';
-  {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'};
-  'tami5/sql.nvim';
-  'nvim-telescope/telescope-frecency.nvim';
+  use {'nvim-telescope/telescope.nvim', requires = {'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons'}}
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
+  use {'nvim-telescope/telescope-frecency.nvim', requires = {'tami5/sqlite.lua', 'kyazdani42/nvim-web-devicons'}}
 
   -- Theme
-  'marko-cerovac/material.nvim';
+  use 'marko-cerovac/material.nvim'
 
   -- Statusline
-  'hoob3rt/lualine.nvim';
-}
+  use {'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+end)

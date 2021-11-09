@@ -1,3 +1,5 @@
+require('plugins')
+
 require('theme')
 require('evil_lualine')
 require('treesitter')
@@ -14,5 +16,4 @@ require('lsp.lua-ls')
 require('lsp.typescript-ls')
 
 require('keymaps')
-require('plugins')
 require('settings')

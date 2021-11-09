@@ -8,7 +8,7 @@ vim.o.shiftwidth  = 4     -- number of spaces to use for auto indent
 vim.o.smartindent = true
 
 -- make backspaces more powerfull
-vim.o.backspace = 'indent,eol'
+vim.o.backspace = 'indent,eol,start'
 
 vim.o.rnu = false
 vim.o.cursorline = true
