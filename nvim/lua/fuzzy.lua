@@ -9,13 +9,13 @@ require'telescope'.setup {
       '--column',
       '--smart-case'
     },
-    prompt_prefix = "> ",
-    selection_caret = "> ",
-    entry_prefix = "  ",
-    initial_mode = "insert",
-    selection_strategy = "reset",
-    sorting_strategy = "descending",
-    layout_strategy = "horizontal",
+    prompt_prefix = '> ',
+    selection_caret = '> ',
+    entry_prefix = '  ',
+    initial_mode = 'insert',
+    selection_strategy = 'reset',
+    sorting_strategy = 'descending',
+    layout_strategy = 'horizontal',
     layout_config = {
       horizontal = {
         mirror = false,
@@ -45,8 +45,8 @@ require'telescope'.setup {
       fuzzy = true,                    -- false will only do exact matching
       override_generic_sorter = true,  -- override the generic sorter
       override_file_sorter = true,     -- override the file sorter
-      case_mode = 'smart_case',        -- or "ignore_case" or "respect_case"
-                                       -- the default case_mode is "smart_case"
+      case_mode = 'smart_case',        -- or 'ignore_case' or 'respect_case'
+                                       -- the default case_mode is 'smart_case'
     }
   }
 }

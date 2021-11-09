@@ -1,23 +1,18 @@
+local lsp = require'lsp'
+
 require'lspconfig'.rust_analyzer.setup {
   cmd = { '/Users/vivelev/rust-analyzer/target/release/rust-analyzer' },
   filetypes = { 'rust' },
-  root_dir = function(filename)
-    local root_files = {
-      '.git/',
-      'Cargo.toml',
-    }
-    local util = require'lspconfig'.util
-    return util.root_pattern(unpack(root_files))(filename) or util.path.dirname(filename)
-  end,
-  on_attach = require'lsp'.on_attach,
-  capabilities = require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-  settings = {
-    ['rust-analyzer'] = {
-      checkOnSave = {
-        command = 'clippy',
-      },
-    }
-  }
+  root_dir = lsp.root_dir_func({ '.git/', 'Cargo.toml' }),
+  on_attach = lsp.on_attach,
+  capabilities = lsp.capabilities,
+  -- settings = {
+  --   ['rust-analyzer'] = {
+  --     checkOnSave = {
+  --       command = 'clippy',
+  --     },
+  --   }
+  -- }
 }
 
-vim.cmd('autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 1000)')
+-- vim.cmd('autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 1000)')

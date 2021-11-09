@@ -4,7 +4,7 @@ require'material'.setup {
   contrast = true, -- Enable contrast for sidebars, floating windows and popup menus like Nvim-Tree
   borders = false, -- Enable borders between verticaly split windows
 
-  popup_menu = "dark", -- Popup menu style ( can be: 'dark', 'light', 'colorful' or 'stealth' )
+  popup_menu = 'dark', -- Popup menu style ( can be: 'dark', 'light', 'colorful' or 'stealth' )
 
   italics = {
     comments = false, -- Enable italic comments
@@ -15,7 +15,7 @@ require'material'.setup {
   },
 
   contrast_windows = { -- Specify which windows get the contrasted (darker) background
-    "terminal", -- Darker terminal background
+    'terminal', -- Darker terminal background
   },
 
   text_contrast = {

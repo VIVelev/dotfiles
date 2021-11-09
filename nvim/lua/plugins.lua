@@ -9,11 +9,11 @@ require 'paq' {
   'hrsh7th/cmp-nvim-lsp';
   'hrsh7th/cmp-path';
   'hrsh7th/cmp-buffer';
+  'hrsh7th/cmp-vsnip';
   'hrsh7th/nvim-cmp';
 
-  -- Snip
-  'L3MON4D3/LuaSnip';
-  'saadparwaiz1/cmp_luasnip';
+  -- Snippets
+  'hrsh7th/vim-vsnip';
 
   -- Co-pilot
   'github/copilot.vim';

@@ -32,7 +32,7 @@ brew "skhd"
 brew "scc"
 brew "sqlite"
 brew "svn"
-brew "tldr"
+brew "tealdeer"
 brew "tree"
 brew "tmux"
 brew "yabai", args: ["HEAD"]

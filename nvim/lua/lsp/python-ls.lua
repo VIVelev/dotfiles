@@ -1,15 +1,19 @@
+local lsp = require'lsp'
+
 require'lspconfig'.pyright.setup {
   cmd = { 'pyright-langserver', '--stdio' },
   filetypes = { 'python' },
-  root_dir = function(filename)
-    local root_files = {
-      '.git/',
-      '.env/',
-    }
-    local util = require'lspconfig'.util
-    return util.root_pattern(unpack(root_files))(filename) or util.path.dirname(filename)
-  end,
-  on_attach = require'lsp'.on_attach,
+  root_dir = lsp.root_dir_func({
+    '.git/',
+    '.env/',
+    '.venv/',
+    'pyproject.toml',
+    'setup.py',
+    'setup.cfg',
+    'requirements.txt',
+  }),
+  on_attach = lsp.on_attach,
+  capabilities = lsp.capabilities,
   settings = {
     organizeimports = {
       provider = 'pyright',

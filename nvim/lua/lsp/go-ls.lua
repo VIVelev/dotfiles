@@ -1,16 +1,11 @@
+local lsp = require'lsp'
+
 require'lspconfig'.gopls.setup {
   cmd = { 'gopls' },
   filetypes = { 'go', 'gomod' },
-  root_dir = function(filename)
-    local root_files = {
-      '.git/',
-      'go.mod',
-    }
-    local util = require'lspconfig'.util
-    return util.root_pattern(unpack(root_files))(filename) or util.path.dirname(filename)
-  end,
-  on_attach = require'lsp'.on_attach,
-  capabilities = require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  root_dir = lsp.root_dir_func({ '.git/', 'go.mod' }),
+  on_attach = lsp.on_attach,
+  capabilities = lsp.capabilities,
   settings = {
     gopls = {
       analyses = {
@@ -23,8 +18,8 @@ require'lspconfig'.gopls.setup {
 
 function Goimports(wait_ms)
   local params = vim.lsp.util.make_range_params()
-  params.context = {only = {"source.organizeImports"}}
-  local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
+  params.context = {only = {'source.organizeImports'}}
+  local result = vim.lsp.buf_request_sync(0, 'textDocument/codeAction', params, wait_ms)
   for _, res in pairs(result or {}) do
     for _, r in pairs(res.result or {}) do
       if r.edit then
