@@ -1,5 +1,6 @@
 local lsp = {}
 local util = require'lspconfig'.util
+local cmp_lsp = require'cmp_nvim_lsp'
 
 function lsp.root_dir(...)
   local pattern = util.root_pattern(...)
@@ -51,7 +52,7 @@ function lsp.on_attach(client, bufnr)
 end
 
 function lsp.capabilities()
-    return require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  return cmp_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 end
 
 return lsp

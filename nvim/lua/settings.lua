@@ -1,26 +1,14 @@
 vim.o.shell = '/usr/local/bin/bash'
-vim.o.termguicolors = true
-vim.cmd('syntax on')
-vim.o.guifont = 'FiraMono Nerd Font:h12'
 
 vim.o.expandtab   = true  -- enter spaces when tab is pressed
-vim.o.textwidth   = 120   -- break lines when line length increases
 vim.o.tabstop     = 4     -- use 4 spaces to represent tab
-vim.o.softtabstop = 4
-vim.o.shiftwidth  = 4     -- number of spaces to use for auto indent
+
 vim.o.autoindent  = true  -- copy indent from current line when starting a new line
+vim.o.shiftwidth  = 4     -- number of spaces to use for auto indent
 vim.o.smartindent = true
 
 -- make backspaces more powerfull
-vim.o.backspace = 'indent,eol,start'
-
--- -- Displays '-' for trailing space, '>-' for tabs and '_' for non breakable space
--- vim.o.listchars = 'tab:>-,trail:-,nbsp:_'
--- vim.cmd('set list')
-
--- Don't expand tab for:
-vim.cmd('autocmd FileType go setlocal noexpandtab')
--- vim.cmd('autocmd FileType go setlocal nolist')
+vim.o.backspace = 'indent,eol'
 
 vim.o.rnu = false
 vim.o.cursorline = true

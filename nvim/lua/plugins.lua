@@ -12,18 +12,20 @@ require 'paq' {
   'hrsh7th/cmp-vsnip';
   'hrsh7th/nvim-cmp';
 
+  -- Autopairs
+  {'windwp/nvim-autopairs', run = function() require'nvim-autopairs'.setup() end};
+
   -- Snippets
   'hrsh7th/vim-vsnip';
 
-  -- Co-pilot
+  -- Copilot
   'github/copilot.vim';
 
   -- Formatting
   'psf/black';
 
-  -- Utils
-  'numToStr/Comment.nvim';
-  'windwp/nvim-autopairs';
+  -- Comment
+  {'numToStr/Comment.nvim', run = function() require'Comment'.setup() end};
 
   -- Floating Terminal
   'numToStr/FTerm.nvim';
