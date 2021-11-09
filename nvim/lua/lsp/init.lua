@@ -1,9 +1,10 @@
 local lsp = {}
+local util = require'lspconfig'.util
 
-function lsp.root_dir_func(root_files)
+function lsp.root_dir(...)
+  local pattern = util.root_pattern(...)
   return function (filename)
-    local util = require'lspconfig'.util
-    return util.root_pattern(unpack(root_files))(filename) or util.path.dirname(filename)
+    return pattern(filename) or util.path.dirname(filename)
   end
 end
 
@@ -49,6 +50,8 @@ function lsp.on_attach(client, bufnr)
   end
 end
 
-lsp.capabilities = require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+function lsp.capabilities()
+    return require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+end
 
 return lsp

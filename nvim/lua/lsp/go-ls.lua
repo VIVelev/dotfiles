@@ -3,9 +3,9 @@ local lsp = require'lsp'
 require'lspconfig'.gopls.setup {
   cmd = { 'gopls' },
   filetypes = { 'go', 'gomod' },
-  root_dir = lsp.root_dir_func({ '.git/', 'go.mod' }),
+  root_dir = lsp.root_dir('.git/', 'go.mod'),
   on_attach = lsp.on_attach,
-  capabilities = lsp.capabilities,
+  capabilities = lsp.capabilities(),
   settings = {
     gopls = {
       analyses = {

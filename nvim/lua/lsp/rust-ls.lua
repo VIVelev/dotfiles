@@ -3,9 +3,9 @@ local lsp = require'lsp'
 require'lspconfig'.rust_analyzer.setup {
   cmd = { '/Users/vivelev/rust-analyzer/target/release/rust-analyzer' },
   filetypes = { 'rust' },
-  root_dir = lsp.root_dir_func({ '.git/', 'Cargo.toml' }),
+  root_dir = lsp.root_dir('.git/', 'Cargo.toml'),
   on_attach = lsp.on_attach,
-  capabilities = lsp.capabilities,
+  capabilities = lsp.capabilities(),
   -- settings = {
   --   ['rust-analyzer'] = {
   --     checkOnSave = {

@@ -37,11 +37,11 @@ cmp.setup {
     end,
   },
   mapping = {
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm(),
     ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
     ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' })
   },
-  sources = cmp.config.sources {
+  sources = {
     { name = 'nvim_lsp' },
     { name = 'path' },
     { name = 'buffer' },
