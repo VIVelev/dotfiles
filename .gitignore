@@ -2,10 +2,11 @@
 .netrwhist
 
 mozilla/
+
 github-copilot/
 gh/hosts.yml
-configstore/
-truffle/
+
+yarn/
 
 nvim/plugin/
 

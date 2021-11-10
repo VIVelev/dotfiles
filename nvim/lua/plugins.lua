@@ -5,6 +5,15 @@ require'packer'.startup(function(use)
   -- LSP
   use 'neovim/nvim-lspconfig'
 
+  -- Rust tools
+  use {
+    'simrat39/rust-tools.nvim',
+    requires = {
+      'nvim-lua/popup.nvim',
+      'nvim-lua/plenary.nvim',
+    }
+  }
+
   -- Autocomplete
   use {
     'hrsh7th/nvim-cmp',

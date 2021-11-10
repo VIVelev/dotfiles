@@ -16,6 +16,18 @@ map('n', '<C-k>', '<C-w>k', opts)
 map('n', '<C-l>', '<C-w>l', opts)
 map('n', '<C-p>', ':b #<cr>', opts)
 
+-- Keeping it centered
+map('n', 'n', 'nzz', opts)
+map('n', 'N', 'Nzz', opts)
+
+-- Moving text
+map('v', 'J', ":m '>+1<CR>gv=gv", opts)
+map('v', 'K', ":m '<-2<CR>gv=gv", opts)
+map('i', '<C-j>', '<esc>:m .+1<CR>==', opts)
+map('i', '<C-k>', '<esc>:m .-2<CR>==', opts)
+map('n', '<leader>j', ':m .+1<CR>==', opts)
+map('n', '<leader>k', ':m .-2<CR>==', opts)
+
 -- No arrows
 map('n', '<Up>', '<Nop>', opts)
 map('n', '<Down>', '<Nop>', opts)
