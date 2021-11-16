@@ -5,16 +5,22 @@ local opts = { noremap = true, silent = true }
 map('i', 'jk', '<Esc>', {})
 map('i', 'kj', '<Esc>', {})
 
--- Easy save
-map('n', '<C-w>', ':w<cr>', opts)
-map('i', '<C-w>', '<Esc>:w<cr>', opts)
-
  -- Easier movement
 map('n', '<C-h>', '<C-w>h', opts)
 map('n', '<C-j>', '<C-w>j', opts)
 map('n', '<C-k>', '<C-w>k', opts)
 map('n', '<C-l>', '<C-w>l', opts)
 map('n', '<C-p>', ':b #<cr>', opts)
+
+-- Increase/decrease split size
+map('n', '<leader>=', '5<C-w>+', opts)
+map('n', '<leader>-', '5<C-w>-', opts)
+map('n', '<leader>[', '5<C-w><', opts)
+map('n', '<leader>]', '5<C-w>>', opts)
+
+-- Easy save
+map('n', '<C-w>', ':w<cr>', opts)
+map('i', '<C-w>', '<Esc>:w<cr>', opts)
 
 -- Keeping it centered
 map('n', 'n', 'nzz', opts)

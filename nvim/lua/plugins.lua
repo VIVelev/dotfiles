@@ -26,6 +26,10 @@ require'packer'.startup(function(use)
     }
   }
 
+
+  -- Motion
+  use 'ggandor/lightspeed.nvim'
+
   -- Autopairs
   use {'windwp/nvim-autopairs', config = function() require'nvim-autopairs'.setup() end}
 
