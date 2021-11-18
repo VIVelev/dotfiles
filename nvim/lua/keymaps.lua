@@ -40,6 +40,17 @@ map('n', '<Down>', '<Nop>', opts)
 map('n', '<Left>', '<Nop>', opts)
 map('n', '<Right>', '<Nop>', opts)
 
+-- Nops
+map('n', 'gd', '<Nop>', opts)
+
+-- Trouble
+map('n', '<leader>xx', '<cmd>Trouble<cr>', opts)
+map('n', '<leader>xw', '<cmd>Trouble lsp_workspace_diagnostics<cr>', opts)
+map('n', '<leader>xd', '<cmd>Trouble lsp_document_diagnostics<cr>', opts)
+map('n', '<leader>xl', '<cmd>Trouble loclist<cr>', opts)
+map('n', '<leader>xq', '<cmd>Trouble quickfix<cr>', opts)
+map('n', 'gR', '<cmd>Trouble lsp_references<cr>', opts)
+
 -- Terminal
 map('n', '<C-t>', '<cmd>lua require("FTerm").toggle()<cr>', opts)
 map('t', '<C-t>', '<C-\\><C-n><cmd>lua require("FTerm").toggle()<cr>', opts)

@@ -26,6 +26,7 @@ brew "llvm"
 brew "lolcat"
 brew "neovim", args: ["HEAD"]
 brew "nmap"
+brew "procs"
 brew "pyenv"
 brew "ripgrep"
 brew "skhd"

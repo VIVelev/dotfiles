@@ -26,7 +26,6 @@ require'packer'.startup(function(use)
     }
   }
 
-
   -- Motion
   use 'ggandor/lightspeed.nvim'
 
@@ -46,9 +45,25 @@ require'packer'.startup(function(use)
   use 'numToStr/FTerm.nvim'
 
   -- Git
-  use {'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim'}
-  use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'}
-  use {'sindrets/diffview.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function() require'gitsigns'.setup() end,
+  }
+  use {
+    'TimUntersberger/neogit',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      {'sindrets/diffview.nvim', requires = 'kyazdani42/nvim-web-devicons'},
+    },
+    config = function()
+      require'neogit'.setup {
+        integrations = {
+          diffview = true
+        },
+      }
+    end
+  }
 
   -- Treesitter
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
@@ -60,6 +75,13 @@ require'packer'.startup(function(use)
   use {'nvim-telescope/telescope.nvim', requires = {'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons'}}
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
   use {'nvim-telescope/telescope-frecency.nvim', requires = {'tami5/sqlite.lua', 'kyazdani42/nvim-web-devicons'}}
+
+  -- Trouble
+  use {
+    'folke/trouble.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function() require'trouble'.setup() end,
+  }
 
   -- Theme
   use 'marko-cerovac/material.nvim'
