@@ -20,5 +20,6 @@ local lsp = require'lsp'
 require'rust-tools'.setup {
   server = {
     on_attach = lsp.on_attach,
+    capabilities = lsp.capabilities(),
   }
 }
