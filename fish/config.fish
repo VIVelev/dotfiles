@@ -1,7 +1,6 @@
 # Language
 set -gx LANG en_US.UTF-8
 
-set -x LS_COLORS (vivid generate ayu)
 set -x EDITOR nvim
 
 # FUN
@@ -16,9 +15,7 @@ alias gcm "git commit -m"
 alias glg "git log --stat"
 
 alias gb "git branch"
-alias gbd "git branch -d"
 alias gco "git checkout"
-alias gm "git merge"
 
 alias gl "git pull"
 alias gp "git push"
@@ -28,7 +25,7 @@ alias grst-h "git reset --hard"
 alias glsc "git ls-files | xargs wc -l"
 
 # Homebrew alias
-alias boo "brew update && brew upgrade && brew upgrade --cask && brew cleanup && brew doctor"
+alias boo "brew update && brew upgrade && brew upgrade --cask && brew cleanup"
 
 # Exa (ls in Rust) alias
 alias xa "exa -la"
