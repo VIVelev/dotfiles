@@ -28,7 +28,7 @@ alias glsc "git ls-files | xargs wc -l"
 alias boo "brew update && brew upgrade && brew upgrade --cask && brew cleanup"
 
 # Exa (ls in Rust) alias
-alias xa "exa -la"
+alias xa "exa -la --color-scale --git --sort=Name"
 
 # pip update
 alias pip-up "pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip3 install -U"

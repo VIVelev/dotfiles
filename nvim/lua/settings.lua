@@ -29,7 +29,7 @@ vim.o.cmdheight = 2
 
 -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 -- delays and poor user experience.
-vim.o.updatetime = 250
+vim.o.updatetime = 600
 
 -- Always show the signcolumn, otherwise it would shift the text each time
 -- diagnostics appear/become resolved.
@@ -42,6 +42,7 @@ vim.cmd('xnoremap p pgvy')
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_filetypes = {
   ['*'] = false,
+  ['c'] = true,
   ['go'] = true,
   ['lua'] = true,
   ['rust'] = true,
