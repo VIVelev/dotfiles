@@ -25,7 +25,7 @@ alias grst-h "git reset --hard"
 alias glsc "git ls-files | xargs wc -l"
 
 # Homebrew alias
-alias boo "brew update && brew upgrade && brew upgrade --cask && brew cleanup"
+alias boo "brew update && brew upgrade && brew upgrade --cask"
 
 # Exa (ls in Rust) alias
 alias xa "exa -la --color-scale --git --sort=Name"
