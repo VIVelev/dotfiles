@@ -48,7 +48,6 @@ require'packer'.startup(function(use)
   use {
     'lewis6991/gitsigns.nvim',
     requires = 'nvim-lua/plenary.nvim',
-    config = function() require'gitsigns'.setup() end,
   }
   use {
     'TimUntersberger/neogit',
@@ -56,13 +55,6 @@ require'packer'.startup(function(use)
       'nvim-lua/plenary.nvim',
       {'sindrets/diffview.nvim', requires = 'kyazdani42/nvim-web-devicons'},
     },
-    config = function()
-      require'neogit'.setup {
-        integrations = {
-          diffview = true
-        },
-      }
-    end
   }
 
   -- Treesitter

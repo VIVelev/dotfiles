@@ -8,6 +8,7 @@ require('evil_lualine')
 require('treesitter')
 require('completion')
 
+require('git')
 require('tree')
 require('fuzzy')
 
