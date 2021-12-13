@@ -35,7 +35,7 @@ set fzf_fd_opts --hidden --exclude=.git
 fzf_configure_bindings --directory=\cf --git_log=\cg --git_status=\cs
 
 # Start tmux automatically
-# if not set -q TMUX
-#     eval tmux -f ~/.config/tmux/config new -s base
-#     eval tmux a -t base
-# end
+if not set -q TMUX
+    eval tmux -f ~/.config/tmux/config new -s base
+    eval tmux a -t base
+end
