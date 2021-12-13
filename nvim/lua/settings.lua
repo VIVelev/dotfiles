@@ -1,5 +1,3 @@
-vim.o.shell = '/usr/local/bin/bash'
-
 vim.g.mapleader = ' '
 
 vim.o.expandtab   = true  -- enter spaces when tab is pressed

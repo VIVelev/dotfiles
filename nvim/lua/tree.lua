@@ -31,10 +31,7 @@ vim.g.nvim_tree_add_trailing  = 1  -- 0 by default, append a trailing slash to f
 vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', {noremap = true})
 
 require'nvim-tree'.setup {
-  open_on_setup = false,
-  auto_close = false,
   hijack_cursor = true,
-  update_cwd = true,
   diagnostics = {
     enable = true,
   },
@@ -49,8 +46,8 @@ require'nvim-tree'.setup {
   },
   git = {
     enable = true,
+    ignore = false,
   },
-
   view = {
     width = '11%',
     auto_resize = true,
