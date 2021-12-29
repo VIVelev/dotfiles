@@ -24,10 +24,6 @@ local list = {
   { key = '?',                    cb = tree_cb('toggle_help') },
 }
 
-vim.g.nvim_tree_indent_markrs = 1  -- 0 by default, this option shows indent markers when folders are open
-vim.g.nvim_tree_git_hl        = 1  -- 0 by default, will enable file highlight for git attributes (can be used without the icons)
-vim.g.nvim_tree_add_trailing  = 1  -- 0 by default, append a trailing slash to folder names
-
 vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', {noremap = true})
 
 require'nvim-tree'.setup {
@@ -40,13 +36,6 @@ require'nvim-tree'.setup {
   },
   system_open = {
     cmd = 'open',
-  },
-  filters = {
-    dotfiles = false,
-  },
-  git = {
-    enable = true,
-    ignore = false,
   },
   view = {
     width = '11%',
