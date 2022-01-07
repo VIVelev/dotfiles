@@ -73,7 +73,16 @@ require'packer'.startup(function(use)
   }
 
   -- Theme
-  use 'marko-cerovac/material.nvim'
+  use {
+    'marko-cerovac/material.nvim',
+    config = function()
+      vim.g.material_style = "deep ocean"
+      require'material'.setup {
+        disable = { background = true }
+      }
+      vim.cmd[[colorscheme material]]
+    end
+  }
 
   -- Statusline
   use {'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons'}
