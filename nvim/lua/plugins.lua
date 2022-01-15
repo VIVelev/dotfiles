@@ -34,6 +34,7 @@ require'packer'.startup(function(use)
 
   -- Formatting
   use 'psf/black'
+  use 'fisadev/vim-isort'
 
   -- Comment
   use {'numToStr/Comment.nvim', config = function() require'Comment'.setup() end}
