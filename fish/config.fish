@@ -21,7 +21,13 @@ alias gl "git pull"
 alias gp "git push"
 
 # Exa (ls in Rust) alias
-alias xa "exa -la --color-scale --git --sort=Name"
+alias xa "exa -la --color=always --color-scale --git --sort=Name"
+
+# Grep with color
+alias rg "rg --color always"
+
+# Less with color
+alias less "less -R"
 
 # Zoxide
 alias d "z"
