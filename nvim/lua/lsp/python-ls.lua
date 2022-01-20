@@ -32,7 +32,7 @@ local env = os.getenv('VIRTUAL_ENV')
 if not (env == nil or env == '') then
   vim.g.python3_host_prog = env .. '/bin/python'
 else
-  vim.g.python3_host_prog = '/usr/local/bin/python3'
+  vim.g.python3_host_prog = '~/.pynvim/bin/python'
 end
 
 -- Isort
