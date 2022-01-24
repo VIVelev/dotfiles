@@ -22,6 +22,17 @@ map('n', '<leader>]', '5<C-w>>', opts)
 map('n', '<C-w>', ':w<cr>', opts)
 map('i', '<C-w>', '<Esc>:w<cr>', opts)
 
+-- Copy to clipboard
+map('n', '<leader>yy', '"+yy', opts) -- Copy line with the new line
+map('n', '<leader>Y', '"+yg_', opts) -- Copy line without the new line
+map('n', '<leader>y', '"+y', opts) -- Copy with movement
+map('v', '<leader>y', '"+y', opts) -- Copy selection
+
+-- Paste from clipboard
+map('n', '<leader>p', '"+p', opts) -- Paste below
+map('n', '<leader>P', '"+P', opts) -- Paste above
+map('v', '<leader>p', '"+p', opts) -- Paste over selection
+
 -- Keeping it centered
 map('n', 'n', 'nzz', opts)
 map('n', 'N', 'Nzz', opts)
@@ -42,14 +53,6 @@ map('n', '<Right>', '<Nop>', opts)
 
 -- Nops
 map('n', 'gd', '<Nop>', opts)
-
--- Trouble
-map('n', '<leader>xx', '<cmd>Trouble<cr>', opts)
-map('n', '<leader>xw', '<cmd>Trouble lsp_workspace_diagnostics<cr>', opts)
-map('n', '<leader>xd', '<cmd>Trouble lsp_document_diagnostics<cr>', opts)
-map('n', '<leader>xl', '<cmd>Trouble loclist<cr>', opts)
-map('n', '<leader>xq', '<cmd>Trouble quickfix<cr>', opts)
-map('n', 'gR', '<cmd>Trouble lsp_references<cr>', opts)
 
 -- Terminal
 map('n', '<C-t>', '<cmd>lua require("FTerm").toggle()<cr>', opts)
