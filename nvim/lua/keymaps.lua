@@ -55,8 +55,8 @@ map('n', '<Right>', '<Nop>', opts)
 map('n', 'gd', '<Nop>', opts)
 
 -- Terminal
-map('n', '<C-t>', '<cmd>lua require("FTerm").toggle()<cr>', opts)
-map('t', '<C-t>', '<C-\\><C-n><cmd>lua require("FTerm").toggle()<cr>', opts)
+map('n', '<C-t>', '<cmd>lua require("FTerm").toggle()<CR>', opts)
+map('t', '<C-t>', '<C-\\><C-n><cmd>lua require("FTerm").toggle()<CR>', opts)
 
 -- Copilot
 map('i', '<C-j>', 'copilot#Accept("<CR>")', { silent = true, script = true, expr = true })

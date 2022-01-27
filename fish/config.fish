@@ -23,6 +23,12 @@ alias gp "git push"
 # Homebrew setup
 eval (/opt/homebrew/bin/brew shellenv)
 
+# Homebrew alias
+alias up "brew update"
+alias upg "brew upgrade"
+alias doc "brew doctor"
+alias clnp "brew cleanup"
+
 # Exa (ls in Rust) alias
 alias xa "exa -la --color=always --color-scale --git --sort=Name"
 

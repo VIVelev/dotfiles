@@ -23,7 +23,7 @@ vim.o.synmaxcol = 100
 vim.o.showmode = false
 
 -- Give more space for displaying messages.
-vim.o.cmdheight = 2
+vim.o.cmdheight = 1
 
 -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 -- delays and poor user experience.

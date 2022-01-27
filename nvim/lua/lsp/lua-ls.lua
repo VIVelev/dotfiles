@@ -1,15 +1,11 @@
 local lsp = require'lsp'
 
--- https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
-local sumneko_root_path = '/Users/vivelev/lua-language-server/'
-local sumneko_binary = sumneko_root_path..'bin/macOS/lua-language-server'
-
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
 require'lspconfig'.sumneko_lua.setup {
-  cmd = { sumneko_binary, '-E', sumneko_root_path..'main.lua' },
+  cmd = { 'lua-language-server' },
   filetypes = { 'lua' },
   root_dir = lsp.root_dir('.git/'),
   on_attach = lsp.on_attach,

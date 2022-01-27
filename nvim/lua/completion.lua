@@ -36,8 +36,12 @@ cmp.setup {
   },
   mapping = {
     ['<CR>'] = cmp.mapping.confirm(),
-    ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' })
+    ['<Tab>'] = cmp.mapping.select_next_item(),
+    ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+    ['<C-s>'] = cmp.mapping.complete(),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-e>'] = cmp.mapping.close(),
   },
   sources = {
     { name = 'nvim_lsp' },
@@ -46,10 +50,13 @@ cmp.setup {
     { name = 'vsnip' },
   },
   formatting = {
-    format = function(entry, vim_item)
+    format = function(_, vim_item)
       vim_item.kind = kind_icons[vim_item.kind]
       return vim_item
     end,
+  },
+  documentation = {
+    border = 'rounded',
   },
 }
 
