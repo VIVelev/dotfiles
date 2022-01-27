@@ -5,9 +5,6 @@ table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
 require'lspconfig'.sumneko_lua.setup {
-  cmd = { 'lua-language-server' },
-  filetypes = { 'lua' },
-  root_dir = lsp.root_dir('.git/'),
   on_attach = lsp.on_attach,
   capabilities = lsp.capabilities(),
   settings = {

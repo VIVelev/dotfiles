@@ -62,6 +62,7 @@ require'packer'.startup(function(use)
 
   -- UI
   use {'tami5/lspsaga.nvim', config = function() require'lspsaga'.setup() end}
+  use {'j-hui/fidget.nvim', config = function() require'fidget'.setup() end}
 
   -- Theme
   use {

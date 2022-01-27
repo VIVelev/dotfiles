@@ -1,17 +1,6 @@
 local lsp = require'lsp'
 
 require'lspconfig'.pyright.setup {
-  cmd = { 'pyright-langserver', '--stdio' },
-  filetypes = { 'python' },
-  root_dir = lsp.root_dir(
-    '.git/',
-    '.env/',
-    '.venv/',
-    'pyproject.toml',
-    'setup.py',
-    'setup.cfg',
-    'requirements.txt'
-  ),
   on_attach = lsp.on_attach,
   capabilities = lsp.capabilities(),
   settings = {

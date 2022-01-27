@@ -1,13 +1,5 @@
 local lsp = {}
-local util = require'lspconfig'.util
 local cmp_lsp = require'cmp_nvim_lsp'
-
-function lsp.root_dir(...)
-  local pattern = util.root_pattern(...)
-  return function (filename)
-    return pattern(filename) or util.path.dirname(filename)
-  end
-end
 
 function lsp.on_attach(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
