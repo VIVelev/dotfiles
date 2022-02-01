@@ -1,4 +1,4 @@
-# dotfiles
+# dotfiles for macOS (on Apple Silicon)
 .config files
 
 # Instructions
