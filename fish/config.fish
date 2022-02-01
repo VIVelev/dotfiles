@@ -25,12 +25,14 @@ eval (/opt/homebrew/bin/brew shellenv)
 
 # Homebrew alias
 alias up "brew update"
-alias upg "brew upgrade"
+alias upgr "brew upgrade"
 alias doc "brew doctor"
 alias clnp "brew cleanup"
 alias bls "brew ls"
 alias instl "brew install"
+alias uninstl "brew uninstall"
 alias srch "brew search"
+alias inf "brew info"
 
 # Exa (ls in Rust) alias
 alias xa "exa -la --color=always --color-scale --git --sort=Name"
