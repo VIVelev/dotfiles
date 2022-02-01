@@ -8,3 +8,5 @@ email = vivelev@icloud.com
     user = VIVelev
 [init]
     defaultBranch = main
+[pull]
+    ff = true
