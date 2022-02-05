@@ -53,3 +53,6 @@ alias nv "nvim"
 # fzf.fish
 set fzf_fd_opts --hidden --exclude=.git
 fzf_configure_bindings --directory=\cf --git_log=\cg --git_status=\cs
+
+# Yesss, VI mode in a shell!
+fish_vi_key_bindings
