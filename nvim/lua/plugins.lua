@@ -34,7 +34,7 @@ require'packer'.startup(function(use)
   use {'numToStr/Comment.nvim', config = function() require'Comment'.setup() end}
 
   -- Floating Terminal
-  use {'numToStr/FTerm.nvim', config = function() require'FTerm'.setup{ blend = 1 } end}
+  use {'numToStr/FTerm.nvim', config = function() require'FTerm'.setup{ border = "double", blend = 1 } end}
 
   -- Git
   use {
@@ -61,7 +61,6 @@ require'packer'.startup(function(use)
   use {'nvim-telescope/telescope-frecency.nvim', requires = {'tami5/sqlite.lua', 'kyazdani42/nvim-web-devicons'}}
 
   -- UI
-  use {'tami5/lspsaga.nvim', config = function() require'lspsaga'.setup() end}
   use {'j-hui/fidget.nvim', config = function() require'fidget'.setup() end}
 
   -- Theme
