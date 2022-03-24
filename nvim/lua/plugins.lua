@@ -26,9 +26,10 @@ require'packer'.startup(function(use)
   -- Copilot
   use 'github/copilot.vim'
 
-  -- Formatting & Sorting
+  -- Python beauty
   use 'psf/black'
-  use 'fisadev/vim-isort'
+  use 'davidszotten/isort-vim-2'
+  use 'nvie/vim-flake8'
 
   -- Comment
   use {'numToStr/Comment.nvim', config = function() require'Comment'.setup() end}

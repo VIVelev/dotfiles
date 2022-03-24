@@ -54,5 +54,8 @@ alias nv "nvim"
 set fzf_fd_opts --hidden --exclude=.git
 fzf_configure_bindings --directory=\cf --git_log=\cg --git_status=\cs
 
+# JupyterLab
+set -x JUPYTERLAB_SETTINGS_DIR ~/.config/lab/
+
 # Yesss, VI mode in a shell!
 fish_vi_key_bindings

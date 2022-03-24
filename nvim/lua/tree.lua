@@ -36,7 +36,7 @@ require'nvim-tree'.setup {
   },
   view = {
     width = '11%',
-    auto_resize = true,
+    preserve_window_proportions = true,
     mappings = {
       custom_only = true,
       list = list,
