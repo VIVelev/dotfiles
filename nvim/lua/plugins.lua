@@ -23,7 +23,7 @@ require'packer'.startup(function(use)
   }
 
   -- Motion
-  use {'VIVelev/leap.nvim', config = function() require'leap'.set_default_keymaps() end}
+  use {'ggandor/leap.nvim', config = function() require'leap'.set_default_keymaps() end}
 
   -- Autopairs
   use {'windwp/nvim-autopairs', config = function() require'nvim-autopairs'.setup() end}

@@ -32,4 +32,8 @@ require'lspconfig'.rust_analyzer.setup {
   }
 }
 
-vim.cmd('autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 1000)')
+local rust_aug = vim.api.nvim_create_augroup('Rust', { clear = true })
+vim.api.nvim_create_autocmd(
+  'BufWritePre',
+  { pattern = '*.rs', callback = function () vim.lsp.buf.formatting_sync(nil, 1000) end, group = rust_aug }
+)

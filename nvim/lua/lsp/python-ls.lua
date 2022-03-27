@@ -12,8 +12,8 @@ require'lspconfig'.jedi_language_server.setup {
   -- capabilities = lsp.capabilities(),
 }
 
+local python_aug = vim.api.nvim_create_augroup('Python', { clear = true })
 -- Black
-vim.cmd('autocmd BufWritePre *.py :Black')
-
+vim.api.nvim_create_autocmd('BufWritePre', { pattern = '*.py', command = ':Black', group = python_aug })
 -- Isort
-vim.cmd('autocmd BufWritePre *.py :Isort')
+vim.api.nvim_create_autocmd('BufWritePre', { pattern = '*.py', command = ':Isort', group = python_aug })

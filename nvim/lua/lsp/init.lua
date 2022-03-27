@@ -33,13 +33,10 @@ function lsp.on_attach(client, bufnr)
 
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec([[
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]], false)
+    local aug = vim.api.nvim_create_augroup('LspDocumentHighlight', { clear = true })
+    vim.cmd[[autocmd! * <buffer>]]
+    vim.api.nvim_create_autocmd('CursorHold', { buffer = 0, callback = function () vim.lsp.buf.document_highlight() end, group = aug })
+    vim.api.nvim_create_autocmd('CursorMoved', { buffer = 0, callback = function () vim.lsp.buf.clear_references() end, group = aug })
   end
 end
 

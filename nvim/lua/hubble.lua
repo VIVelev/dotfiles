@@ -23,6 +23,7 @@ local map = vim.api.nvim_set_keymap
 map('n', '<leader>ff', ':Telescope find_files<cr>', opts)
 map('n', '<leader>gg', ':Telescope live_grep<cr>', opts)
 map('n', '<leader>bb', ':Telescope buffers<cr>', opts)
+map('n', '<leader>hh', ':Telescope help_tags<cr>', opts)
 map('n', '<leader><leader>', ':lua require("telescope").extensions.frecency.frecency()<cr>', opts)
 map('n', '<leader>fb', ':Telescope file_browser<cr>', opts)
 map('n', '<leader>n', ':Telescope file_browser path=%:p:h<cr>', opts)
