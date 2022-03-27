@@ -2,25 +2,24 @@ local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 -- I hate Escape
-map('i', 'jk', '<Esc>', {})
-map('i', 'kj', '<Esc>', {})
+map('i', 'jk', '<esc>', {})
+map('i', 'kj', '<esc>', {})
 
  -- Easier movement
-map('n', '<C-h>', '<C-w>h', opts)
-map('n', '<C-j>', '<C-w>j', opts)
-map('n', '<C-k>', '<C-w>k', opts)
-map('n', '<C-l>', '<C-w>l', opts)
-map('n', '<C-p>', ':b #<cr>', opts)
+map('n', '<c-h>', '<c-w>h', opts)
+map('n', '<c-j>', '<c-w>j', opts)
+map('n', '<c-k>', '<c-w>k', opts)
+map('n', '<c-l>', '<c-w>l', opts)
 
 -- Increase/decrease split size
-map('n', '<leader>=', '5<C-w>+', opts)
-map('n', '<leader>-', '5<C-w>-', opts)
-map('n', '<leader>[', '5<C-w><', opts)
-map('n', '<leader>]', '5<C-w>>', opts)
+map('n', '<leader>=', '5<c-w>+', opts)
+map('n', '<leader>-', '5<c-w>-', opts)
+map('n', '<leader>[', '5<c-w><', opts)
+map('n', '<leader>]', '5<c-w>>', opts)
 
 -- Easy save
-map('n', '<C-w>', ':w<cr>', opts)
-map('i', '<C-w>', '<Esc>:w<cr>', opts)
+map('n', '<c-w>', ':w<cr>', opts)
+map('i', '<c-w>', '<Esc>:w<cr>', opts)
 
 -- Copy to clipboard
 map('n', '<leader>yy', '"+yy', opts) -- Copy line with the new line
@@ -38,25 +37,25 @@ map('n', 'n', 'nzz', opts)
 map('n', 'N', 'Nzz', opts)
 
 -- Moving text
-map('v', 'J', ":m '>+1<CR>gv=gv", opts)
-map('v', 'K', ":m '<-2<CR>gv=gv", opts)
-map('i', '<C-j>', '<esc>:m .+1<CR>==', opts)
-map('i', '<C-k>', '<esc>:m .-2<CR>==', opts)
-map('n', '<leader>j', ':m .+1<CR>==', opts)
-map('n', '<leader>k', ':m .-2<CR>==', opts)
+map('v', 'J', ":m '>+1<cr>gv=gv", opts)
+map('v', 'K', ":m '<-2<cr>gv=gv", opts)
+map('i', '<c-j>', '<esc>:m .+1<cr>==', opts)
+map('i', '<c-k>', '<esc>:m .-2<cr>==', opts)
+map('n', '<leader>j', ':m .+1<cr>==', opts)
+map('n', '<leader>k', ':m .-2<cr>==', opts)
 
 -- No arrows
-map('n', '<Up>', '<Nop>', opts)
-map('n', '<Down>', '<Nop>', opts)
-map('n', '<Left>', '<Nop>', opts)
-map('n', '<Right>', '<Nop>', opts)
+map('n', '<up>', '<nop>', opts)
+map('n', '<down>', '<nop>', opts)
+map('n', '<left>', '<nop>', opts)
+map('n', '<right>', '<nop>', opts)
 
 -- Nops
-map('n', 'gd', '<Nop>', opts)
+map('n', 'gd', '<nop>', opts)
 
 -- Terminal
-map('n', '<C-t>', '<cmd>lua require("FTerm").toggle()<CR>', opts)
-map('t', '<C-t>', '<C-\\><C-n><cmd>lua require("FTerm").toggle()<CR>', opts)
+map('n', '<c-t>', '<cmd>lua require("FTerm").toggle()<cr>', opts)
+map('t', '<c-t>', '<c-\\><c-n><cmd>lua require("FTerm").toggle()<cr>', opts)
 
 -- Copilot
-map('i', '<C-j>', 'copilot#Accept("<CR>")', { silent = true, script = true, expr = true })
+map('i', '<c-j>', 'copilot#Accept("<cr>")', { silent = true, script = true, expr = true })

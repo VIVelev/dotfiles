@@ -8,8 +8,12 @@ require('treesitter')
 require('completion')
 
 require('git')
-require('tree')
-require('fuzzy')
+require('hubble')
+
+require('repl')
+
+require('docgen')
+require('linting')
 
 require('lsp.rust-ls')
 require('lsp.python-ls')

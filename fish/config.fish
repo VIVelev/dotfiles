@@ -21,7 +21,9 @@ alias gl "git pull"
 alias gp "git push"
 
 # Homebrew setup
-eval (/opt/homebrew/bin/brew shellenv)
+if test -z "$HOMEBREW_PREFIX"
+    eval (/opt/homebrew/bin/brew shellenv)
+end
 
 # Homebrew alias
 alias up "brew update"
@@ -31,6 +33,7 @@ alias clnp "brew cleanup"
 alias bls "brew ls"
 alias instl "brew install"
 alias uninstl "brew uninstall"
+alias autorm "brew autoremove"
 alias srch "brew search"
 alias inf "brew info"
 
@@ -56,6 +59,9 @@ fzf_configure_bindings --directory=\cf --git_log=\cg --git_status=\cs
 
 # JupyterLab
 set -x JUPYTERLAB_SETTINGS_DIR ~/.config/lab/
+
+# Python setup a dev environmnet
+alias pyenv "python3 -m venv .env --upgrade-deps && source .env/bin/activate.fish && pip install -r ~/.config/pyenv.txt"
 
 # Yesss, VI mode in a shell!
 fish_vi_key_bindings

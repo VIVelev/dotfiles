@@ -1,30 +1,19 @@
 local lsp = require'lsp'
 
-require'lspconfig'.pyright.setup {
-  on_attach = lsp.on_attach,
-  capabilities = lsp.capabilities(),
-  settings = {
-    pyright = {
-      disableOrganizeImports = true,
-    },
-    python = {
-      analysis = {
-        autoImportCompletions = true,
-        autoSearchPaths = true,
-        diagnosticMode = 'workspace',
-        typeCheckingMode = 'off',
-        useLibraryCodeForTypes = true,
-      },
-    },
-  },
-}
+-- Set the proper Python host if in venv
+local env = os.getenv('VIRTUAL_ENV')
+if not (env == nil or env == '') then
+  vim.g.python3_host_prog = env .. '/bin/python'
+end
 
--- Isort
-vim.cmd('autocmd BufWritePre *.py :Isort')
+-- Jedi for sweet autocompletition and else
+require'lspconfig'.jedi_language_server.setup {
+  on_attach = lsp.on_attach,
+  -- capabilities = lsp.capabilities(),
+}
 
 -- Black
 vim.cmd('autocmd BufWritePre *.py :Black')
 
--- Flake8
-vim.cmd('autocmd BufWritePost *.py call flake8#Flake8()')
-vim.g.flake8_show_in_gutter = 1
+-- Isort
+vim.cmd('autocmd BufWritePre *.py :Isort')

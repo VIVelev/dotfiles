@@ -1,0 +1,7 @@
+pynvim
+pipdeptree
+jedi-language-server
+black
+isort
+pylint
+# mypy

@@ -29,3 +29,5 @@ require'neogit'.setup {
     diffview = true
   },
 }
+
+vim.api.nvim_set_keymap('n', '<c-g>', ':Neogit<cr>', { noremap = true })
