@@ -1,12 +1,6 @@
 .DS_Store
 .netrwhist
 
-mozilla/
-
-github-copilot/
-
-yarn/
-
-nvim/plugin/
+nvim/.config/nvim/plugin/
 
 _*
