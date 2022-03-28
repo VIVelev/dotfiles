@@ -3,6 +3,7 @@ require('settings')
 require('keymaps')
 
 require('evil_lualine')
+require('theme')
 
 require('treesitter')
 require('completion')

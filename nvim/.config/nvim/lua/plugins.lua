@@ -71,16 +71,7 @@ require'packer'.startup(function(use)
   use {'j-hui/fidget.nvim', config = function() require'fidget'.setup() end}
 
   -- Theme
-  use {
-    'marko-cerovac/material.nvim',
-    config = function()
-      vim.g.material_style = "deep ocean"
-      require'material'.setup {
-        disable = { background = true }
-      }
-      vim.cmd('colorscheme material')
-    end
-  }
+  use 'rebelot/kanagawa.nvim'
 
   -- Statusline
   use {'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons'}

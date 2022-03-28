@@ -61,7 +61,7 @@ fzf_configure_bindings --directory=\cf --git_log=\cg --git_status=\cs
 set -x JUPYTERLAB_SETTINGS_DIR ~/.config/lab/
 
 # Python setup a dev environmnet
-alias pyenv "python3 -m venv .env --upgrade-deps && source .env/bin/activate.fish && pip install -r ~/.config/pyenv.txt"
+alias pyenv "python3 -m venv .env --upgrade-deps && source .env/bin/activate.fish && pip install -r ~/dotfiles/pyenv.txt"
 
 # Yesss, VI mode in a shell!
 fish_vi_key_bindings
