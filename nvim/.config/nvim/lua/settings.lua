@@ -33,9 +33,6 @@ vim.o.updatetime = 600
 -- diagnostics appear/become resolved.
 vim.o.signcolumn = 'yes'
 
--- Copy once, paste multiple times.
-vim.cmd('xnoremap p pgvy')
-
 -- Copilot
 vim.g.copilot_enabled = false
 vim.g.copilot_no_tab_map = true

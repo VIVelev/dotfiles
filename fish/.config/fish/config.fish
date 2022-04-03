@@ -57,8 +57,8 @@ alias nv "nvim"
 set fzf_fd_opts --hidden --exclude=.git
 fzf_configure_bindings --directory=\cf --git_log=\cg --git_status=\cs
 
-# JupyterLab
-set -x JUPYTERLAB_SETTINGS_DIR ~/.config/lab/
+# IPython
+set -x IPYTHONDIR ~/.config/ipython/
 
 # Python setup a dev environmnet
 alias pyenv "python3 -m venv .env --upgrade-deps && source .env/bin/activate.fish && pip install -r ~/dotfiles/pyenv.txt"
