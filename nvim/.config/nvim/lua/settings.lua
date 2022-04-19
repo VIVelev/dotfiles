@@ -33,6 +33,8 @@ vim.o.updatetime = 600
 -- diagnostics appear/become resolved.
 vim.o.signcolumn = 'yes'
 
+vim.o.laststatus = 3
+
 -- Copilot
 vim.g.copilot_enabled = false
 vim.g.copilot_no_tab_map = true

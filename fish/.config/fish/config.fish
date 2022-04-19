@@ -46,16 +46,8 @@ alias rg "rg --color always"
 # Less with color
 alias less "less -R"
 
-# Zoxide
-alias d "z"
-zoxide init fish | source
-
 # Neovim
 alias nv "nvim"
-
-# fzf.fish
-set fzf_fd_opts --hidden --exclude=.git
-fzf_configure_bindings --directory=\cf --git_log=\cg --git_status=\cs
 
 # IPython
 set -x IPYTHONDIR ~/.config/ipython/
@@ -63,5 +55,14 @@ set -x IPYTHONDIR ~/.config/ipython/
 # Python setup a dev environmnet
 alias pyenv "python3 -m venv .env --upgrade-deps && source .env/bin/activate.fish && pip install -r ~/dotfiles/pyenv.txt"
 
-# Yesss, VI mode in a shell!
-fish_vi_key_bindings
+if status is-interactive
+    # Zoxide
+    alias d "z"
+    zoxide init fish | source
+
+    # Atuin
+    atuin init fish | source
+
+    # Yesss, VI mode in a shell!
+    fish_vi_key_bindings
+end

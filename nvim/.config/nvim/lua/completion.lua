@@ -56,8 +56,10 @@ cmp.setup {
       return vim_item
     end,
   },
-  documentation = {
-    border = 'rounded',
+  window = {
+    documentation = {
+      border = 'rounded',
+    },
   },
 }
 
