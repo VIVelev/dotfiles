@@ -10,13 +10,13 @@ null_ls.setup {
     null_ls.builtins.diagnostics.mypy,
   },
   on_attach = function(client, bufnr)
-    if client.resolved_capabilities.document_formatting then
+    if client.server_capabilities.documentFormattingProvider then
       local augroup = vim.api.nvim_create_augroup('NullLsFormatting', { clear = true })
       vim.api.nvim_create_autocmd('BufWritePre', {
         group = augroup,
         buffer = bufnr,
         callback = function()
-          vim.lsp.buf.formatting_sync()
+          vim.lsp.buf.format()
         end,
       })
     end

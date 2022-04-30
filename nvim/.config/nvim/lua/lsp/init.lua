@@ -23,18 +23,18 @@ function lsp.on_attach(client, bufnr)
   buf_set_keymap('n', '<leader>mv', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<leader>sd', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 
-  if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.documentFormattingProvider then
     local aug = vim.api.nvim_create_augroup('LspFormatting', { clear = true })
     vim.api.nvim_create_autocmd('BufWritePre', {
       group = aug,
       buffer = bufnr,
       callback = function()
-        vim.lsp.buf.formatting_sync()
+        vim.lsp.buf.format()
       end,
     })
   end
 
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.documentHighlightProvider then
     local aug = vim.api.nvim_create_augroup('LspDocumentHighlight', { clear = true })
     vim.api.nvim_create_autocmd('CursorHold', {
       group = aug,

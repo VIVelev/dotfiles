@@ -8,5 +8,5 @@ require 'lspconfig'.clangd.setup {
 local c_aug = vim.api.nvim_create_augroup('C', { clear = true })
 vim.api.nvim_create_autocmd(
   'BufWritePre',
-  { pattern = '*.c', callback = function() vim.lsp.buf.formatting_sync(nil, 1000) end, group = c_aug }
+  { pattern = '*.c', callback = function() vim.lsp.buf.format(nil, 1000) end, group = c_aug }
 )
