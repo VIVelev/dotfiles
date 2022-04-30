@@ -1,7 +1,8 @@
 pynvim
 pipdeptree
+pip-search
 jedi-language-server
 black
 isort
-pylint
-# mypy
+flake8
+mypy

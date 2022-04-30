@@ -1,10 +1,10 @@
 vim.g.mapleader = ' '
 
-vim.o.expandtab   = true  -- enter spaces when tab is pressed
-vim.o.tabstop     = 4     -- use 4 spaces to represent tab
+vim.o.expandtab = true -- enter spaces when tab is pressed
+vim.o.tabstop   = 4 -- use 4 spaces to represent tab
 
-vim.o.autoindent  = true  -- copy indent from current line when starting a new line
-vim.o.shiftwidth  = 4     -- number of spaces to use for auto indent
+vim.o.autoindent  = true -- copy indent from current line when starting a new line
+vim.o.shiftwidth  = 4 -- number of spaces to use for auto indent
 vim.o.smartindent = true
 
 -- make backspaces more powerfull

@@ -66,3 +66,6 @@ if status is-interactive
     # Yesss, VI mode in a shell!
     fish_vi_key_bindings
 end
+
+# Created by `pipx` on 2022-04-20 17:25:11
+set PATH $PATH /Users/vivelev/.local/bin

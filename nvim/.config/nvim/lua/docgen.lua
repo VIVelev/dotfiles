@@ -1,4 +1,6 @@
-require'neogen'.setup {
+local gen = require 'neogen'
+
+gen.setup {
   enabled = true,
   languages = {
     python = {
@@ -14,14 +16,14 @@ require'neogen'.setup {
   }
 }
 
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 -- Docgen for:
-  -- Func
-map('n', '<leader>dd', ':lua require("neogen").generate({ type = "func" })<cr>', opts)
-  -- Class
-map('n', '<leader>dc', ':lua require("neogen").generate({ type = "class" })<cr>', opts)
-  -- Type
-map('n', '<leader>dt', ':lua require("neogen").generate({ type = "type" })<cr>', opts)
-  -- File
-map('n', '<leader>df', ':lua require("neogen").generate({ type = "file" })<cr>', opts)
+-- Func
+map('n', '<leader>dd', function() gen.generate({ type = 'func' }) end, opts)
+-- Class
+map('n', '<leader>dc', function() gen.generate({ type = 'class' }) end, opts)
+-- Type
+map('n', '<leader>dt', function() gen.generate({ type = 'type' }) end, opts)
+-- File
+map('n', '<leader>df', function() gen.generate({ type = 'file' }) end, opts)

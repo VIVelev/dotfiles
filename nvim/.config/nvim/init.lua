@@ -2,21 +2,20 @@ require('plugins')
 require('settings')
 require('keymaps')
 
-require('evil_lualine')
 require('theme')
+require('evil_lualine')
 
 require('treesitter')
 require('completion')
 
 require('git')
-require('hubble')
-
 require('repl')
-
+require('hubble')
 require('docgen')
-require('linting')
 
+require('lsp-sources')
+
+require('lsp.cc-ls')
+require('lsp.lua-ls')
 require('lsp.rust-ls')
 require('lsp.python-ls')
-require('lsp.lua-ls')
-require('lsp.cc-ls')

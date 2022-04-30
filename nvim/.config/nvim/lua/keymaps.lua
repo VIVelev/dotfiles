@@ -1,21 +1,21 @@
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 -- I hate Escape
-map('i', 'jk', '<esc>', {})
-map('i', 'kj', '<esc>', {})
+map('i', 'jk', '<esc>')
+map('i', 'kj', '<esc>')
 
- -- Easier movement
+-- Easier movement
 map('n', '<c-h>', '<c-w>h', opts)
 map('n', '<c-j>', '<c-w>j', opts)
 map('n', '<c-k>', '<c-w>k', opts)
 map('n', '<c-l>', '<c-w>l', opts)
 
 -- Increase/decrease split size
-map('n', '<leader>=', '5<c-w>+', opts)
-map('n', '<leader>-', '5<c-w>-', opts)
-map('n', '<leader>[', '5<c-w><', opts)
-map('n', '<leader>]', '5<c-w>>', opts)
+map('n', '<m-=>', '5<c-w>+', opts)
+map('n', '<m-->', '5<c-w>-', opts)
+map('n', '<m-[>', '5<c-w><', opts)
+map('n', '<m-]>', '5<c-w>>', opts)
 
 -- Easy save
 map('n', '<c-w>', ':w<cr>', opts)
@@ -54,7 +54,7 @@ map('n', '<right>', '<nop>', opts)
 map('n', 'gd', '<nop>', opts)
 
 -- Terminal
-map('n', '<c-t>', '<cmd>lua require("FTerm").toggle()<cr>', opts)
+map('n', '<c-t>', function() require('FTerm').toggle() end, opts)
 map('t', '<c-t>', '<c-\\><c-n><cmd>lua require("FTerm").toggle()<cr>', opts)
 
 -- Copilot

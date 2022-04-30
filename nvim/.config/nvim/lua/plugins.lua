@@ -1,13 +1,14 @@
-require'packer'.startup(function(use)
+require 'packer'.startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
   -- REPL
   use 'hkupty/iron.nvim'
 
-  -- LSP & linting
+  -- LSP & other sources
   use 'neovim/nvim-lspconfig'
-  use 'mfussenegger/nvim-lint'
+  use { 'jose-elias-alvarez/null-ls.nvim', requires = 'nvim-lua/plenary.nvim' }
+  use { 'j-hui/fidget.nvim', config = function() require 'fidget'.setup() end }
 
   -- Autocomplete
   use {
@@ -23,56 +24,46 @@ require'packer'.startup(function(use)
   }
 
   -- Motion
-  use {'ggandor/leap.nvim', config = function() require'leap'.set_default_keymaps() end}
+  use { 'ggandor/leap.nvim', config = function() require 'leap'.set_default_keymaps() end }
 
   -- Autopairs
-  use {'windwp/nvim-autopairs', config = function() require'nvim-autopairs'.setup() end}
+  use { 'windwp/nvim-autopairs', config = function() require 'nvim-autopairs'.setup() end }
 
   -- Copilot
   use 'github/copilot.vim'
 
-  -- Python beauty
-  use 'psf/black'
-  use 'davidszotten/isort-vim-2'
-
   -- Comment
-  use {'numToStr/Comment.nvim', config = function() require'Comment'.setup() end}
+  use { 'numToStr/Comment.nvim', config = function() require 'Comment'.setup() end }
 
   -- Docgen
-  use {'danymat/neogen', requires = 'nvim-treesitter/nvim-treesitter'}
+  use { 'danymat/neogen', requires = 'nvim-treesitter/nvim-treesitter' }
 
   -- Floating Terminal
-  use {'numToStr/FTerm.nvim', config = function() require'FTerm'.setup{ border = "double", blend = 1 } end}
+  use { 'numToStr/FTerm.nvim', config = function() require 'FTerm'.setup { border = "double", blend = 1 } end }
 
   -- Git
   use {
     'lewis6991/gitsigns.nvim',
     requires = 'nvim-lua/plenary.nvim',
   }
-  use {
-    'TimUntersberger/neogit',
-    requires = {
-      'nvim-lua/plenary.nvim',
-      {'sindrets/diffview.nvim', requires = 'kyazdani42/nvim-web-devicons'},
-    },
-  }
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-rhubarb' -- vim-fugitive github extension
 
-  -- Treesitter
-  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+  -- Syntax, text objects, and more
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use 'tpope/vim-surround'
+  use 'wellle/targets.vim'
 
   -- Telescope
-  use {'nvim-telescope/telescope.nvim', requires = {'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons'}}
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
-  use {'nvim-telescope/telescope-frecency.nvim', requires = {'tami5/sqlite.lua', 'kyazdani42/nvim-web-devicons'}}
-  use {'nvim-telescope/telescope-ui-select.nvim'}
-  use {'nvim-telescope/telescope-file-browser.nvim'}
-
-  -- LSP server loader UI
-  use {'j-hui/fidget.nvim', config = function() require'fidget'.setup() end}
+  use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons' } }
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use { 'nvim-telescope/telescope-frecency.nvim', requires = { 'tami5/sqlite.lua', 'kyazdani42/nvim-web-devicons' } }
+  use { 'nvim-telescope/telescope-ui-select.nvim' }
+  use { 'nvim-telescope/telescope-file-browser.nvim' }
 
   -- Theme
   use 'rebelot/kanagawa.nvim'
 
   -- Statusline
-  use {'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+  use { 'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons' }
 end)

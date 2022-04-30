@@ -1,16 +1,16 @@
 vim.opt.fillchars:append({
-    horiz = '━',
-    horizup = '┻',
-    horizdown = '┳',
-    vert = '┃',
-    vertleft = '┨',
-    vertright = '┣',
-    verthoriz = '╋',
+  horiz = '━',
+  horizup = '┻',
+  horizdown = '┳',
+  vert = '┃',
+  vertleft = '┨',
+  vertright = '┣',
+  verthoriz = '╋',
 })
 
-require'kanagawa'.setup {
+require 'kanagawa'.setup {
   globalStatus = true,
   dimInactive = true
 }
 
-vim.cmd[[colorscheme kanagawa]]
+vim.cmd [[colorscheme kanagawa]]
