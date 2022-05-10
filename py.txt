@@ -1,0 +1,8 @@
+pynvim
+pipdeptree
+pip-search
+jedi-language-server
+black
+flake8
+isort
+mypy

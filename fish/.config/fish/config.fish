@@ -26,6 +26,7 @@ if test -z "$HOMEBREW_PREFIX"
 end
 
 # Homebrew alias
+alias brew "env PATH=(string replace (pyenv root)/shims '' \"\$PATH\") brew"
 alias up "brew update"
 alias upgr "brew upgrade"
 alias doc "brew doctor"
@@ -52,8 +53,8 @@ alias nv "nvim"
 # IPython
 set -x IPYTHONDIR ~/.config/ipython/
 
-# Python setup a dev environmnet
-alias pyenv "python3 -m venv .env --upgrade-deps && source .env/bin/activate.fish && pip install -r ~/dotfiles/pyenv.txt"
+# Python init a dev environment
+alias pyinit "python3 -m venv .env --upgrade-deps && source .env/bin/activate.fish && pip install -r ~/dotfiles/py.txt"
 
 if status is-interactive
     # Zoxide
@@ -61,11 +62,13 @@ if status is-interactive
     zoxide init fish | source
 
     # Atuin
+    set -x ATUIN_NOBIND "true"
     atuin init fish | source
+    bind \cr _atuin_search
 
-    # Yesss, VI mode in a shell!
-    fish_vi_key_bindings
+    if not set -q PYENV
+        # pyenv
+        pyenv init - | source
+        set -x PYENV 1
+    end
 end
-
-# Created by `pipx` on 2022-04-20 17:25:11
-set PATH $PATH /Users/vivelev/.local/bin
