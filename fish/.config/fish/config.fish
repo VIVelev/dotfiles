@@ -1,7 +1,5 @@
-# Language
 set -gx LANG en_US.UTF-8
-
-set -x EDITOR nvim
+set -gx fish_greeting ""
 
 # FUN
 alias starwars "nc towel.blinkenlights.nl 23"
@@ -55,6 +53,13 @@ set -x IPYTHONDIR ~/.config/ipython/
 
 # Python init a dev environment
 alias pyinit "python3 -m venv .env --upgrade-deps && source .env/bin/activate.fish && pip install -r ~/dotfiles/py.txt"
+
+if type -q nvim
+  set -gx EDITOR nvim
+  set -gx VISUAL nvim
+  set -gx MANPAGER "nvim +Man!"
+  alias vimdiff="nvim -d"
+end
 
 if status is-interactive
     # Zoxide
