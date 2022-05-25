@@ -1,5 +1,5 @@
 local map = vim.keymap.set
-local opts = { noremap = true, silent = true }
+local opts = { noremap = true, silent = true, buffer = 0 }
 
 -- I hate Escape
 map('i', 'jk', '<esc>')
@@ -56,6 +56,12 @@ map('n', 'gd', '<nop>', opts)
 -- Terminal
 map('n', '<c-t>', function() require('FTerm').toggle() end, opts)
 map('t', '<c-t>', '<c-\\><c-n><cmd>lua require("FTerm").toggle()<cr>', opts)
+
+-- S-exp
+map('x', 'ar', '<Plug>(sexp_outer_top_list)')
+map('o', 'ar', '<Plug>(sexp_outer_top_list)')
+map('x', 'ir', '<Plug>(sexp_inner_top_list)')
+map('o', 'ir', '<Plug>(sexp_inner_top_list)')
 
 -- Copilot
 map('i', '<c-j>', 'copilot#Accept("<cr>")', { silent = true, script = true, expr = true })

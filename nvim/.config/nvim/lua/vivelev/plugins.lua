@@ -6,13 +6,7 @@ require 'packer'.startup(function(use)
   use 'lewis6991/impatient.nvim'
 
   -- Repl
-  use {
-    'Olical/conjure',
-    config = function()
-      vim.g['conjure#client#scheme#stdio#command'] = 'chibi-scheme'
-      vim.g['conjure#client#scheme#stdio#prompt_pattern'] = '> '
-    end
-  }
+  use 'hkupty/iron.nvim'
 
   -- LSP & other sources
   use 'neovim/nvim-lspconfig'
@@ -54,10 +48,14 @@ require 'packer'.startup(function(use)
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb' -- vim-fugitive github extension
 
-  -- Syntax, text objects, and more
+  -- Editing support
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'tpope/vim-surround'
+  use 'tpope/vim-unimpaired'
+  use 'tpope/vim-sleuth'
+  use 'tpope/vim-repeat'
+  use 'guns/vim-sexp'
   use 'wellle/targets.vim'
 
   -- Telescope

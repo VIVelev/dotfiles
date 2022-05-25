@@ -1,16 +1,5 @@
 vim.g.mapleader = ' '
 
-vim.o.expandtab = true -- enter spaces when tab is pressed
-vim.o.tabstop   = 4 -- use 4 spaces to represent tab
-
-vim.o.autoindent  = true -- copy indent from current line when starting a new line
-vim.o.shiftwidth  = 4 -- number of spaces to use for auto indent
-vim.o.smartindent = true
-
--- make backspaces more powerfull
-vim.o.backspace = 'indent,eol,start'
-
-vim.o.rnu = false
 vim.o.cursorline = true
 vim.o.mouse = 'a'
 vim.o.splitright = true
@@ -21,9 +10,6 @@ vim.o.synmaxcol = 100
 
 -- Disable showmode - i.e. Don't show mode like --INSERT-- in current statusline.
 vim.o.showmode = false
-
--- Give more space for displaying messages.
-vim.o.cmdheight = 1
 
 -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 -- delays and poor user experience.
@@ -39,9 +25,9 @@ vim.o.laststatus = 3
 vim.g.copilot_enabled = false
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_filetypes = {
-  ['*'] = false,
-  ['c'] = true,
-  ['lua'] = true,
-  ['rust'] = true,
-  ['python'] = true,
+    ['*'] = false,
+    ['c'] = true,
+    ['lua'] = true,
+    ['rust'] = true,
+    ['python'] = true,
 }
