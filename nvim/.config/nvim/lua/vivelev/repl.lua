@@ -22,9 +22,9 @@ iron.setup {
   -- Iron doesn't set keymaps by default anymore. Set them here
   -- or use `should_map_plug = true` and map from you vim files
   keymaps = {
-    send_motion = '<localleader>s',
-    visual_send = '<localleader>s',
-    send_line = '<localleader>sl',
+    send_motion = '<localleader>ee',
+    visual_send = '<localleader>ee',
+    send_line = '<localleader>el',
     repeat_cmd = '<localleader>.',
     cr = '<localleader><cr>',
     interrupt = '<localleader>st',

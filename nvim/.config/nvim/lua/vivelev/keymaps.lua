@@ -1,5 +1,5 @@
 local map = vim.keymap.set
-local opts = { noremap = true, silent = true, buffer = 0 }
+local opts = { noremap = true, silent = true }
 
 -- I hate Escape
 map('i', 'jk', '<esc>')

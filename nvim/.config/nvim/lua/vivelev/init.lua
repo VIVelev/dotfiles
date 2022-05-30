@@ -20,7 +20,6 @@ require('vivelev.completion')
 
 require('vivelev.git')
 require('vivelev.hubble')
-require('vivelev.docgen')
 
 require('vivelev.repl')
 

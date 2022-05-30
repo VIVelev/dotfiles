@@ -5,7 +5,7 @@ require 'packer'.startup(function(use)
   -- nvim speed-up
   use 'lewis6991/impatient.nvim'
 
-  -- Repl
+  -- REPL
   use 'hkupty/iron.nvim'
 
   -- LSP & other sources
@@ -28,17 +28,11 @@ require 'packer'.startup(function(use)
   -- Motion
   use { 'ggandor/leap.nvim', config = function() require 'leap'.set_default_keymaps() end }
 
-  -- Autopairs
-  use { 'windwp/nvim-autopairs', config = function() require 'nvim-autopairs'.setup({ enable_check_bracket_line = false }) end }
-
   -- Copilot
   use 'github/copilot.vim'
 
   -- Comment
   use { 'numToStr/Comment.nvim', config = function() require 'Comment'.setup() end }
-
-  -- Docgen
-  use { 'danymat/neogen', requires = 'nvim-treesitter/nvim-treesitter' }
 
   -- Floating Terminal
   use { 'numToStr/FTerm.nvim', config = function() require 'FTerm'.setup { border = "double", blend = 1 } end }
@@ -50,13 +44,23 @@ require 'packer'.startup(function(use)
 
   -- Editing support
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'tpope/vim-surround'
   use 'tpope/vim-unimpaired'
   use 'tpope/vim-sleuth'
   use 'tpope/vim-repeat'
-  use 'guns/vim-sexp'
+
+  -- Text Objs
   use 'wellle/targets.vim'
+  use 'kana/vim-textobj-user'
+  use 'kana/vim-textobj-line'
+  use 'kana/vim-textobj-entire'
+  use 'kana/vim-textobj-indent'
+  use 'Julian/vim-textobj-variable-segment'
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
+
+  -- LISP
+  use 'guns/vim-sexp'
+  use { 'eraserhd/parinfer-rust', run = 'cargo build --release' }
 
   -- Telescope
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons' } }
