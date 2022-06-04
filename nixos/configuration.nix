@@ -54,7 +54,10 @@
     };
 
     windowManager = {
-      xmonad.enable = true;
+      xmonad = {
+        enable = true;
+        enableContribAndExtras = true;
+      };
     };
   };
 
