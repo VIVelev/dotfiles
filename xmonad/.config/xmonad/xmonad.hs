@@ -1,16 +1,14 @@
 import XMonad
 import XMonad.Util.EZConfig ( additionalKeys )
 
-import qualified Data.Map as M
-
-myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
-myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
-    [ ((modMask .|. controlMask, xK_Return), spawn $ XMonad.terminal conf)
-    , ((modMask,                 xK_w     ), kill)
-    ]
+-- TODO: This config is super hacky, should fix it sometime.
 
 main :: IO ()
 main = xmonad $ def
     { modMask  = mod4Mask  -- Rebind Mod to the Super key
     , terminal = "kitty"   -- Change the default terminal app to Kitty
-    } `additionalKeys` myKeys
+    }
+    `additionalKeys`
+    [ ((mod4Mask .|. controlMask, xK_Return), spawn $ "kitty")
+    , ((mod4Mask,                 xK_w     ), kill)
+    ]
