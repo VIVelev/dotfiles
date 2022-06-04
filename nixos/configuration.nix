@@ -76,10 +76,10 @@
     fd
     fish
     fzf
-    gcc
+    gcc  # Used by many
     git
+    git-crypt
     gnumake
-    gnupg
     neovim-nightly
     ripgrep
     stow

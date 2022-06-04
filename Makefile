@@ -12,15 +12,15 @@ SSH_OPTS =-o PubkeyAuthentication=no -o UserKnownHostsFile=/dev/null -o StrictHo
 # Stow the configs
 stow:
 	stow -t /home/$(NIXUSER)/ -R \
-		i3/ \
 		fd/ \
 		git/ \
-		xorg/ \
 		fish/ \
 		nvim/ \
-		atuin/ \
 		kitty/ \
+		atuin/ \
+		xmonad/ \
 		ipython/ \
+	atuin import auto  # Setup atuin
 
 # Bootstrap the NixOS VM
 vm/bootstrap:
