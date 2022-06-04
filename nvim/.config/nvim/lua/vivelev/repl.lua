@@ -25,10 +25,13 @@ iron.setup {
     send_motion = '<localleader>ee',
     visual_send = '<localleader>ee',
     send_line = '<localleader>el',
-    repeat_cmd = '<localleader>.',
     cr = '<localleader><cr>',
     interrupt = '<localleader>st',
     exit = '<localleader>q',
     clear = '<localleader>cl',
-  }
+  },
+
+  highlight = {
+    italic = true
+  },
 }

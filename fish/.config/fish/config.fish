@@ -19,23 +19,24 @@ alias gco "git checkout"
 alias gl "git pull"
 alias gp "git push"
 
-# Homebrew setup
-if test -z "$HOMEBREW_PREFIX"
-    eval (/opt/homebrew/bin/brew shellenv)
+if test (uname) = Darwin
+  # Homebrew setup
+  if test -z "$HOMEBREW_PREFIX"
+      eval (/opt/homebrew/bin/brew shellenv)
+  end
+  
+  # Homebrew alias
+  alias up "brew update"
+  alias upgr "brew upgrade"
+  alias doc "brew doctor"
+  alias clnp "brew cleanup"
+  alias bls "brew ls"
+  alias instl "brew install"
+  alias uninstl "brew uninstall"
+  alias autorm "brew autoremove"
+  alias srch "brew search"
+  alias inf "brew info"
 end
-
-# Homebrew alias
-alias brew "env PATH=(string replace (pyenv root)/shims '' \"\$PATH\") brew"
-alias up "brew update"
-alias upgr "brew upgrade"
-alias doc "brew doctor"
-alias clnp "brew cleanup"
-alias bls "brew ls"
-alias instl "brew install"
-alias uninstl "brew uninstall"
-alias autorm "brew autoremove"
-alias srch "brew search"
-alias inf "brew info"
 
 # Exa (ls in Rust) alias
 alias xa "exa -la --color=always --color-scale --git --sort=Name"
@@ -74,10 +75,4 @@ if status is-interactive
     set -x ATUIN_NOBIND "true"
     atuin init fish | source
     bind \cr _atuin_search
-
-    if not set -q PYENV
-        # pyenv
-        pyenv init - | source
-        set -x PYENV 1
-    end
 end
