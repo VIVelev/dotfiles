@@ -15,7 +15,6 @@
   system.autoUpgrade = {
     enable = true;
     allowReboot = true;
-    channel = https://nixos.org/channels/nixos-unstable;
   };
 
   # Use the systemd-boot EFI boot loader.
@@ -40,11 +39,6 @@
   services.xserver = {
     enable = true;
 
-    desktopManager = {
-      xterm.enable = false;
-      wallpaper.mode = "fill";
-    };
-
     displayManager = {
       defaultSession = "none+xmonad";
       lightdm.enable = true;
@@ -64,9 +58,17 @@
     };
   };
 
+  # I am usually using neovim nightly
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+    }))
+  ];
+
   environment.systemPackages = with pkgs; [
     # atuin
     bat
+    dmenu  # Used by xmonad
     exa
     fd
     fish
@@ -75,7 +77,7 @@
     git
     gnumake
     gnupg
-    neovim
+    neovim-nightly
     ripgrep
     stow
     zoxide
