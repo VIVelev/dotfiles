@@ -65,10 +65,3 @@ vm/switch:
 		sudo nixos-rebuild switch; \
 		sudo reboot; \
 	"
-
-# copy my dotfiles over to the VM
-vm/copy-dotfiles:
-	rsync -av -e "ssh $(SSH_OPTS) -p$(NIXPORT)" \
-		--exclude='.git/' \
-		--rsync-path="sudo rsync" \
-		/Users/vivelev/dotfiles/ $(NIXUSER)@$(NIXADDR):~/dotfiles/

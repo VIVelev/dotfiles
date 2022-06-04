@@ -46,7 +46,7 @@
     };
 
     displayManager = {
-      defaultSession = "none+i3";
+      defaultSession = "none+xmonad";
       lightdm.enable = true;
       autoLogin = {
         enable = true;
@@ -60,7 +60,7 @@
     };
 
     windowManager = {
-      i3.enable = true;
+      xmonad.enable = true;
     };
   };
 
@@ -94,7 +94,7 @@
   ];
 
   programs.fish.enable = true;
-  
+  users.defaultUserShell = pkgs.fish;
   users.mutableUsers = false;
   users.users.vivelev = {
     isNormalUser = true;
