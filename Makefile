@@ -48,7 +48,7 @@ vm/bootstrap:
 	"
 
 # Run this after vm/bootstrap to finalize.
-vm/migrate:
+vm/setup:
 	NIXUSER=root $(MAKE) vm/copy-nixos
 	NIXUSER=root $(MAKE) vm/switch
 
@@ -57,11 +57,10 @@ vm/copy-nixos:
 	rsync -av -e "ssh $(SSH_OPTS) -p$(NIXPORT)" \
 		--exclude='.git/' \
 		--rsync-path="sudo rsync" \
-		/Users/vivelev/dotfiles/nixos/ $(NIXUSER)@$(NIXADDR):/my-nixos/
+		/Users/vivelev/dotfiles/nixos/ $(NIXUSER)@$(NIXADDR):/etc/nixos/
 
 vm/switch:
 	ssh $(SSH_OPTS) -p$(NIXPORT) $(NIXUSER)@$(NIXADDR) " \
-		sudo cp -f /my-nixos/configuration.nix /etc/nixos/; \
 		sudo nixos-rebuild switch; \
 		sudo reboot; \
 	"

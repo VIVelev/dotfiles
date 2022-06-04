@@ -1,36 +1,52 @@
-{ config, pkgs, ... }:
+{ config, pkgs, modulesPath, ... }:
 
 {
   imports = 
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
+
+      # Parallels is qemu under the covers. This brings in important kernel
+      # modules to get a lot of the stuff working.
+      (modulesPath + "/profiles/qemu-guest.nix")
+
+      ./parallels-guest.nix
     ];
-
-  # For running the VM on hidpi machines (retina displays, etc).
-  hardware.video.hidpi.enable = true;
-  # I use Parallels as a VM, so enable the sweet integration (copy-paste, etc).
-  # NOTE: Waiting for https://github.com/NixOS/nixpkgs/pull/153665
-  hardware.parallels.enable = false;
-
-  system.autoUpgrade = {
-    enable = true;
-    allowReboot = true;
-  };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   
-  networking.hostName = "dev";
-  
-  time.timeZone = "America/New_York";
-  
+  # For running the VM on hidpi machines (retina displays, etc).
+  hardware.video.hidpi.enable = true;
+
+  # The official parallels guest support does not work currently.
+  # https://github.com/NixOS/nixpkgs/pull/153665
+  disabledModules = [ "virtualisation/parallels-guest.nix" ];
+  hardware.parallels = {
+    enable = true;
+    package = (config.boot.kernelPackages.callPackage ./prl-tools.nix { });
+  };
+
+  # Lots of stuff that uses aarch64 that claims doesn't work, but actually works.
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnsupportedSystem = true;
+
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replecated the default behaiour.
   networking.useDHCP = false;
-  # This is the interface on my M1.
+  # This is the interface on my M1 in Parallels VM.
   networking.interfaces.enp0s5.useDHCP = true;
+  
+  system.autoUpgrade = {
+    enable = true;
+    allowReboot = true;
+  };
+
+  networking.hostName = "dev";
+  
+  time.timeZone = "America/New_York";
   
   # Select internation properties.
   i18n.defaultLocale = "en_US.UTF-8";
