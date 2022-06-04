@@ -5,7 +5,7 @@ import qualified Data.Map as M
 
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [ ((modMask .|. controlMask, xK_Return), spawn $ XMonad.terminal conf)
-    , ((modMask,               , xK_w     ), kill)
+    , ((modMask,                 xK_w     ), kill)
     ]
 
 main :: IO ()
