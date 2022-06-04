@@ -3,6 +3,7 @@ import XMonad.Util.EZConfig ( additionalKeys )
 
 import qualified Data.Map as M
 
+myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [ ((modMask .|. controlMask, xK_Return), spawn $ XMonad.terminal conf)
     , ((modMask,                 xK_w     ), kill)
