@@ -65,7 +65,6 @@ require 'packer'.startup(function(use)
   -- Telescope
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons' } }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  use { 'nvim-telescope/telescope-frecency.nvim', requires = { 'tami5/sqlite.lua', 'kyazdani42/nvim-web-devicons' } }
   use { 'nvim-telescope/telescope-ui-select.nvim' }
   use { 'nvim-telescope/telescope-file-browser.nvim' }
 

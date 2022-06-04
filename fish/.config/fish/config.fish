@@ -1,4 +1,5 @@
 set -gx LANG en_US.UTF-8
+set -gx PAGER "less -FirSwX"
 set -gx fish_greeting ""
 
 # FUN
@@ -57,8 +58,11 @@ alias pyinit "python3 -m venv .env --upgrade-deps && source .env/bin/activate.fi
 if type -q nvim
   set -gx EDITOR nvim
   set -gx VISUAL nvim
-  set -gx MANPAGER "nvim +Man!"
   alias vimdiff="nvim -d"
+end
+
+if type -q bat
+  set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
 end
 
 if status is-interactive
