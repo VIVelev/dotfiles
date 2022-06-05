@@ -39,7 +39,7 @@ if test (uname) = Darwin
 end
 
 # Exa (ls in Rust) alias
-alias xa "exa -la --color=always --color-scale --git --sort=Name"
+alias ls "exa -la --color=always --color-scale --git --sort=Name"
 
 # Grep with color
 alias rg "rg --color always"
@@ -47,22 +47,22 @@ alias rg "rg --color always"
 # Less with color
 alias less "less -R"
 
-# Neovim
-alias nv "nvim"
-
 # IPython
 set -x IPYTHONDIR ~/.config/ipython/
 
 # Python init a dev environment
 alias pyinit "python3 -m venv .env --upgrade-deps && source .env/bin/activate.fish && pip install -r ~/dotfiles/py.txt"
 
+# Neovim
 if type -q nvim
+  alias vim "nvim"
+  alias vimdiff="nvim -d"
   set -gx EDITOR nvim
   set -gx VISUAL nvim
-  alias vimdiff="nvim -d"
 end
 
 if type -q bat
+  alias cat "bat"
   set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
 end
 

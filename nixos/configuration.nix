@@ -28,6 +28,7 @@
   # Setup windowing environment.
   services.xserver = {
     enable = true;
+    dpi = 254;
 
     displayManager = {
       defaultSession = "none+xmonad";
@@ -79,8 +80,22 @@
     kitty
     firefox
 
-    (writeShellScriptBin "xrandr-auto" ''
-      xrandr --output Virtual-1 --auto
+    (writeShellScriptBin "xrandr-m1pro16" ''
+      # credit: https://shorez.de/linux-on-the-m-1-with-gpu-acceleration
+
+      # load system wide xinit
+      if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+          for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+              [ -x "$f" ] && . "$f"
+          done
+          unset f
+      fi
+
+      # screen layout
+      modename="3024x1910_60.00"
+      xrandr --newmode $modename 493.75  3024 3264 3592 4160  1910 1913 1923 1979 -hsync +vsync
+      xrandr --addmode Virtual-1 $modename
+      xrandr --output Virtual-1 --mode $modename
     '')
   ];
 
