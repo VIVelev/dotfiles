@@ -19,6 +19,7 @@
   system.autoUpgrade = {
     enable = true;
     allowReboot = true;
+    channel = "https://nixos.org/channels/nixos-unstable";
   };
   
   time.timeZone = "America/New_York";
@@ -93,7 +94,7 @@
   users.users.vivelev = {
     isNormalUser = true;
     description = "vivelev";
-    password = "qwerty";
+    password = "root";
     extraGroups = [ "wheel" ];
     shell = pkgs.fish;
   };

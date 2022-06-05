@@ -9,6 +9,12 @@ NIXBLOCKDEVICE ?= sda
 # SSH options used
 SSH_OPTS =-o PubkeyAuthentication=no -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
 
+# Setup Homebrew
+brew:
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	eval $(/opt/homebrew/bin/brew shellenv)
+	brew bundle install
+
 # Stow the configs
 stow:
 	stow -t /home/$(NIXUSER)/ -R \
