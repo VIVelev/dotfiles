@@ -81,24 +81,30 @@ stdenv.mkDerivation rec {
         "cp prl_notifier/Installation/lnx/prl_notifier/prl_notifier.ko $out/lib/modules/${kernelVersion}/extra"}
       )
     fi
+
     ( # tools
       cd tools/tools${if stdenv.isAarch64 then "-arm64" else if stdenv.isx86_64 then "64" else "32"}
       mkdir -p $out/lib
+
       if test -z "$libsOnly"; then
         # install binaries
         for i in bin/* sbin/prl_nettool sbin/prl_snapshot; do
           install -Dm755 $i $out/$i
         done
+
         mkdir -p $out/bin
         install -Dm755 ../../tools/prlfsmountd.sh $out/sbin/prlfsmountd
         wrapProgram $out/sbin/prlfsmountd \
           --prefix PATH ':' "$scriptPath"
+
         for i in lib/libPrl*.0.0; do
           cp $i $out/lib
           ln -s $out/$i $out/''${i%.0.0}
         done
+
         mkdir -p $out/share/man/man8
         install -Dm644 ../mount.prl_fs.8 $out/share/man/man8
+
         mkdir -p $out/etc/pm/sleep.d
         install -Dm644 ../99prltoolsd-hibernate $out/etc/pm/sleep.d
       fi

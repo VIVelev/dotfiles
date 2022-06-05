@@ -19,7 +19,7 @@ stow:
 		kitty/ \
 		atuin/ \
 		xmonad/ \
-		ipython/ \
+		ipython/
 	atuin import auto  # Setup atuin
 
 # Bootstrap the NixOS VM
