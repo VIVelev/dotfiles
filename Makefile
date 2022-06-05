@@ -11,9 +11,7 @@ SSH_OPTS =-o PubkeyAuthentication=no -o UserKnownHostsFile=/dev/null -o StrictHo
 
 # Setup Homebrew
 brew:
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	eval $(/opt/homebrew/bin/brew shellenv)
-	brew bundle install
+	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | /bin/bash
 
 # Stow the configs
 stow:
