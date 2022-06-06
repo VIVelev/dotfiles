@@ -92,8 +92,8 @@
       fi
 
       # screen layout
-      modename="3024x1910_60.00"
-      xrandr --newmode $modename 493.75  3024 3264 3592 4160  1910 1913 1923 1979 -hsync +vsync
+      modename="4112x2572"
+      xrandr --newmode $modename 912.751  4112 4464 4912 5712  2572 2575 2582 2663 -hsync +vsync
       xrandr --addmode Virtual-1 $modename
       xrandr --output Virtual-1 --mode $modename
     '')
