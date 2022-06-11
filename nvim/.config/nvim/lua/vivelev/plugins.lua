@@ -57,10 +57,7 @@ require 'packer'.startup(function(use)
   use 'kana/vim-textobj-indent'
   use 'Julian/vim-textobj-variable-segment'
   use 'nvim-treesitter/nvim-treesitter-textobjects'
-
-  -- LISP
   use 'guns/vim-sexp'
-  use { 'eraserhd/parinfer-rust', run = 'cargo build --release' }
 
   -- Telescope
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim', 'kyazdani42/nvim-web-devicons' } }

@@ -15,6 +15,10 @@
   networking.interfaces.enp0s5.useDHCP = true;
 
   networking.hostName = "dev";
+
+  nix.extraOptions = ''
+    experimental-features = nix-command
+  '';
   
   system.autoUpgrade = {
     enable = true;

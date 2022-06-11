@@ -27,7 +27,7 @@ require 'lspconfig'.rust_analyzer.setup {
       lens = {
         enable = false,
       },
-      lruCapacity = 4000000000, -- 4GB
+      -- lruCapacity = 4000000000, -- 4GB
     },
   }
 }
