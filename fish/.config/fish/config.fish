@@ -75,4 +75,7 @@ if status is-interactive
     set -x ATUIN_NOBIND "true"
     atuin init fish | source
     bind \cr _atuin_search
+
+    # Direnv
+    direnv hook fish | source
 end

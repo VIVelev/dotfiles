@@ -66,6 +66,7 @@
   environment.systemPackages = with pkgs; [
     atuin
     bat
+    direnv
     dmenu  # Used by xmonad
     exa
     fd
