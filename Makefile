@@ -18,6 +18,7 @@ stow:
 	stow -t /home/$(NIXUSER)/ -R \
 		fd/ \
 		git/ \
+		ssh/ \
 		fish/ \
 		nvim/ \
 		kitty/ \
