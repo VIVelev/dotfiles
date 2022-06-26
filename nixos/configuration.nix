@@ -15,6 +15,7 @@
   networking.interfaces.enp0s5.useDHCP = true;
 
   networking.hostName = "dev";
+  networking.firewall.allowedTCPPorts = [ 3000 8000 8080 ];
 
   nix.extraOptions = ''
     experimental-features = nix-command
