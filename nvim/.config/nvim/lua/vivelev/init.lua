@@ -27,5 +27,4 @@ require('vivelev.lsp-sources')
 
 require('vivelev.lsp.cc-ls')
 require('vivelev.lsp.lua-ls')
-require('vivelev.lsp.rust-ls')
 require('vivelev.lsp.python-ls')

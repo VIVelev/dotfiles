@@ -24,18 +24,6 @@ if test (uname) = Darwin
   if test -z "$HOMEBREW_PREFIX"
       eval (/opt/homebrew/bin/brew shellenv)
   end
-  
-  # Homebrew alias
-  alias up "brew update"
-  alias upgr "brew upgrade"
-  alias doc "brew doctor"
-  alias clnp "brew cleanup"
-  alias bls "brew ls"
-  alias instl "brew install"
-  alias uninstl "brew uninstall"
-  alias autorm "brew autoremove"
-  alias srch "brew search"
-  alias inf "brew info"
 end
 
 # Exa (ls in Rust) alias

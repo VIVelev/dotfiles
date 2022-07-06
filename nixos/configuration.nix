@@ -9,7 +9,7 @@
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replecated the default behaiour.
+  # replicated the default behaviour.
   networking.useDHCP = false;
   # This is the interface on my M1 in Parallels VM.
   networking.interfaces.enp0s5.useDHCP = true;
@@ -80,6 +80,7 @@
     neovim-nightly
     ripgrep
     stow
+    xclip  # Copy/paste to/from clipboard
     zoxide
 
     # GUIs
@@ -106,7 +107,7 @@
   ];
 
   fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
   programs.fish.enable = true;

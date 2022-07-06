@@ -21,17 +21,6 @@ map('n', '<m-]>', '5<c-w>>', opts)
 map('n', '<c-w>', ':w<cr>', opts)
 map('i', '<c-w>', '<Esc>:w<cr>', opts)
 
--- Copy to clipboard
-map('n', '<leader>yy', '"+yy', opts) -- Copy line with the new line
-map('n', '<leader>Y', '"+yg_', opts) -- Copy line without the new line
-map('n', '<leader>y', '"+y', opts) -- Copy with movement
-map('v', '<leader>y', '"+y', opts) -- Copy selection
-
--- Paste from clipboard
-map('n', '<leader>p', '"+p', opts) -- Paste below
-map('n', '<leader>P', '"+P', opts) -- Paste above
-map('v', '<leader>p', '"+p', opts) -- Paste over selection
-
 -- Keeping it centered
 map('n', 'n', 'nzz', opts)
 map('n', 'N', 'Nzz', opts)
@@ -62,6 +51,3 @@ map('x', 'ar', '<Plug>(sexp_outer_top_list)')
 map('o', 'ar', '<Plug>(sexp_outer_top_list)')
 map('x', 'ir', '<Plug>(sexp_inner_top_list)')
 map('o', 'ir', '<Plug>(sexp_inner_top_list)')
-
--- Copilot
-map('i', '<c-j>', 'copilot#Accept("<cr>")', { silent = true, script = true, expr = true })

@@ -1,6 +1,5 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export PYENV_ROOT:/Users/vivelev/\x2epyenv
 SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:727169
 SETUVAR fish_color_command:7AA89F
@@ -21,4 +20,3 @@ SETUVAR fish_pager_color_completion:DCD7BA
 SETUVAR fish_pager_color_description:727169
 SETUVAR fish_pager_color_prefix:7AA89F
 SETUVAR fish_pager_color_progress:727169
-SETUVAR fish_user_paths:/Users/vivelev/\x2epyenv/bin\x1e/Users/vivelev/\x2ecargo/bin

@@ -1,16 +1,13 @@
-vim.opt.fillchars:append({
-  horiz = '━',
-  horizup = '┻',
-  horizdown = '┳',
-  vert = '┃',
-  vertleft = '┨',
-  vertright = '┣',
-  verthoriz = '╋',
-})
-
-require 'kanagawa'.setup {
-  globalStatus = true,
-  dimInactive = true
+require 'material'.setup {
+  contrast = {
+    non_current_windows = true,
+  },
+  italics = {
+    comments = true,
+  },
 }
 
-vim.cmd [[colorscheme kanagawa]]
+vim.g.material_style = "deep ocean"
+vim.cmd [[colorscheme material]]
+
+vim.keymap.set('n', 'tt', function() require 'material.functions'.toggle_style() end)

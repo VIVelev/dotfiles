@@ -28,9 +28,6 @@ require 'packer'.startup(function(use)
   -- Motion
   use { 'ggandor/leap.nvim', config = function() require 'leap'.set_default_keymaps() end }
 
-  -- Copilot
-  use 'github/copilot.vim'
-
   -- Comment
   use { 'numToStr/Comment.nvim', config = function() require 'Comment'.setup() end }
 
@@ -40,7 +37,7 @@ require 'packer'.startup(function(use)
   -- Git
   use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim' }
   use 'tpope/vim-fugitive'
-  use 'tpope/vim-rhubarb' -- vim-fugitive github extension
+  use 'tpope/vim-rhubarb' -- vim-fugitive GitHub extension
 
   -- Editing support
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
@@ -49,10 +46,9 @@ require 'packer'.startup(function(use)
   use 'tpope/vim-sleuth'
   use 'tpope/vim-repeat'
 
-  -- Text Objs
+  -- Text Objects
   use 'wellle/targets.vim'
   use 'kana/vim-textobj-user'
-  use 'kana/vim-textobj-line'
   use 'kana/vim-textobj-entire'
   use 'kana/vim-textobj-indent'
   use 'Julian/vim-textobj-variable-segment'
@@ -65,9 +61,8 @@ require 'packer'.startup(function(use)
   use { 'nvim-telescope/telescope-ui-select.nvim' }
   use { 'nvim-telescope/telescope-file-browser.nvim' }
 
-  -- Theme
-  use 'rebelot/kanagawa.nvim'
-
-  -- Statusline
+  -- Theme & status line
+  use 'marko-cerovac/material.nvim'
   use { 'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons' }
+
 end)

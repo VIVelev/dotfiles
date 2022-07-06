@@ -1,6 +1,13 @@
 require 'nvim-treesitter.configs'.setup {
-  ensure_installed = 'all',
-  ignore_install = { 'swift', 'phpdoc', },
+  ensure_installed = {
+    'c',
+    'lua',
+    'nix',
+    'fish',
+    'python',
+    'scheme',
+    'haskell',
+  },
   highlight = {
     enable = true, -- false will disable the whole extension
     additional_vim_regex_highlighting = false,
