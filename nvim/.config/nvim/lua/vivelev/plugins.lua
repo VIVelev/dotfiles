@@ -45,6 +45,7 @@ require 'packer'.startup(function(use)
   use 'tpope/vim-unimpaired'
   use 'tpope/vim-sleuth'
   use 'tpope/vim-repeat'
+  use 'tpope/vim-eunuch'
 
   -- Text Objects
   use 'wellle/targets.vim'
