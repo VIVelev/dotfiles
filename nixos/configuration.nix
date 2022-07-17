@@ -1,4 +1,4 @@
-{ config, pkgs, modulesPath, ... }:
+{ pkgs, ... }:
 
 {
   imports = 
@@ -6,15 +6,15 @@
       ./hardware-configuration.nix
     ];
 
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicated the default behaviour.
-  networking.useDHCP = false;
   # This is the interface on my M1 in Parallels VM.
   networking.interfaces.enp0s5.useDHCP = true;
 
   networking.hostName = "dev";
   networking.firewall.allowedTCPPorts = [ 3000 8000 8080 ];
+
+  # Parallels VM Setup
+  nixpkgs.config.allowUnfree = true;
+  hardware.parallels.enable = true;
 
   nix.extraOptions = ''
     experimental-features = nix-command

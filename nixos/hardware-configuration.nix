@@ -36,12 +36,4 @@
   };
 
   swapDevices = [ ];
-
-  hardware.parallels = {
-    enable = true;
-  };
-
-  environment.unfreePackages = [
-    "prl-tools"
-  ];
 }
