@@ -2,19 +2,20 @@
 
 {
   imports = 
-    [
-      ./hardware-configuration.nix
+    [ ./hardware-configuration.nix
     ];
 
-  # This is the interface on my M1 in Parallels VM.
+  # This is the interface on my M1 in VM.
   networking.interfaces.enp0s5.useDHCP = true;
 
   networking.hostName = "dev";
   networking.firewall.allowedTCPPorts = [ 3000 8000 8080 ];
 
-  # Parallels VM Setup
+  # QEMU
+  services.spice-vdagentd.enable = true;
+
   nixpkgs.config.allowUnfree = true;
-  hardware.parallels.enable = true;
+  nixpkgs.config.allowUnsupportedSystem = true;
 
   nix.extraOptions = ''
     experimental-features = nix-command
@@ -127,5 +128,5 @@
     permitRootLogin = "yes";
   };
   
-  system.stateVersion = "22.11";
+  system.stateVersion = "22.05";
 }
