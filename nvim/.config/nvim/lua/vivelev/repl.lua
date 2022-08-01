@@ -12,7 +12,7 @@ iron.setup {
         command = { 'ipython' }
       },
       scheme = {
-        command = { 'chibi-scheme' }
+        command = { 'guile' }
       },
     },
     repl_open_cmd = require('iron.view').curry.right(50),
