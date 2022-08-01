@@ -70,6 +70,7 @@
   environment.systemPackages = with pkgs; [
     atuin
     bat
+    bitwarden-cli
     direnv
     dmenu  # Used by xmonad
     exa

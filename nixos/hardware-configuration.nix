@@ -53,8 +53,4 @@
     };
     video.hidpi.enable = true;
   };
-
-  environment.unfreePackages = [
-    "prl-tools"
-  ];
 }
