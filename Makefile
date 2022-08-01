@@ -4,7 +4,7 @@ NIXPORT ?= 22
 NIXUSER ?= vivelev
 
 # The block device prefix to use
-NIXBLOCKDEVICE ?= vda
+NIXBLOCKDEVICE ?= sda
 
 # SSH options used
 SSH_OPTS =-o PubkeyAuthentication=no -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no

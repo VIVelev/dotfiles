@@ -1,9 +1,9 @@
 { pkgs, ... }:
 
 {
-  imports = 
-    [ ./hardware-configuration.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   # This is the interface on my M1 in VM.
   networking.interfaces.enp0s5.useDHCP = true;
@@ -11,15 +11,18 @@
   networking.hostName = "dev";
   networking.firewall.allowedTCPPorts = [ 3000 8000 8080 ];
 
-  # QEMU
-  services.spice-vdagentd.enable = true;
-
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowUnsupportedSystem = true;
 
-  nix.extraOptions = ''
-    experimental-features = nix-command
-  '';
+  nix = {
+    extraOptions = ''
+      experimental-features = nix-command
+    '';
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+  };
   
   system.autoUpgrade = {
     enable = true;
@@ -76,6 +79,7 @@
     gcc  # Used by many
     git
     git-crypt
+    gh
     gnumake
     neovim-nightly
     ripgrep

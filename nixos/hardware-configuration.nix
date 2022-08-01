@@ -2,28 +2,27 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/profiles/qemu-guest.nix")
-    ];
-
-  hardware.video.hidpi.enable = true;
+  imports = [
+    (modulesPath + "/profiles/qemu-guest.nix")
+  ];
 
   boot = {
     initrd = {
       availableKernelModules = [
         "xhci_pci"
-        "uhci_hcd"
-        "virtio_pci"
         "usbhid"
-        "usb_storage"
         "sr_mod"
       ];
-      kernelModules = [ ];
+      kernelModules = [ "virtio-gpu" ];
     };
+    kernelParams = [ "video=Virtual-1:4112x2572@60" ];
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ ];
     extraModulePackages = [ ];
     loader = {
       systemd-boot.enable = true;
+      systemd-boot.consoleMode = "auto";
+      systemd-boot.configurationLimit = 5;
       efi.canTouchEfiVariables = true;
     };
   };
@@ -40,4 +39,11 @@
   };
 
   swapDevices = [ ];
+
+  hardware = {
+    parallels = {
+      enable = true;
+    };
+    video.hidpi.enable = true;
+  };
 }
