@@ -2,8 +2,11 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
+  disabledModules = [ "virtualisation/parallels-guest.nix" ];
+
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
+    ./parallels-guest.nix
   ];
 
   boot = {
@@ -15,7 +18,10 @@
       ];
       kernelModules = [ "virtio-gpu" ];
     };
-    kernelParams = [ "video=Virtual-1:4112x2572@60" ];
+    kernelParams = [
+      "root=/dev/sda2"
+      "video=Virtual-1:4112x2572@60"
+    ];
     kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ ];
     extraModulePackages = [ ];
@@ -43,7 +49,12 @@
   hardware = {
     parallels = {
       enable = true;
+      package = (config.boot.kernelPackages.callPackage ./prl-tools.nix { });
     };
     video.hidpi.enable = true;
   };
+
+  environment.unfreePackages = [
+    "prl-tools"
+  ];
 }

@@ -31,6 +31,7 @@ alias ls "exa -la --color=always --color-scale --git --sort=Name"
 
 # Grep with color
 alias rg "rg --color always"
+alias grep "rg"
 
 # Less with color
 alias less "less -R"

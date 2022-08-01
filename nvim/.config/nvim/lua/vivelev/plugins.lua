@@ -55,6 +55,7 @@ require 'packer'.startup(function(use)
   use 'Julian/vim-textobj-variable-segment'
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'guns/vim-sexp'
+  use 'tpope/vim-sexp-mappings-for-regular-people'
 
   -- Telescope
   use {
