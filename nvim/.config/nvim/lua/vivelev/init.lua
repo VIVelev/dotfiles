@@ -21,8 +21,6 @@ require('vivelev.completion')
 require('vivelev.git')
 require('vivelev.hubble')
 
-require('vivelev.repl')
-
 require('vivelev.lsp-sources')
 
 require('vivelev.lsp.cc-ls')

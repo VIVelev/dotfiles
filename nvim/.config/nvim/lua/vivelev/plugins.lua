@@ -6,7 +6,20 @@ require 'packer'.startup(function(use)
   use 'lewis6991/impatient.nvim'
 
   -- REPL
-  use 'hkupty/iron.nvim'
+  use {
+    'Olical/conjure',
+    requires = {
+      'PaterJason/cmp-conjure',
+      {
+        'clojure-vim/vim-jack-in',
+        requires = {
+          'tpope/vim-dispatch',
+          'radenling/vim-dispatch-neovim',
+        },
+      },
+    },
+  }
+
 
   -- LSP & other sources
   use 'neovim/nvim-lspconfig'

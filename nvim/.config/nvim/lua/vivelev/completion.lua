@@ -48,6 +48,7 @@ cmp.setup {
     { name = 'path' },
     { name = 'buffer' },
     { name = 'vsnip' },
+    { name = 'conjure' },
   },
   formatting = {
     format = function(_, vim_item)
