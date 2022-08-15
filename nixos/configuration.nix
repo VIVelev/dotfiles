@@ -47,7 +47,7 @@
 
       # Set key repeat rate.
       sessionCommands = ''
-        ${pkgs.xorg.xset}/bin/xset r rate 200 40
+        ${pkgs.xorg.xset}/bin/xset r rate 300 30
       '';
     };
 
@@ -77,9 +77,10 @@
     fish
     fzf
     gcc  # Used by many
+    gh
     git
     git-crypt
-    gh
+    glances
     gnumake
     neovim-nightly
     ripgrep

@@ -51,3 +51,14 @@ map('x', 'ar', '<Plug>(sexp_outer_top_list)')
 map('o', 'ar', '<Plug>(sexp_outer_top_list)')
 map('x', 'ir', '<Plug>(sexp_inner_top_list)')
 map('o', 'ir', '<Plug>(sexp_inner_top_list)')
+
+-- Magma
+vim.cmd [[
+  nnoremap <silent>       <LocalLeader>rr :MagmaEvaluateLine<CR>
+  xnoremap <silent>       <LocalLeader>r  :<C-u>MagmaEvaluateVisual<CR>
+  nnoremap <silent>       <LocalLeader>rc :MagmaReevaluateCell<CR>
+  nnoremap <silent>       <LocalLeader>rd :MagmaDelete<CR>
+  nnoremap <silent>       <LocalLeader>ro :MagmaShowOutput<CR>
+  
+  let g:magma_automatically_open_output = v:false
+]]

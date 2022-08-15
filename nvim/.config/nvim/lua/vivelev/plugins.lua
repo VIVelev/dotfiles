@@ -6,20 +6,18 @@ require 'packer'.startup(function(use)
   use 'lewis6991/impatient.nvim'
 
   -- REPL
+  use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
   use {
     'Olical/conjure',
-    requires = {
-      'PaterJason/cmp-conjure',
-      {
-        'clojure-vim/vim-jack-in',
-        requires = {
-          'tpope/vim-dispatch',
-          'radenling/vim-dispatch-neovim',
-        },
-      },
-    },
+    requires = 'PaterJason/cmp-conjure',
+    config = function()
+      -- I use CHICKEN :)
+      vim.cmd [[
+        let g:conjure#client#scheme#stdio#command = "csi -quiet -:c"
+        let g:conjure#client#scheme#stdio#prompt_pattern = "\n-#;%d-> "
+      ]]
+    end,
   }
-
 
   -- LSP & other sources
   use 'neovim/nvim-lspconfig'
