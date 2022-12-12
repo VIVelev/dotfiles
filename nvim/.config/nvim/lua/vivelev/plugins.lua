@@ -2,6 +2,8 @@ require 'packer'.startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  use 'eandrju/cellular-automaton.nvim'
+
   -- nvim speed-up
   use 'lewis6991/impatient.nvim'
 
@@ -41,6 +43,8 @@ require 'packer'.startup(function(use)
 
   -- Comment
   use { 'numToStr/Comment.nvim', config = function() require 'Comment'.setup() end }
+  use { 'folke/todo-comments.nvim', requires = 'nvim-lua/plenary.nvim',
+    config = function() require('todo-comments').setup {} end }
 
   -- Floating Terminal
   use { 'numToStr/FTerm.nvim', config = function() require 'FTerm'.setup { border = "double", blend = 1 } end }
@@ -57,13 +61,10 @@ require 'packer'.startup(function(use)
   use 'tpope/vim-sleuth'
   use 'tpope/vim-repeat'
   use 'tpope/vim-eunuch'
+  use 'ziglang/zig.vim'
 
   -- Text Objects
   use 'wellle/targets.vim'
-  use 'kana/vim-textobj-user'
-  use 'kana/vim-textobj-entire'
-  use 'kana/vim-textobj-indent'
-  use 'Julian/vim-textobj-variable-segment'
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'guns/vim-sexp'
   use 'tpope/vim-sexp-mappings-for-regular-people'

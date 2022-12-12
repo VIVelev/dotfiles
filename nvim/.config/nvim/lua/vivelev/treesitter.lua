@@ -3,11 +3,14 @@ require 'nvim-treesitter.configs'.setup {
     'c',
     'lua',
     'nix',
+    'zig',
     'bash',
     'fish',
     'python',
     'scheme',
     'haskell',
+
+    'java',
   },
   highlight = {
     enable = true, -- false will disable the whole extension

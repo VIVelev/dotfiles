@@ -20,7 +20,7 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 30d";
+      options = "--delete-older-than 90d";
     };
   };
   
@@ -47,7 +47,7 @@
 
       # Set key repeat rate.
       sessionCommands = ''
-        ${pkgs.xorg.xset}/bin/xset r rate 300 30
+        ${pkgs.xorg.xset}/bin/xset r rate 250 60
       '';
     };
 
@@ -59,8 +59,8 @@
     };
   };
 
-  # I am usually using neovim nightly
   nixpkgs.overlays = [
+    # I am usually using neovim nightly
     (import (builtins.fetchTarball {
       url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
     }))

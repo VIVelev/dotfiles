@@ -6,8 +6,7 @@ if not (env == nil or env == '') then
   vim.g.python3_host_prog = env .. '/bin/python'
 end
 
--- Jedi for sweet autocompletition and else
-require 'lspconfig'.jedi_language_server.setup {
+require 'lspconfig'.pyright.setup {
   on_attach = lsp.on_attach,
   capabilities = lsp.capabilities,
 }

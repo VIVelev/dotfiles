@@ -24,5 +24,7 @@ require('vivelev.hubble')
 require('vivelev.lsp-sources')
 
 require('vivelev.lsp.cc-ls')
+require('vivelev.lsp.zig-ls')
 require('vivelev.lsp.lua-ls')
 require('vivelev.lsp.python-ls')
+require('vivelev.lsp.java-ls')

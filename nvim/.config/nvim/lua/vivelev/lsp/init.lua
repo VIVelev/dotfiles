@@ -53,6 +53,6 @@ function lsp.on_attach(client, bufnr)
   end
 end
 
-lsp.capabilities = cmp_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+lsp.capabilities = cmp_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 return lsp

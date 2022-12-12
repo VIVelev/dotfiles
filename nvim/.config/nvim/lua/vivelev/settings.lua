@@ -1,7 +1,8 @@
 vim.g.mapleader = ' '
 
+vim.o.relativenumber = true;
+
 -- Cursor and mouse
-vim.o.cursorline = true
 vim.o.mouse = 'a'
 
 -- Split to the right
