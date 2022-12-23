@@ -39,9 +39,6 @@ alias less "less -R"
 # IPython
 set -x IPYTHONDIR ~/.config/ipython/
 
-# Python init a dev environment
-alias pyinit "python3 -m venv .env --upgrade-deps && source .env/bin/activate.fish && pip install -r ~/dotfiles/py.txt"
-
 # Neovim
 if type -q nvim
   alias vim "nvim"

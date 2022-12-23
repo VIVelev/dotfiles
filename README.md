@@ -1,7 +1,8 @@
-# dotfiles for macOS hosting NixOS
+# dotfiles for macOS with nix-darwin!
 .config files managed by GNU Stow
-
-### Yes, I am using NixOS in macOS, I love both!
 
 # Instructions
  - Don't forget to remap the Caps Lock key to ^Control
+
+# Credit
+Huge thanks to [LnL7 and company](github.com/LnL7/nix-darwin) for [nix-darwin](github.com/LnL7/nix-darwin).
