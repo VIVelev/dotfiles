@@ -1,3 +1,5 @@
+local opts = { noremap = true, silent = true }
+
 return {
   -- the colorscheme should be available when starting Neovim
   {
@@ -7,7 +9,7 @@ return {
     dependencies = {
       {
         "nvim-lualine/lualine.nvim",
-        dependecies = "kyazdani42/nvim-web-devicons"
+        dependencies = "kyazdani42/nvim-web-devicons"
       },
     },
     config = function()
@@ -47,7 +49,6 @@ return {
   -- LSP & other sources
   {
     "neovim/nvim-lspconfig",
-    event = "BufReadPre",
     dependencies = {
       { "jose-elias-alvarez/null-ls.nvim", dependencies = "nvim-lua/plenary.nvim" },
       { "j-hui/fidget.nvim", branch = "legacy", config = function() require "fidget".setup() end },
@@ -55,7 +56,7 @@ return {
   },
 
   -- Copilot
-  { "github/copilot.vim", event = "InsertEnter", },
+  { "github/copilot.vim", event = "InsertEnter" },
 
   -- Autocomplete
   {
@@ -78,17 +79,65 @@ return {
   },
 
   -- Motion
-  { "ggandor/leap.nvim", config = function() require "leap".set_default_keymaps() end },
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    ---@type Flash.Config
+    opts = {},
+    keys = {
+      {
+        "s",
+        mode = { "n", "x", "o" },
+        function()
+          require("flash").jump()
+        end,
+        desc = "Flash",
+      },
+      {
+        "S",
+        mode = { "n", "o", "x" },
+        function()
+          require("flash").treesitter()
+        end,
+        desc = "Flash Treesitter",
+      },
+      {
+        "r",
+        mode = "o",
+        function()
+          require("flash").remote()
+        end,
+        desc = "Remote Flash",
+      },
+      {
+        "R",
+        mode = { "o", "x" },
+        function()
+          require("flash").treesitter_search()
+        end,
+        desc = "Flash Treesitter Search",
+      },
+      {
+        "<c-s>",
+        mode = { "c" },
+        function()
+          require("flash").toggle()
+        end,
+        desc = "Toggle Flash Search",
+      },
+    },
+  },
 
   -- Comment
   { "numToStr/Comment.nvim", config = function() require "Comment".setup() end },
   {
-    "folke/todo-comments.nvim", dependecies = "nvim-lua/plenary.nvim",
+    "folke/todo-comments.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
     config = function() require("todo-comments").setup {} end,
   },
 
   -- Git
-  { "lewis6991/gitsigns.nvim", dependecies = "nvim-lua/plenary.nvim" },
+  { "lewis6991/gitsigns.nvim", dependencies = "nvim-lua/plenary.nvim" },
   "tpope/vim-fugitive",
 
   -- Editing support
@@ -116,6 +165,19 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
+    keys = {
+      { "<leader>ff", ":Telescope find_files<cr>", opts },
+      { "<leader>g", function()
+        local utils = require "telescope.utils"
+        local builtins = require "telescope.builtin"
+        builtins.live_grep({ cwd = utils.buffer_dir() })
+      end, opts },
+      { "<leader>b", ":Telescope buffers<cr>", opts },
+      { "<leader>hh", ":Telescope help_tags<cr>", opts },
+      { "<leader>m", ":Telescope man_pages<cr>", opts },
+      { "<leader>fb", ":Telescope file_browser<cr>", opts },
+      { "<leader>n", ":Telescope file_browser path=%:p:h<cr>", opts },
+    },
     dependencies = {
       "nvim-lua/plenary.nvim",
       "kyazdani42/nvim-web-devicons",
@@ -124,7 +186,25 @@ return {
       { "nvim-telescope/telescope-file-browser.nvim" },
     },
     config = function()
-      require("hubble")
+      local telescope = require "telescope"
+      telescope.setup {
+        defaults = {
+          file_ignore_patterns = { "**/*.min.js" },
+        },
+        extensions = {
+          fzf = {
+            fuzzy = true, -- false will only do exact matching
+            override_generic_sorter = true, -- override the generic sorter
+            override_file_sorter = true, -- override the file sorter
+            case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+            -- the default case_mode is "smart_case"
+          }
+        }
+      }
+      
+      telescope.load_extension("fzf")
+      telescope.load_extension("ui-select")
+      telescope.load_extension("file_browser")
     end,
   },
 }
