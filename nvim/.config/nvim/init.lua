@@ -1,24 +1,26 @@
-local execute = vim.api.nvim_command
-local fn = vim.fn
-
-local pack_path = fn.stdpath("data") .. "/site/pack"
-local fmt = string.format
-
-local function ensure(user, repo)
-  -- Ensures a given github.com/USER/REPO is cloned in the pack/packer/start directory.
-  local install_path = fmt("%s/packer/start/%s", pack_path, repo)
-  if fn.empty(fn.glob(install_path)) > 0 then
-    execute(fmt("!git clone https://github.com/%s/%s %s", user, repo, install_path))
-    execute(fmt("packadd %s", repo))
-  end
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
--- Bootstrap essential plugins required for installing and loading the rest.
-ensure("wbthomason", "packer.nvim")
-ensure("lewis6991", "impatient.nvim")
+require("settings")
+require("lazy").setup("plugins")
+require("keymaps")
 
--- Load impatient which pre-compiles and caches Lua modules.
-require("impatient")
+require("evil_lualine")
+require("treesitter")
+require("git")
 
--- Begin!
-require('vivelev')
+require("lsp-sources")
+require("lsp.cc-ls")
+require("lsp.lua-ls")
+require("lsp.python-ls")
+require("lsp.java-ls")

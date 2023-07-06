@@ -1,0 +1,33 @@
+local telescope = require "telescope"
+
+telescope.setup {
+  defaults = {
+    file_ignore_patterns = { "**/*.min.js" },
+  },
+  extensions = {
+    fzf = {
+      fuzzy = true, -- false will only do exact matching
+      override_generic_sorter = true, -- override the generic sorter
+      override_file_sorter = true, -- override the file sorter
+      case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+      -- the default case_mode is "smart_case"
+    }
+  }
+}
+
+telescope.load_extension("fzf")
+telescope.load_extension("ui-select")
+telescope.load_extension("file_browser")
+
+local utils = require "telescope.utils"
+local builtins = require "telescope.builtin"
+local opts = { noremap = true, silent = true }
+local map = vim.keymap.set
+
+map("n", "<leader>ff", ":Telescope find_files<cr>", opts)
+map("n", "<leader>g", function() builtins.live_grep({ cwd = utils.buffer_dir() }) end, opts)
+map("n", "<leader>b", ":Telescope buffers<cr>", opts)
+map("n", "<leader>hh", ":Telescope help_tags<cr>", opts)
+map("n", "<leader>m", ":Telescope man_pages<cr>", opts)
+map("n", "<leader>fb", ":Telescope file_browser<cr>", opts)
+map("n", "<leader>n", ":Telescope file_browser path=%:p:h<cr>", opts)

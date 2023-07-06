@@ -4,4 +4,6 @@
 nvim/.config/nvim/plugin/
 *.spl
 
+ipython/.config/ipython/profile_default/history.sqlite
+
 _*
