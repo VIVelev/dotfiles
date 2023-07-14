@@ -32,7 +32,7 @@ return {
   -- REPL
   {
     "Olical/conjure",
-    ft = { "clojure", "scheme" },
+    ft = { "clojure", "scheme", "python" },
     dependencies = {
       "PaterJason/cmp-conjure",
       "tpope/vim-dispatch",
@@ -201,7 +201,7 @@ return {
           }
         }
       }
-      
+
       telescope.load_extension("fzf")
       telescope.load_extension("ui-select")
       telescope.load_extension("file_browser")

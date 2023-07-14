@@ -14,17 +14,6 @@
   '';
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [
-    (
-      import (let
-        # rev = "master";
-        rev = "c57746e2b9e3b42c0be9d9fd1d765f245c3827b7";
-      in
-        builtins.fetchTarball {
-          url = "https://github.com/nix-community/neovim-nightly-overlay/archive/${rev}.tar.gz";
-        })
-    )
-  ];
 
   programs.zsh.enable = true;
   programs.fish.enable = true;
@@ -44,7 +33,7 @@
     gh
     gnumake
     htop
-    neovim-nightly
+    neovim
     ripgrep
     stow
     zoxide
@@ -66,9 +55,13 @@
       cleanup = "zap";
       upgrade = true;
     };
+    brews = [
+      "micromamba"
+    ];
     casks = [
       "activitywatch"
       "betterdisplay"
+      "google-chrome"
       "iina"
       "keycastr"
       "kitty"
@@ -80,8 +73,6 @@
       "skim"
       "stats"
       "telegram"
-
-      "google-chrome"
       "zoom"
     ];
   };
@@ -92,7 +83,7 @@
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
-  nix.package = pkgs.nixUnstable;
+  nix.package = pkgs.nix;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog

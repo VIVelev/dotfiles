@@ -36,6 +36,9 @@ alias grep "rg"
 # Less with color
 alias less "less -R"
 
+# Micrmomamba
+alias mamba "micromamba"
+
 # IPython
 set -x IPYTHONDIR ~/.config/ipython/
 
@@ -65,3 +68,10 @@ if status is-interactive
     # Direnv
     direnv hook fish | source
 end
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba init' !!
+set -gx MAMBA_EXE "/opt/homebrew/bin/micromamba"
+set -gx MAMBA_ROOT_PREFIX "/Users/vivelev/micromamba"
+$MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
+# <<< mamba initialize <<<
