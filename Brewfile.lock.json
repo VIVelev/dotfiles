@@ -1,0 +1,119 @@
+{
+  "entries": {
+    "tap": {
+      "homebrew/bundle": {
+        "revision": "2ab409bef9d94ce127bc611651d3af8ebb9edcdb"
+      },
+      "homebrew/cask": {
+        "revision": "28ea149a015fc4d3d41003f07aad2e300d47829f"
+      },
+      "homebrew/cask-versions": {
+        "revision": "77e7931731fc458a08fa57cf2f82589d4386b21f"
+      },
+      "homebrew/core": {
+        "revision": "d8d3106d5c8f4f096d24442daa9417e77f761754"
+      },
+      "homebrew/cask-fonts": {
+        "revision": "ab8647b238b73b8e512c08280a07511fa53a567b"
+      }
+    },
+    "cask": {
+      "betterdisplay": {
+        "version": "1.4.15",
+        "options": {
+          "full_name": "betterdisplay"
+        }
+      },
+      "google-chrome": {
+        "version": "114.0.5735.198",
+        "options": {
+          "full_name": "google-chrome"
+        }
+      },
+      "iina": {
+        "version": "1.3.2,135",
+        "options": {
+          "full_name": "iina"
+        }
+      },
+      "kitty": {
+        "version": "0.29.0",
+        "options": {
+          "full_name": "kitty"
+        }
+      },
+      "mactex-no-gui": {
+        "version": "2023.0314",
+        "options": {
+          "full_name": "mactex-no-gui"
+        }
+      },
+      "onyx": {
+        "version": "4.4.1",
+        "options": {
+          "full_name": "onyx"
+        }
+      },
+      "raycast": {
+        "version": "1.55.2",
+        "options": {
+          "full_name": "raycast"
+        }
+      },
+      "readdle-spark": {
+        "version": "3.6.6.52190",
+        "options": {
+          "full_name": "readdle-spark"
+        }
+      },
+      "skim": {
+        "version": "1.6.17",
+        "options": {
+          "full_name": "skim"
+        }
+      },
+      "stats": {
+        "version": "2.9.2",
+        "options": {
+          "full_name": "stats"
+        }
+      },
+      "telegram": {
+        "version": "9.6.3,245683",
+        "options": {
+          "full_name": "telegram"
+        }
+      },
+      "zoom": {
+        "version": "5.15.3.20121",
+        "options": {
+          "full_name": "zoom"
+        }
+      },
+      "wezterm": {
+        "version": "20230712-072601,f4abf8fd",
+        "options": {
+          "full_name": "wezterm"
+        }
+      },
+      "font-jetbrains-mono-nerd-font": {
+        "version": "3.0.2",
+        "options": {
+          "full_name": "font-jetbrains-mono-nerd-font"
+        }
+      }
+    }
+  },
+  "system": {
+    "macos": {
+      "ventura": {
+        "HOMEBREW_VERSION": "4.0.28",
+        "HOMEBREW_PREFIX": "/opt/homebrew",
+        "Homebrew/homebrew-core": "api",
+        "CLT": "14.3.1.0.1.1683849156",
+        "Xcode": "14.3",
+        "macOS": "13.4.1"
+      }
+    }
+  }
+}

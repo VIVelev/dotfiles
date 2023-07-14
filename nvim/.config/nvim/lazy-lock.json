@@ -10,7 +10,7 @@
   "conjure": { "branch": "master", "commit": "2482871cbe0d1b85d331465cf7f065d5d2a7e2ac" },
   "copilot.vim": { "branch": "release", "commit": "a4a6d6b3f9e284e7f5c849619e06cd228cad8abd" },
   "fidget.nvim": { "branch": "legacy", "commit": "90c22e47be057562ee9566bad313ad42d622c1d3" },
-  "flash.nvim": { "branch": "main", "commit": "eed92fa04f6310b3318ea0c468f909acbf978ca6" },
+  "flash.nvim": { "branch": "main", "commit": "9c53dad391801acb9ce9aa49820f15f6692aec91" },
   "gitsigns.nvim": { "branch": "main", "commit": "5a04466685008f29c71fa5ec25d421deb1c83fea" },
   "lazy.nvim": { "branch": "main", "commit": "14d76aac4bd3ff07c1fca074c210f28f766a931e" },
   "lualine.nvim": { "branch": "master", "commit": "05d78e9fd0cdfb4545974a5aa14b1be95a86e9c9" },
