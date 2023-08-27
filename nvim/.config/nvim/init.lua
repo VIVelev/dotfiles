@@ -19,7 +19,7 @@ require("evil_lualine")
 require("treesitter")
 require("git")
 
--- require("lsp-sources")
+require("lsp")
 require("lsp.cc-ls")
 require("lsp.lua-ls")
 require("lsp.python-ls")

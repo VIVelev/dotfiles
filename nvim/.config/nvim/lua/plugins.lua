@@ -4,7 +4,7 @@ return {
   -- the colorscheme should be available when starting Neovim
   {
     "marko-cerovac/material.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     dependencies = {
       {
@@ -38,20 +38,24 @@ return {
       "tpope/vim-dispatch",
       "clojure-vim/vim-jack-in",
       "radenling/vim-dispatch-neovim",
-    },
-    config = function()
-      vim.cmd [[
-        let g:conjure#client#scheme#stdio#command = "/private/var/folders/s5/zsjzbtvd6q92qwdwtcwj9sm80000gn/T/tmp.xOrpFaGr/mit-scheme-12.1/src/bin/mit-scheme"
-      ]]
-    end,
+    }
   },
+
+  -- Jupytext
+  { "goerz/jupytext.vim", config = function() vim.g.jupytext_fmt = "py:percent" end },
 
   -- LSP & other sources
   {
     "neovim/nvim-lspconfig",
     dependencies = {
       { "jose-elias-alvarez/null-ls.nvim", dependencies = "nvim-lua/plenary.nvim" },
-      { "j-hui/fidget.nvim", branch = "legacy", config = function() require "fidget".setup() end },
+      {
+        "j-hui/fidget.nvim",
+        branch = "legacy",
+        config = function()
+          require "fidget".setup()
+        end,
+      },
     },
   },
 
@@ -83,7 +87,11 @@ return {
     "folke/flash.nvim",
     event = "VeryLazy",
     ---@type Flash.Config
-    opts = {},
+    opts = {
+      search = {
+        mode = "fuzzy",
+      },
+    },
     keys = {
       {
         "s",
@@ -129,7 +137,7 @@ return {
   },
 
   -- Comment
-  { "numToStr/Comment.nvim", config = function() require "Comment".setup() end },
+  { "numToStr/Comment.nvim",   config = function() require "Comment".setup() end },
   {
     "folke/todo-comments.nvim",
     dependencies = "nvim-lua/plenary.nvim",
@@ -141,7 +149,7 @@ return {
   "tpope/vim-fugitive",
 
   -- Editing support
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  { "nvim-treesitter/nvim-treesitter",            build = ":TSUpdate" },
   "tpope/vim-surround",
   "tpope/vim-unimpaired",
   "tpope/vim-sleuth",
@@ -158,7 +166,7 @@ return {
   -- Text Objects
   "wellle/targets.vim",
   "nvim-treesitter/nvim-treesitter-textobjects",
-  { "guns/vim-sexp", ft = { "clojure", "scheme" } },
+  { "guns/vim-sexp",                              ft = { "clojure", "scheme" } },
   { "tpope/vim-sexp-mappings-for-regular-people", ft = { "clojure", "scheme" } },
 
   -- Telescope
@@ -166,22 +174,22 @@ return {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
     keys = {
-      { "<leader>ff", ":Telescope find_files<cr>", opts },
+      { "<leader>ff", ":Telescope find_files<cr>",              opts },
       { "<leader>g", function()
         local utils = require "telescope.utils"
         local builtins = require "telescope.builtin"
         builtins.live_grep({ cwd = utils.buffer_dir() })
       end, opts },
-      { "<leader>b", ":Telescope buffers<cr>", opts },
-      { "<leader>hh", ":Telescope help_tags<cr>", opts },
-      { "<leader>m", ":Telescope man_pages<cr>", opts },
-      { "<leader>fb", ":Telescope file_browser<cr>", opts },
-      { "<leader>n", ":Telescope file_browser path=%:p:h<cr>", opts },
+      { "<leader>b",  ":Telescope buffers<cr>",                 opts },
+      { "<leader>hh", ":Telescope help_tags<cr>",               opts },
+      { "<leader>m",  ":Telescope man_pages<cr>",               opts },
+      { "<leader>fb", ":Telescope file_browser<cr>",            opts },
+      { "<leader>n",  ":Telescope file_browser path=%:p:h<cr>", opts },
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
       "kyazdani42/nvim-web-devicons",
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      { "nvim-telescope/telescope-fzf-native.nvim",  build = "make" },
       { "nvim-telescope/telescope-ui-select.nvim" },
       { "nvim-telescope/telescope-file-browser.nvim" },
     },
@@ -193,10 +201,10 @@ return {
         },
         extensions = {
           fzf = {
-            fuzzy = true, -- false will only do exact matching
+            fuzzy = true,                   -- false will only do exact matching
             override_generic_sorter = true, -- override the generic sorter
-            override_file_sorter = true, -- override the file sorter
-            case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+            override_file_sorter = true,    -- override the file sorter
+            case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
             -- the default case_mode is "smart_case"
           }
         }

@@ -1,8 +1,6 @@
-local lsp = require "lsp"
-
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 require "lspconfig".clangd.setup {
-  on_attach = lsp.on_attach,
-  capabilities = lsp.capabilities,
+  capabilities = capabilities,
 }
 
 local c_aug = vim.api.nvim_create_augroup("C", { clear = true })

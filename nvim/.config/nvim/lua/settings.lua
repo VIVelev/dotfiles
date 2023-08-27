@@ -17,7 +17,7 @@ vim.o.showmode = false
 
 -- Having longer update time (default is 4000 ms = 4 s) leads to noticeable
 -- delays and poor user experience.
-vim.o.updatetime = 600
+vim.o.updatetime = 100
 
 -- Always show the sign column, otherwise it would shift the text each time
 -- diagnostics appear/become resolved.
@@ -25,3 +25,5 @@ vim.o.signcolumn = "yes"
 
 -- A single status bar
 vim.o.laststatus = 3
+
+vim.o.ignorecase = true

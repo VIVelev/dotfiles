@@ -42,10 +42,6 @@ map("n", "<right>", "<nop>", opts)
 -- Nops
 map("n", "gd", "<nop>", opts)
 
--- Terminal
-map("n", "<c-t>", function() require("FTerm").toggle() end, opts)
-map("t", "<c-t>", "<c-\\><c-n><cmd>lua require('FTerm').toggle()<cr>", opts)
-
 -- S-exp
 map("x", "ar", "<Plug>(sexp_outer_top_list)")
 map("o", "ar", "<Plug>(sexp_outer_top_list)")

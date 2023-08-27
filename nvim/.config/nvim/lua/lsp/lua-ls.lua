@@ -1,12 +1,10 @@
-local lsp = require "lsp"
-
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 require "lspconfig".lua_ls.setup {
-  on_attach = lsp.on_attach,
-  capabilities = lsp.capabilities,
+  capabilities = capabilities,
   settings = {
     Lua = {
       runtime = {
