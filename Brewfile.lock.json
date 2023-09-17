@@ -2,19 +2,19 @@
   "entries": {
     "tap": {
       "homebrew/bundle": {
-        "revision": "3acd40719ab4484b1fc95336d0301f04821611c5"
+        "revision": "4d03d87b61bd5202ffb89232592965252a096820"
       },
       "homebrew/cask": {
         "revision": "28ea149a015fc4d3d41003f07aad2e300d47829f"
       },
       "homebrew/cask-versions": {
-        "revision": "1161e2ec2374eb382ffbe05690d4df2c8d5f04bd"
+        "revision": "bb9c5f0d1d588c5c791a53f94c5825abe6c2ca3f"
       },
       "homebrew/core": {
         "revision": "d8d3106d5c8f4f096d24442daa9417e77f761754"
       },
       "homebrew/cask-fonts": {
-        "revision": "8f0130143f54d53d68c380c6f0fbc04fc26a9e63"
+        "revision": "9d1500ea92b84906d3ebdab6060f2649fa7202fa"
       }
     },
     "cask": {
@@ -25,7 +25,7 @@
         }
       },
       "google-chrome": {
-        "version": "116.0.5845.96",
+        "version": "116.0.5845.110",
         "options": {
           "full_name": "google-chrome"
         }
@@ -55,37 +55,37 @@
         }
       },
       "raycast": {
-        "version": "1.57.1",
+        "version": "1.57.2",
         "options": {
           "full_name": "raycast"
         }
       },
       "readdle-spark": {
-        "version": "3.7.0.54485",
+        "version": "3.7.3.55058",
         "options": {
           "full_name": "readdle-spark"
         }
       },
       "skim": {
-        "version": "1.6.18",
+        "version": "1.6.20",
         "options": {
           "full_name": "skim"
         }
       },
       "stats": {
-        "version": "2.9.4",
+        "version": "2.9.6",
         "options": {
           "full_name": "stats"
         }
       },
       "telegram": {
-        "version": "10.0,250582",
+        "version": "10.0.2,250861",
         "options": {
           "full_name": "telegram"
         }
       },
       "zoom": {
-        "version": "5.15.7.21404",
+        "version": "5.15.11.22019",
         "options": {
           "full_name": "zoom"
         }
@@ -103,7 +103,7 @@
         }
       },
       "copilot": {
-        "version": "3.2.2,114-7c9f0578",
+        "version": "3.2.5,118-16c0e328",
         "options": {
           "full_name": "copilot"
         }
@@ -127,7 +127,7 @@
         }
       },
       "firefox": {
-        "version": "116.0.3",
+        "version": "117.0",
         "options": {
           "full_name": "firefox"
         }
@@ -138,12 +138,58 @@
           "full_name": "mullvad-browser"
         }
       }
+    },
+    "brew": {
+      "juliaup": {
+        "version": "1.11.22",
+        "bottle": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_ventura": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/juliaup/blobs/sha256:62612166c99ee481b315dbd7818b05c59dd0300aea5c383bbcb554ea56b5e1e3",
+              "sha256": "62612166c99ee481b315dbd7818b05c59dd0300aea5c383bbcb554ea56b5e1e3"
+            },
+            "arm64_monterey": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/juliaup/blobs/sha256:7ac9c072d4e8bdd390c87cd27c5518cbf7c7b62c23e75e8db726cb01d345176e",
+              "sha256": "7ac9c072d4e8bdd390c87cd27c5518cbf7c7b62c23e75e8db726cb01d345176e"
+            },
+            "arm64_big_sur": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/juliaup/blobs/sha256:2a2796a4550575d76741de55203e9e6159206b67515eb054cd32a5e6d0e2bc3c",
+              "sha256": "2a2796a4550575d76741de55203e9e6159206b67515eb054cd32a5e6d0e2bc3c"
+            },
+            "ventura": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/juliaup/blobs/sha256:49dcc9990817251b6850cc1201c61f1c07aadf5122a3b19e88d852dc639134dc",
+              "sha256": "49dcc9990817251b6850cc1201c61f1c07aadf5122a3b19e88d852dc639134dc"
+            },
+            "monterey": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/juliaup/blobs/sha256:658d83b029f3f7ea09642f4457024faf15c3edaaa71421ffa1871c7e1c177c46",
+              "sha256": "658d83b029f3f7ea09642f4457024faf15c3edaaa71421ffa1871c7e1c177c46"
+            },
+            "big_sur": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/juliaup/blobs/sha256:0d8a814414ce16253382f9b6723583c3bbfbb2e846ab9230583732df59d8488d",
+              "sha256": "0d8a814414ce16253382f9b6723583c3bbfbb2e846ab9230583732df59d8488d"
+            },
+            "x86_64_linux": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/juliaup/blobs/sha256:0edfd0e3b8e99c0796d47532ef161f01e63a4de76e92e499ae43caf8c9f71593",
+              "sha256": "0edfd0e3b8e99c0796d47532ef161f01e63a4de76e92e499ae43caf8c9f71593"
+            }
+          }
+        }
+      }
     }
   },
   "system": {
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "4.1.5",
+        "HOMEBREW_VERSION": "4.1.7",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "14.3.1.0.1.1683849156",

@@ -304,7 +304,7 @@ return {
     { condition = tex.in_mathzone }
   ),
   -- DERIVATIVE with numerator, denominator, and higher-order argument
-  s({ trig = "([^%a])ddv", wordTrig = false, regTrig = true, snippetType = "autosnippet" },
+  s({ trig = "([^%a])dnv", wordTrig = false, regTrig = true, snippetType = "autosnippet" },
     fmta(
       "<>\\dvN{<>}{<>}{<>}",
       {
@@ -312,6 +312,39 @@ return {
         i(1),
         i(2),
         i(3),
+      }
+    ),
+    { condition = tex.in_mathzone }
+  ),
+  -- NEWTON's notation for time derivative
+  s({ trig = "([^%a])dot", wordTrig = false, regTrig = true, snippetType = "autosnippet" },
+    fmta(
+      "<>\\dot <>",
+      {
+        f(function(_, snip) return snip.captures[1] end),
+        i(1),
+      }
+    ),
+    { condition = tex.in_mathzone }
+  ),
+  -- NEWTON's notation for time derivative
+  s({ trig = "([^%a])ddot", wordTrig = false, regTrig = true, snippetType = "autosnippet" },
+    fmta(
+      "<>\\ddot <>",
+      {
+        f(function(_, snip) return snip.captures[1] end),
+        i(1),
+      }
+    ),
+    { condition = tex.in_mathzone }
+  ),
+  -- NEWTON's notation for time derivative
+  s({ trig = "([^%a])dddot", wordTrig = false, regTrig = true, snippetType = "autosnippet" },
+    fmta(
+      "<>\\dddot <>",
+      {
+        f(function(_, snip) return snip.captures[1] end),
+        i(1),
       }
     ),
     { condition = tex.in_mathzone }
@@ -585,10 +618,17 @@ return {
       t("\\implies "),
     }
   ),
-  -- Such that, i.e. \vert
+  -- FOR ALL
+  s({ trig = "forall", snippetType = "autosnippet" },
+    {
+      t("\\forall "),
+    },
+    { condition = tex.in_mathzone }
+  ),
+  -- SUCH THAT, i.e. s.t.
   s({ trig = "st", snippetType = "autosnippet" },
     {
-      t("\\ \\vert \\ "),
+      t("\\text{ s.t. } "),
     },
     { condition = tex.in_mathzone }
   ),

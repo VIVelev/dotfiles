@@ -38,11 +38,47 @@ return {
       }
     )
   ),
-  --DOCUMENT CLASS
+  -- DOCUMENT CLASS
   s({ trig = "docc", snippetType = "autosnippet" },
     fmta(
       [[
         \documentclass{<>}
+      ]],
+      {
+        d(1, get_visual),
+      }
+    ),
+    { condition = line_begin }
+  ),
+  -- TITLE
+  s({ trig = "ttl", snippetType = "autosnippet" },
+    fmta(
+      [[
+        \title{<>}
+      ]],
+      {
+        d(1, get_visual),
+      }
+    ),
+    { condition = line_begin }
+  ),
+  -- Author
+  s({ trig = "athr", snippetType = "autosnippet" },
+    fmta(
+      [[
+        \author{<>}
+      ]],
+      {
+        d(1, get_visual),
+      }
+    ),
+    { condition = line_begin }
+  ),
+  -- Date
+  s({ trig = "dt", snippetType = "autosnippet" },
+    fmta(
+      [[
+        \date{<>}
       ]],
       {
         d(1, get_visual),

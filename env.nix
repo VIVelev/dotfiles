@@ -3,12 +3,13 @@ with import <nixpkgs> {}; [
   bash
   bitwarden-cli
   direnv
-  exa
+  eza
   fd
   ffmpeg
   fzf
   gh
   gnumake
+  hatch
   htop
   micromamba
   neovim

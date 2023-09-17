@@ -13,12 +13,15 @@ plugins=(git
 
 export FZF_BASE=~/.nix-profile/bin/fzf
 
+# Completions
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-alias ls="exa -la --color=always --color-scale --git --sort=Name"
+alias ls="eza -la --git"
 alias d="z"
 alias umba="micromamba"
 
