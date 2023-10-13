@@ -41,9 +41,6 @@ return {
     }
   },
 
-  -- Jupytext
-  { "goerz/jupytext.vim", config = function() vim.g.jupytext_fmt = "py:percent" end },
-
   -- LSP & other sources
   {
     "neovim/nvim-lspconfig",
@@ -60,7 +57,17 @@ return {
   },
 
   -- Copilot
-  { "github/copilot.vim", event = "InsertEnter" },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      })
+    end,
+  },
 
   -- Autocomplete
   {
@@ -73,9 +80,14 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-copilot",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
+      {
+        "zbirenbaum/copilot-cmp",
+        config = function()
+          require("copilot_cmp").setup()
+        end
+      },
     },
     config = function()
       require("completion")
@@ -138,17 +150,13 @@ return {
 
   -- Comment
   { "numToStr/Comment.nvim",   config = function() require "Comment".setup() end },
-  {
-    "folke/todo-comments.nvim",
-    dependencies = "nvim-lua/plenary.nvim",
-    config = function() require("todo-comments").setup {} end,
-  },
 
   -- Git
   { "lewis6991/gitsigns.nvim", dependencies = "nvim-lua/plenary.nvim" },
   "tpope/vim-fugitive",
 
   -- Editing support
+  "JuliaEditorSupport/julia-vim",
   { "nvim-treesitter/nvim-treesitter",            build = ":TSUpdate" },
   "tpope/vim-surround",
   "tpope/vim-unimpaired",

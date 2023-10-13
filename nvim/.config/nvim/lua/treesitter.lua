@@ -7,6 +7,7 @@ require "nvim-treesitter.configs".setup {
     "bash",
     "fish",
     "java",
+    "julia",
     "python",
     "scheme",
     "haskell",

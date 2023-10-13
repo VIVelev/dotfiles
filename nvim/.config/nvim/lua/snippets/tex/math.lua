@@ -592,6 +592,13 @@ return {
     },
     { condition = tex.in_mathzone }
   ),
+  -- NOT IN, i.e. \notin
+  s({ trig = "notinn", snippetType = "autosnippet" },
+    {
+      t("\\in "),
+    },
+    { condition = tex.in_mathzone }
+  ),
   -- APPROX, i.e. \approx
   s({ trig = "px", snippetType = "autosnippet" },
     {
@@ -625,10 +632,17 @@ return {
     },
     { condition = tex.in_mathzone }
   ),
-  -- SUCH THAT, i.e. s.t.
-  s({ trig = "st", snippetType = "autosnippet" },
+  -- THERE EXISTS
+  s({ trig = "texx", snippetType = "autosnippet" },
     {
-      t("\\text{ s.t. } "),
+      t("\\exists "),
+    },
+    { condition = tex.in_mathzone }
+  ),
+  -- THERE DOES NOT EXISTS
+  s({ trig = "nexx", snippetType = "autosnippet" },
+    {
+      t("\\nexists "),
     },
     { condition = tex.in_mathzone }
   ),

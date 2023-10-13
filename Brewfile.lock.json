@@ -2,30 +2,30 @@
   "entries": {
     "tap": {
       "homebrew/bundle": {
-        "revision": "4d03d87b61bd5202ffb89232592965252a096820"
+        "revision": "2b24ca760710ef2fe92c6d295dc2813cdb0b166a"
       },
       "homebrew/cask": {
         "revision": "28ea149a015fc4d3d41003f07aad2e300d47829f"
       },
       "homebrew/cask-versions": {
-        "revision": "bb9c5f0d1d588c5c791a53f94c5825abe6c2ca3f"
+        "revision": "e63d25b2a4e4ab86ca2af89aaf6ee9bd40868a51"
       },
       "homebrew/core": {
         "revision": "d8d3106d5c8f4f096d24442daa9417e77f761754"
       },
       "homebrew/cask-fonts": {
-        "revision": "9d1500ea92b84906d3ebdab6060f2649fa7202fa"
+        "revision": "b43fb53ccaf819743b71983636b9aa6ac80bef79"
       }
     },
     "cask": {
       "betterdisplay": {
-        "version": "2.0.8",
+        "version": "2.0.11",
         "options": {
           "full_name": "betterdisplay"
         }
       },
       "google-chrome": {
-        "version": "116.0.5845.110",
+        "version": "117.0.5938.149",
         "options": {
           "full_name": "google-chrome"
         }
@@ -49,43 +49,43 @@
         }
       },
       "onyx": {
-        "version": "4.4.2",
+        "version": "4.5.0",
         "options": {
           "full_name": "onyx"
         }
       },
       "raycast": {
-        "version": "1.57.2",
+        "version": "1.59.0",
         "options": {
           "full_name": "raycast"
         }
       },
       "readdle-spark": {
-        "version": "3.7.3.55058",
+        "version": "3.9.0.57684",
         "options": {
           "full_name": "readdle-spark"
         }
       },
       "skim": {
-        "version": "1.6.20",
+        "version": "1.6.21",
         "options": {
           "full_name": "skim"
         }
       },
       "stats": {
-        "version": "2.9.6",
+        "version": "2.9.8",
         "options": {
           "full_name": "stats"
         }
       },
       "telegram": {
-        "version": "10.0.2,250861",
+        "version": "10.1.2,252294",
         "options": {
           "full_name": "telegram"
         }
       },
       "zoom": {
-        "version": "5.15.11.22019",
+        "version": "5.16.2.23409",
         "options": {
           "full_name": "zoom"
         }
@@ -103,7 +103,7 @@
         }
       },
       "copilot": {
-        "version": "3.2.5,118-16c0e328",
+        "version": "3.5.7,139-28b6440a",
         "options": {
           "full_name": "copilot"
         }
@@ -127,7 +127,7 @@
         }
       },
       "firefox": {
-        "version": "117.0",
+        "version": "118.0.1",
         "options": {
           "full_name": "firefox"
         }
@@ -136,6 +136,12 @@
         "version": "12.5.2",
         "options": {
           "full_name": "mullvad-browser"
+        }
+      },
+      "xquartz": {
+        "version": "2.8.5",
+        "options": {
+          "full_name": "xquartz"
         }
       }
     },
@@ -146,6 +152,11 @@
           "rebuild": 0,
           "root_url": "https://ghcr.io/v2/homebrew/core",
           "files": {
+            "arm64_sonoma": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/juliaup/blobs/sha256:ef1ea96e01e08fc181779ea1d52f8ec2af851462b7837a2ee7557f95ded6bb66",
+              "sha256": "ef1ea96e01e08fc181779ea1d52f8ec2af851462b7837a2ee7557f95ded6bb66"
+            },
             "arm64_ventura": {
               "cellar": ":any_skip_relocation",
               "url": "https://ghcr.io/v2/homebrew/core/juliaup/blobs/sha256:62612166c99ee481b315dbd7818b05c59dd0300aea5c383bbcb554ea56b5e1e3",
@@ -160,6 +171,11 @@
               "cellar": ":any_skip_relocation",
               "url": "https://ghcr.io/v2/homebrew/core/juliaup/blobs/sha256:2a2796a4550575d76741de55203e9e6159206b67515eb054cd32a5e6d0e2bc3c",
               "sha256": "2a2796a4550575d76741de55203e9e6159206b67515eb054cd32a5e6d0e2bc3c"
+            },
+            "sonoma": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/juliaup/blobs/sha256:df91d4ad57e30fdd3f5d15ab9fbb3e3ee61f3cd7a90b8bc12531003ce4757dd8",
+              "sha256": "df91d4ad57e30fdd3f5d15ab9fbb3e3ee61f3cd7a90b8bc12531003ce4757dd8"
             },
             "ventura": {
               "cellar": ":any_skip_relocation",
@@ -189,12 +205,20 @@
   "system": {
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "4.1.7",
+        "HOMEBREW_VERSION": "4.1.14",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "14.3.1.0.1.1683849156",
         "Xcode": "14.3",
-        "macOS": "13.4.1"
+        "macOS": "13.5.2"
+      },
+      "sonoma": {
+        "HOMEBREW_VERSION": "4.1.14",
+        "HOMEBREW_PREFIX": "/opt/homebrew",
+        "Homebrew/homebrew-core": "api",
+        "CLT": "15.0.0.0.1.1694021235",
+        "Xcode": "15.0",
+        "macOS": "14.0"
       }
     }
   }

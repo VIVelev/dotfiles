@@ -6,6 +6,7 @@ with import <nixpkgs> {}; [
   eza
   fd
   ffmpeg
+  fish
   fzf
   gh
   gnumake
@@ -13,10 +14,10 @@ with import <nixpkgs> {}; [
   htop
   micromamba
   neovim
+  nodejs
   ripgrep
   stow
   zoxide
-  nodejs
 
   # node packages
   nodePackages_latest.webtorrent-cli

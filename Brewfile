@@ -16,5 +16,8 @@ cask "stats"
 cask "telegram"
 cask "wezterm"
 cask "zoom"
+cask "xquartz"
 
 cask "font-jetbrains-mono-nerd-font"
+
+brew "juliaup"

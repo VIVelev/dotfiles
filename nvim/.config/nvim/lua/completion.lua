@@ -27,7 +27,9 @@ local kind_icons = {
   Unit = "塞 | Unit",
   Value = " | Value",
   Variable = " | Variable",
+  Copilot = "",
 }
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 
 -- Load snippets
 require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/snippets/" })
