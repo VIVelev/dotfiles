@@ -3,6 +3,10 @@
 
 .direnv/
 
+# Fish shell
+fish/.config/fish/completions/
+fish/.config/fish/conf.d/
+
 nvim/.config/nvim/plugin/
 *.spl
 
