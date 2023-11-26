@@ -1,17 +1,14 @@
+---@diagnostic disable: missing-fields
+
 require "nvim-treesitter.configs".setup {
   ensure_installed = {
     "c",
     "lua",
     "nix",
-    "zig",
     "bash",
     "fish",
-    "java",
-    "julia",
     "python",
     "scheme",
-    "haskell",
-    "clojure",
   },
   highlight = {
     enable = true, -- false will disable the whole extension

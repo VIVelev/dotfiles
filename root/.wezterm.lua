@@ -12,8 +12,8 @@ end
 
 -- This is where you actually apply your config choices
 
-config.color_scheme = 'MaterialOcean'
-config.font = wezterm.font 'JetBrainsMono Nerd Font Mono', { weight = "ExtraBold" }
+config.color_scheme = "MaterialOcean"
+config.font = wezterm.font "JetBrains Mono", { weight = "ExtraBold" }
 config.window_decorations = "RESIZE|MACOS_FORCE_DISABLE_SHADOW"
 config.hide_tab_bar_if_only_one_tab = true
 

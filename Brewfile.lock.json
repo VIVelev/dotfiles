@@ -2,19 +2,19 @@
   "entries": {
     "tap": {
       "homebrew/bundle": {
-        "revision": "2b24ca760710ef2fe92c6d295dc2813cdb0b166a"
+        "revision": "73fe1415f01bc26ce4df0c4f52099ab1a0ef5b9d"
       },
       "homebrew/cask": {
         "revision": "28ea149a015fc4d3d41003f07aad2e300d47829f"
       },
       "homebrew/cask-versions": {
-        "revision": "e63d25b2a4e4ab86ca2af89aaf6ee9bd40868a51"
+        "revision": "9311edcf127fa8841ff0c128014101cde2365a44"
       },
       "homebrew/core": {
         "revision": "d8d3106d5c8f4f096d24442daa9417e77f761754"
       },
       "homebrew/cask-fonts": {
-        "revision": "b43fb53ccaf819743b71983636b9aa6ac80bef79"
+        "revision": "45d77e5752ea310e1974d161fb05e44d7706d1c7"
       }
     },
     "cask": {
@@ -49,19 +49,19 @@
         }
       },
       "onyx": {
-        "version": "4.5.0",
+        "version": "4.5.2",
         "options": {
           "full_name": "onyx"
         }
       },
       "raycast": {
-        "version": "1.59.0",
+        "version": "1.61.2",
         "options": {
           "full_name": "raycast"
         }
       },
       "readdle-spark": {
-        "version": "3.9.0.57684",
+        "version": "3.10.1.60790",
         "options": {
           "full_name": "readdle-spark"
         }
@@ -73,19 +73,19 @@
         }
       },
       "stats": {
-        "version": "2.9.8",
+        "version": "2.9.11",
         "options": {
           "full_name": "stats"
         }
       },
       "telegram": {
-        "version": "10.1.2,252294",
+        "version": "10.2.4,255290",
         "options": {
           "full_name": "telegram"
         }
       },
       "zoom": {
-        "version": "5.16.2.23409",
+        "version": "5.16.6.24664",
         "options": {
           "full_name": "zoom"
         }
@@ -103,13 +103,13 @@
         }
       },
       "copilot": {
-        "version": "3.5.7,139-28b6440a",
+        "version": "3.5.12,147-740c6b62",
         "options": {
           "full_name": "copilot"
         }
       },
       "mullvadvpn": {
-        "version": "2023.4",
+        "version": "2023.5",
         "options": {
           "full_name": "mullvadvpn"
         }
@@ -121,13 +121,13 @@
         }
       },
       "orion": {
-        "version": "0.99,125",
+        "version": "0.99,126.2",
         "options": {
           "full_name": "orion"
         }
       },
       "firefox": {
-        "version": "118.0.1",
+        "version": "119.0.1",
         "options": {
           "full_name": "firefox"
         }
@@ -142,6 +142,12 @@
         "version": "2.8.5",
         "options": {
           "full_name": "xquartz"
+        }
+      },
+      "viber": {
+        "version": "21.3.0,2132",
+        "options": {
+          "full_name": "viber"
         }
       }
     },
@@ -213,7 +219,7 @@
         "macOS": "13.5.2"
       },
       "sonoma": {
-        "HOMEBREW_VERSION": "4.1.14",
+        "HOMEBREW_VERSION": "4.1.19",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.0.0.0.1.1694021235",

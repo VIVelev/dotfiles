@@ -38,7 +38,12 @@ return {
       "tpope/vim-dispatch",
       "clojure-vim/vim-jack-in",
       "radenling/vim-dispatch-neovim",
-    }
+    },
+    config = function()
+      vim.cmd [[
+        let g:conjure#client#scheme#stdio#command = "mechanics"
+      ]]
+    end
   },
 
   -- LSP & other sources
@@ -156,7 +161,6 @@ return {
   "tpope/vim-fugitive",
 
   -- Editing support
-  "JuliaEditorSupport/julia-vim",
   { "nvim-treesitter/nvim-treesitter",            build = ":TSUpdate" },
   "tpope/vim-surround",
   "tpope/vim-unimpaired",
@@ -169,6 +173,13 @@ return {
     init = function()
       vim.g.vimtex_view_method = "skim"
     end,
+  },
+
+  -- Typst
+  {
+    'kaarmu/typst.vim',
+    ft = 'typst',
+    lazy = false,
   },
 
   -- Text Objects
@@ -184,9 +195,8 @@ return {
     keys = {
       { "<leader>ff", ":Telescope find_files<cr>",              opts },
       { "<leader>g", function()
-        local utils = require "telescope.utils"
         local builtins = require "telescope.builtin"
-        builtins.live_grep({ cwd = utils.buffer_dir() })
+        builtins.live_grep()
       end, opts },
       { "<leader>b",  ":Telescope buffers<cr>",                 opts },
       { "<leader>hh", ":Telescope help_tags<cr>",               opts },

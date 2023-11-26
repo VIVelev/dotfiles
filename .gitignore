@@ -1,6 +1,8 @@
 .DS_Store
 .netrwhist
 
+.direnv/
+
 nvim/.config/nvim/plugin/
 *.spl
 

@@ -26,8 +26,8 @@ if test (uname) = Darwin
   end
 end
 
-# Exa (ls in Rust) alias
-alias ls "eza -la --color=always --color-scale --git --sort=Name"
+# Eza (ls in Rust) alias
+alias ls "eza -la --icons --color=always --color-scale --git --sort=Name"
 
 # Grep with color
 alias rg "rg --color always"

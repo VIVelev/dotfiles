@@ -319,10 +319,10 @@ return {
   -- NEWTON's notation for time derivative
   s({ trig = "([^%a])dot", wordTrig = false, regTrig = true, snippetType = "autosnippet" },
     fmta(
-      "<>\\dot <>",
+      "<>\\dot{<>}",
       {
         f(function(_, snip) return snip.captures[1] end),
-        i(1),
+        d(1, get_visual)
       }
     ),
     { condition = tex.in_mathzone }
@@ -330,10 +330,10 @@ return {
   -- NEWTON's notation for time derivative
   s({ trig = "([^%a])ddot", wordTrig = false, regTrig = true, snippetType = "autosnippet" },
     fmta(
-      "<>\\ddot <>",
+      "<>\\ddot{<>}",
       {
         f(function(_, snip) return snip.captures[1] end),
-        i(1),
+        d(1, get_visual)
       }
     ),
     { condition = tex.in_mathzone }
@@ -341,10 +341,10 @@ return {
   -- NEWTON's notation for time derivative
   s({ trig = "([^%a])dddot", wordTrig = false, regTrig = true, snippetType = "autosnippet" },
     fmta(
-      "<>\\dddot <>",
+      "<>\\dddot{<>}",
       {
         f(function(_, snip) return snip.captures[1] end),
-        i(1),
+        d(1, get_visual),
       }
     ),
     { condition = tex.in_mathzone }

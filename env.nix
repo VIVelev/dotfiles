@@ -14,9 +14,12 @@ with import <nixpkgs> {}; [
   htop
   micromamba
   neovim
+  nix-direnv
   nodejs
   ripgrep
   stow
+  typst
+  typst-lsp
   zoxide
 
   # node packages
