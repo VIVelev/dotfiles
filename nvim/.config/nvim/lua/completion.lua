@@ -19,7 +19,7 @@ local kind_icons = {
   Operator = " | Operator",
   Property = " | Property",
   Reference = " | Reference",
-  -- Snippet = "  | Snippet",
+  Snippet = "  | Snippet",
   Struct = "  | Struct",
   Text = " | Text",
   TypeParameter = " | TypeParam",
@@ -37,6 +37,11 @@ local has_words_before = function()
 end
 
 cmp.setup {
+  snippet = {
+    expand = function(args)
+      ('luasnip').lsp_expand(args.body)
+    end,
+  },
   mapping = {
     ["<CR>"] = cmp.mapping.confirm(),
     ["<Tab>"] = vim.schedule_wrap(function(fallback)
@@ -64,6 +69,7 @@ cmp.setup {
     { name = "buffer" },
     { name = "conjure" },
     { name = "copilot" },
+    { name = "luasnip" },
   },
   formatting = {
     format = function(_, vim_item)
