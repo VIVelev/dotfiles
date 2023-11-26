@@ -1,5 +1,4 @@
 local cmp = require "cmp"
-local luasnip = require "luasnip"
 
 local kind_icons = {
   Class = " | Class",
@@ -20,7 +19,7 @@ local kind_icons = {
   Operator = " | Operator",
   Property = " | Property",
   Reference = " | Reference",
-  Snippet = "  | Snippet",
+  -- Snippet = "  | Snippet",
   Struct = "  | Struct",
   Text = " | Text",
   TypeParameter = " | TypeParam",
@@ -31,19 +30,6 @@ local kind_icons = {
 }
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 
--- Load snippets
-require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/snippets/" })
-
--- Setup snippet engine
-luasnip.config.set_config({
-  -- Don't store snippet history for less overhead
-  history = false,
-  -- Allow autotrigger snippets
-  enable_autosnippets = true,
-  -- For equivalent of UltiSnips visual selection
-  store_selection_keys = "<Tab>",
-})
-
 local has_words_before = function()
   if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -51,27 +37,15 @@ local has_words_before = function()
 end
 
 cmp.setup {
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
   mapping = {
     ["<CR>"] = cmp.mapping.confirm(),
-    ["<M-Tab>"] = cmp.mapping(function(fallback)
-      if luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
     ["<Tab>"] = vim.schedule_wrap(function(fallback)
       if cmp.visible() and has_words_before() then
         cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
       else
         fallback()
       end
-    end, { "i", "s" }),
+    end),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -88,7 +62,6 @@ cmp.setup {
     { name = "nvim_lsp" },
     { name = "path" },
     { name = "buffer" },
-    { name = "luasnip" },
     { name = "conjure" },
     { name = "copilot" },
   },
