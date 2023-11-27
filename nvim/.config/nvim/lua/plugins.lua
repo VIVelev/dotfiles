@@ -1,5 +1,3 @@
-local opts = { noremap = true, silent = true }
-
 return {
   -- the colorscheme should be available when starting Neovim
   {
@@ -16,6 +14,7 @@ return {
       require "material".setup {
         contrast = {
           non_current_windows = true,
+          floating_window = true,
         },
         styles = {
           comments = { italic = true },
@@ -103,7 +102,6 @@ return {
   {
     "folke/flash.nvim",
     event = "VeryLazy",
-    ---@type Flash.Config
     opts = {
       search = {
         mode = "fuzzy",
@@ -154,25 +152,75 @@ return {
   },
 
   -- Comment
-  { "numToStr/Comment.nvim",   config = function() require "Comment".setup() end },
+  { "numToStr/Comment.nvim",           config = function() require "Comment".setup() end },
 
   -- Git
-  { "lewis6991/gitsigns.nvim", dependencies = "nvim-lua/plenary.nvim" },
+  {
+    "lewis6991/gitsigns.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
+    config = function()
+      require("gitsigns").setup {
+        on_attach = function(bufnr)
+          local gs = package.loaded.gitsigns
+
+          local function map(mode, l, r, opts)
+            opts = opts or {}
+            opts.buffer = bufnr
+            vim.keymap.set(mode, l, r, opts)
+          end
+
+          -- Navigation
+          map("n", "]c", function()
+            if vim.wo.diff then return "]c" end
+            vim.schedule(function() gs.next_hunk() end)
+            return "<Ignore>"
+          end, { expr = true })
+
+          map("n", "[c", function()
+            if vim.wo.diff then return "[c" end
+            vim.schedule(function() gs.prev_hunk() end)
+            return "<Ignore>"
+          end, { expr = true })
+
+          -- Actions
+          map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
+          map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
+          map("n", "<leader>hS", gs.stage_buffer)
+          map("n", "<leader>hu", gs.undo_stage_hunk)
+          map("n", "<leader>hR", gs.reset_buffer)
+          map("n", "<leader>hp", gs.preview_hunk)
+          map("n", "<leader>hb", function() gs.blame_line { full = true } end)
+          map("n", "<leader>tb", gs.toggle_current_line_blame)
+          map("n", "<leader>hd", gs.diffthis)
+          map("n", "<leader>hD", function() gs.diffthis("~") end)
+          map("n", "<leader>td", gs.toggle_deleted)
+
+          -- Text object
+          map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
+        end
+      }
+    end
+  },
   "tpope/vim-fugitive",
 
   -- Editing support
-  { "nvim-treesitter/nvim-treesitter",            build = ":TSUpdate" },
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   "tpope/vim-surround",
   "tpope/vim-unimpaired",
   "tpope/vim-sleuth",
   "tpope/vim-repeat",
   "tpope/vim-eunuch",
+  "tpope/vim-vinegar",
 
   -- Typst
   {
     'kaarmu/typst.vim',
     ft = 'typst',
     lazy = false,
+    config = function()
+      vim.g.typst_conceal_math = true
+      vim.wo.conceallevel = 2
+    end
   },
 
   -- Text Objects
@@ -186,16 +234,21 @@ return {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
     keys = {
-      { "<leader>ff", ":Telescope find_files<cr>",              opts },
-      { "<leader>g", function()
-        local builtins = require "telescope.builtin"
-        builtins.live_grep()
-      end, opts },
-      { "<leader>b",  ":Telescope buffers<cr>",                 opts },
-      { "<leader>hh", ":Telescope help_tags<cr>",               opts },
-      { "<leader>m",  ":Telescope man_pages<cr>",               opts },
-      { "<leader>fb", ":Telescope file_browser<cr>",            opts },
-      { "<leader>n",  ":Telescope file_browser path=%:p:h<cr>", opts },
+      { "<leader>ff", ":Telescope find_files<cr>",              noremap = true, silent = true },
+      {
+        "<leader>g",
+        function()
+          local builtins = require "telescope.builtin"
+          builtins.live_grep()
+        end,
+        noremap = true,
+        silent = true
+      },
+      { "<leader>b",  ":Telescope buffers<cr>",                 noremap = true, silent = true },
+      { "<leader>hh", ":Telescope help_tags<cr>",               noremap = true, silent = true },
+      { "<leader>m",  ":Telescope man_pages<cr>",               noremap = true, silent = true },
+      { "<leader>fb", ":Telescope file_browser<cr>",            noremap = true, silent = true },
+      { "<leader>n",  ":Telescope file_browser path=%:p:h<cr>", noremap = true, silent = true },
     },
     dependencies = {
       "nvim-lua/plenary.nvim",

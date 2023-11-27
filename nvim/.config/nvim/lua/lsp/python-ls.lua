@@ -12,6 +12,13 @@ require "lspconfig".ruff_lsp.setup {
 
 -- Pyright
 require "lspconfig".pyright.setup {
+  on_attach = function(client, bufnr)
+    -- Detach from Conjure buffers
+    local buffer_name = vim.api.nvim_buf_get_name(bufnr)
+    if string.find(buffer_name, "conjure") then
+      vim.lsp.buf_detach_client(bufnr, client.id)
+    end
+  end,
   capabilities = capabilities,
   settings = {
     python = {

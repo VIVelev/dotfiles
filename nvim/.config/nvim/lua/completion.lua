@@ -1,31 +1,31 @@
 local cmp = require "cmp"
 
 local kind_icons = {
-  Class = " | Class",
-  Color = " | Color",
-  Constant = "ﲀ | Const",
-  Constructor = " | Construct",
-  Enum = "練| Enum",
+  Text = "󰉿 | Text",
+  Method = "󰆧 | Method",
+  Function = "󰊕 | Function",
+  Constructor = " | Constructor",
+  Field = "󰜢 | Field",
+  Variable = "󰀫 | Variable",
+  Class = "󰠱 | Class",
+  Interface = " | Interface",
+  Module = " | Module",
+  Property = "󰜢 | Property",
+  Unit = "󰑭 | Unit",
+  Value = "󰎠 | Value",
+  Enum = " | Enum",
+  Keyword = "󰌋 | Keyword",
+  Snippet = " | Snippet",
+  Color = "󰏘 | Color",
+  File = "󰈙 | File",
+  Reference = "󰈇 | Reference",
+  Folder = "󰉋 | Folder",
   EnumMember = " | EnumMember",
+  Constant = "󰏿 | Constant",
+  Struct = "󰙅 | Struct",
   Event = " | Event",
-  Field = " | Field",
-  File = "",
-  Folder = " ",
-  Function = " | Func",
-  Interface = "ﰮ | Interface",
-  Keyword = " | Keyword",
-  Method = " | Method",
-  Module = " | Module",
-  Operator = " | Operator",
-  Property = " | Property",
-  Reference = " | Reference",
-  Snippet = "  | Snippet",
-  Struct = "  | Struct",
-  Text = " | Text",
-  TypeParameter = " | TypeParam",
-  Unit = "塞 | Unit",
-  Value = " | Value",
-  Variable = " | Variable",
+  Operator = "󰆕 | Operator",
+  TypeParameter = "TypeParameter",
   Copilot = " | Copilot",
 }
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
@@ -39,7 +39,7 @@ end
 cmp.setup {
   snippet = {
     expand = function(args)
-      ('luasnip').lsp_expand(args.body)
+      require("luasnip").lsp_expand(args.body)
     end,
   },
   mapping = {

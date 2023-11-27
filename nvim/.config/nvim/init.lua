@@ -17,7 +17,6 @@ require("keymaps")
 
 require("evil_lualine")
 require("treesitter")
-require("git")
 
 require("lsp")
 require("lsp.cc-ls")
