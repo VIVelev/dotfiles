@@ -28,8 +28,6 @@ map("n", "N", "Nzz", opts)
 -- Moving text
 map("v", "J", ":m '>+1<cr>gv=gv", opts)
 map("v", "K", ":m '<-2<cr>gv=gv", opts)
-map("i", "<c-j>", "<esc>:m .+1<cr>==", opts)
-map("i", "<c-k>", "<esc>:m .-2<cr>==", opts)
 map("n", "<leader>j", ":m .+1<cr>==", opts)
 map("n", "<leader>k", ":m .-2<cr>==", opts)
 

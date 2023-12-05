@@ -2,13 +2,13 @@
   "entries": {
     "tap": {
       "homebrew/bundle": {
-        "revision": "73fe1415f01bc26ce4df0c4f52099ab1a0ef5b9d"
+        "revision": "d6fbeee54ba344be59731ff3e93fb105b2567e34"
       },
       "homebrew/cask": {
         "revision": "28ea149a015fc4d3d41003f07aad2e300d47829f"
       },
       "homebrew/cask-versions": {
-        "revision": "9311edcf127fa8841ff0c128014101cde2365a44"
+        "revision": "c7f5684a09de439beb9f0ccfc75fd884922e07ce"
       },
       "homebrew/core": {
         "revision": "d8d3106d5c8f4f096d24442daa9417e77f761754"
@@ -25,7 +25,7 @@
         }
       },
       "google-chrome": {
-        "version": "117.0.5938.149",
+        "version": "119.0.6045.199",
         "options": {
           "full_name": "google-chrome"
         }
@@ -49,19 +49,19 @@
         }
       },
       "onyx": {
-        "version": "4.5.2",
+        "version": "4.5.3",
         "options": {
           "full_name": "onyx"
         }
       },
       "raycast": {
-        "version": "1.61.2",
+        "version": "1.63.0",
         "options": {
           "full_name": "raycast"
         }
       },
       "readdle-spark": {
-        "version": "3.10.1.60790",
+        "version": "3.10.6.61877",
         "options": {
           "full_name": "readdle-spark"
         }
@@ -73,19 +73,19 @@
         }
       },
       "stats": {
-        "version": "2.9.11",
+        "version": "2.9.13",
         "options": {
           "full_name": "stats"
         }
       },
       "telegram": {
-        "version": "10.2.4,255290",
+        "version": "10.3,256373",
         "options": {
           "full_name": "telegram"
         }
       },
       "zoom": {
-        "version": "5.16.6.24664",
+        "version": "5.16.10.25689",
         "options": {
           "full_name": "zoom"
         }
@@ -103,7 +103,7 @@
         }
       },
       "copilot": {
-        "version": "3.5.12,147-740c6b62",
+        "version": "3.5.19,154-6cbe1c94",
         "options": {
           "full_name": "copilot"
         }
@@ -121,13 +121,13 @@
         }
       },
       "orion": {
-        "version": "0.99,126.2",
+        "version": "0.99,126.3",
         "options": {
           "full_name": "orion"
         }
       },
       "firefox": {
-        "version": "119.0.1",
+        "version": "120.0.1",
         "options": {
           "full_name": "firefox"
         }
@@ -148,6 +148,12 @@
         "version": "21.3.0,2132",
         "options": {
           "full_name": "viber"
+        }
+      },
+      "firefox-nightly": {
+        "version": "latest",
+        "options": {
+          "full_name": "firefox-nightly"
         }
       }
     },
@@ -219,12 +225,12 @@
         "macOS": "13.5.2"
       },
       "sonoma": {
-        "HOMEBREW_VERSION": "4.1.19",
+        "HOMEBREW_VERSION": "4.1.22",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.0.0.0.1.1694021235",
         "Xcode": "15.0",
-        "macOS": "14.0"
+        "macOS": "14.1.1"
       }
     }
   }

@@ -7,8 +7,11 @@ require "nvim-treesitter.configs".setup {
     "nix",
     "bash",
     "fish",
+    "html",
     "python",
     "scheme",
+    "javascript",
+    "typescript",
   },
   highlight = {
     enable = true, -- false will disable the whole extension

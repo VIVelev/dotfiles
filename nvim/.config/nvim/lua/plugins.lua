@@ -12,12 +12,22 @@ return {
     },
     config = function()
       require "material".setup {
+        disable = {
+          background = true,
+        },
         contrast = {
           non_current_windows = true,
-          floating_window = true,
         },
         styles = {
           comments = { italic = true },
+        },
+        plugins = {
+          "fidget",
+          "flash",
+          "gitsigns",
+          "nvim-cmp",
+          "nvim-web-devicons",
+          "telescope",
         },
       }
 
@@ -40,7 +50,7 @@ return {
     },
     config = function()
       vim.cmd [[
-        let g:conjure#client#scheme#stdio#command = "mechanics"
+        " let g:conjure#client#scheme#stdio#command = "mechanics"
       ]]
     end
   },
@@ -49,10 +59,8 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      { "jose-elias-alvarez/null-ls.nvim", dependencies = "nvim-lua/plenary.nvim" },
       {
         "j-hui/fidget.nvim",
-        branch = "legacy",
         config = function()
           require "fidget".setup()
         end,
@@ -102,57 +110,15 @@ return {
   {
     "folke/flash.nvim",
     event = "VeryLazy",
-    opts = {
-      search = {
-        mode = "fuzzy",
-      },
-    },
+    opts = {},
     keys = {
-      {
-        "s",
-        mode = { "n", "x", "o" },
-        function()
-          require("flash").jump()
-        end,
-        desc = "Flash",
-      },
-      {
-        "S",
-        mode = { "n", "o", "x" },
-        function()
-          require("flash").treesitter()
-        end,
-        desc = "Flash Treesitter",
-      },
-      {
-        "r",
-        mode = "o",
-        function()
-          require("flash").remote()
-        end,
-        desc = "Remote Flash",
-      },
-      {
-        "R",
-        mode = { "o", "x" },
-        function()
-          require("flash").treesitter_search()
-        end,
-        desc = "Flash Treesitter Search",
-      },
-      {
-        "<c-s>",
-        mode = { "c" },
-        function()
-          require("flash").toggle()
-        end,
-        desc = "Toggle Flash Search",
-      },
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
+      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
     },
   },
 
   -- Comment
-  { "numToStr/Comment.nvim",           config = function() require "Comment".setup() end },
+  { "numToStr/Comment.nvim",           event = "InsertEnter", config = function() require "Comment".setup() end },
 
   -- Git
   {
@@ -210,17 +176,12 @@ return {
   "tpope/vim-sleuth",
   "tpope/vim-repeat",
   "tpope/vim-eunuch",
-  "tpope/vim-vinegar",
 
   -- Typst
   {
     'kaarmu/typst.vim',
     ft = 'typst',
     lazy = false,
-    config = function()
-      vim.g.typst_conceal_math = true
-      vim.wo.conceallevel = 2
-    end
   },
 
   -- Text Objects

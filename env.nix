@@ -1,4 +1,8 @@
-with import <nixpkgs> {}; [
+with import <nixpkgs>
+  { overlays = [
+      # (import (builtins.fetchTarball { url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz; }))
+    ];
+  }; [
   bat
   bash
   bitwarden-cli
@@ -15,6 +19,7 @@ with import <nixpkgs> {}; [
   micromamba
   neovim
   nix-direnv
+  nil
   nodejs
   ripgrep
   stow

@@ -19,7 +19,3 @@ require("evil_lualine")
 require("treesitter")
 
 require("lsp")
-require("lsp.cc-ls")
-require("lsp.lua-ls")
-require("lsp.python-ls")
-require("lsp.typst-ls")
