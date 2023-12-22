@@ -23,7 +23,7 @@ return {
         },
         plugins = {
           "fidget",
-          "flash",
+          -- "flash",
           "gitsigns",
           "nvim-cmp",
           "nvim-web-devicons",
@@ -118,7 +118,15 @@ return {
   },
 
   -- Comment
-  { "numToStr/Comment.nvim",           event = "InsertEnter", config = function() require "Comment".setup() end },
+  {
+    "numToStr/Comment.nvim",
+    config = function() require "Comment".setup() end,
+  },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {},
+  },
 
   -- Git
   {
@@ -170,8 +178,9 @@ return {
   "tpope/vim-fugitive",
 
   -- Editing support
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  { "nvim-treesitter/nvim-treesitter",            build = ":TSUpdate" },
   "tpope/vim-surround",
+  "tpope/vim-ragtag",
   "tpope/vim-unimpaired",
   "tpope/vim-sleuth",
   "tpope/vim-repeat",

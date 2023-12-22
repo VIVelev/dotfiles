@@ -48,3 +48,12 @@ map("o", "ir", "<Plug>(sexp_inner_top_list)")
 
 -- Git Fugitive
 map("n", "<leader>vf", ":G<cr>", { silent = true })
+
+-- TODO Comments
+map("n", "]t", function()
+  require("todo-comments").jump_next()
+end, { desc = "Next todo comment" })
+
+map("n", "[t", function()
+  require("todo-comments").jump_prev()
+end, { desc = "Previous todo comment" })

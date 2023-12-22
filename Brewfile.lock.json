@@ -8,7 +8,7 @@
         "revision": "28ea149a015fc4d3d41003f07aad2e300d47829f"
       },
       "homebrew/cask-versions": {
-        "revision": "c7f5684a09de439beb9f0ccfc75fd884922e07ce"
+        "revision": "73b6306f015bbd7db0de3705b1b732ef0c1d130b"
       },
       "homebrew/core": {
         "revision": "d8d3106d5c8f4f096d24442daa9417e77f761754"
@@ -25,7 +25,7 @@
         }
       },
       "google-chrome": {
-        "version": "119.0.6045.199",
+        "version": "120.0.6099.62",
         "options": {
           "full_name": "google-chrome"
         }
@@ -73,7 +73,7 @@
         }
       },
       "stats": {
-        "version": "2.9.13",
+        "version": "2.9.14",
         "options": {
           "full_name": "stats"
         }
@@ -103,7 +103,7 @@
         }
       },
       "copilot": {
-        "version": "3.5.19,154-6cbe1c94",
+        "version": "3.5.20,155-c7075f96",
         "options": {
           "full_name": "copilot"
         }
@@ -225,7 +225,7 @@
         "macOS": "13.5.2"
       },
       "sonoma": {
-        "HOMEBREW_VERSION": "4.1.22",
+        "HOMEBREW_VERSION": "4.1.23",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.0.0.0.1.1694021235",

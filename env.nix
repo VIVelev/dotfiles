@@ -29,4 +29,5 @@ with import <nixpkgs>
 
   # node packages
   nodePackages_latest.webtorrent-cli
+  nodePackages_latest.live-server
 ]

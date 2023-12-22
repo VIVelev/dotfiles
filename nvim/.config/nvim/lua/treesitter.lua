@@ -5,6 +5,7 @@ require "nvim-treesitter.configs".setup {
     "c",
     "lua",
     "nix",
+    "html",
     "bash",
     "fish",
     "html",
