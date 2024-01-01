@@ -62,7 +62,7 @@ return {
       {
         "j-hui/fidget.nvim",
         config = function()
-          require "fidget".setup()
+          require "fidget".setup {}
         end,
       },
     },
@@ -203,6 +203,7 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
+    lazy = false,
     keys = {
       { "<leader>ff", ":Telescope find_files<cr>",              noremap = true, silent = true },
       {
