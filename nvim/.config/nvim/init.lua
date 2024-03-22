@@ -19,3 +19,5 @@ require("evil_lualine")
 require("treesitter")
 
 require("lsp")
+
+vim.cmd.colorscheme "tokyonight"

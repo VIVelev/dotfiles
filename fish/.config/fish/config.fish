@@ -2,6 +2,8 @@ set -gx LANG en_US.UTF-8
 set -gx PAGER "less -FirSwX"
 set -gx fish_greeting ""
 
+fish_config theme choose tokyonight_night
+
 # FUN
 alias starwars "nc towel.blinkenlights.nl 23"
 alias stress "yes > /dev/null &"

@@ -6,6 +6,7 @@ with import <nixpkgs>
   bat
   bash
   bitwarden-cli
+  btop
   direnv
   eza
   fd
@@ -14,8 +15,7 @@ with import <nixpkgs>
   fzf
   gh
   gnumake
-  hatch
-  htop
+  # hatch
   micromamba
   neovim
   nix-direnv

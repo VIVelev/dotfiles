@@ -2,13 +2,13 @@
   "entries": {
     "tap": {
       "homebrew/bundle": {
-        "revision": "d6fbeee54ba344be59731ff3e93fb105b2567e34"
+        "revision": "faf12b3096f5e05aba220c380cfff6a223572917"
       },
       "homebrew/cask": {
         "revision": "28ea149a015fc4d3d41003f07aad2e300d47829f"
       },
       "homebrew/cask-versions": {
-        "revision": "73b6306f015bbd7db0de3705b1b732ef0c1d130b"
+        "revision": "850e999026f20bd41953a49d1cf50d2eadc88069"
       },
       "homebrew/core": {
         "revision": "d8d3106d5c8f4f096d24442daa9417e77f761754"
@@ -19,19 +19,19 @@
     },
     "cask": {
       "betterdisplay": {
-        "version": "2.0.11",
+        "version": "2.2.6",
         "options": {
           "full_name": "betterdisplay"
         }
       },
       "google-chrome": {
-        "version": "120.0.6099.62",
+        "version": "122.0.6261.129",
         "options": {
           "full_name": "google-chrome"
         }
       },
       "iina": {
-        "version": "1.3.3,138",
+        "version": "1.3.4,140",
         "options": {
           "full_name": "iina"
         }
@@ -49,19 +49,19 @@
         }
       },
       "onyx": {
-        "version": "4.5.3",
+        "version": "4.5.6",
         "options": {
           "full_name": "onyx"
         }
       },
       "raycast": {
-        "version": "1.63.0",
+        "version": "1.69.3",
         "options": {
           "full_name": "raycast"
         }
       },
       "readdle-spark": {
-        "version": "3.10.6.61877",
+        "version": "3.14.4.68398",
         "options": {
           "full_name": "readdle-spark"
         }
@@ -73,25 +73,25 @@
         }
       },
       "stats": {
-        "version": "2.9.14",
+        "version": "2.10.4",
         "options": {
           "full_name": "stats"
         }
       },
       "telegram": {
-        "version": "10.3,256373",
+        "version": "10.9,260554",
         "options": {
           "full_name": "telegram"
         }
       },
       "zoom": {
-        "version": "5.16.10.25689",
+        "version": "5.17.11.31580",
         "options": {
           "full_name": "zoom"
         }
       },
       "wezterm": {
-        "version": "20230712-072601,f4abf8fd",
+        "version": "20240203-110809,5046fc22",
         "options": {
           "full_name": "wezterm"
         }
@@ -103,13 +103,13 @@
         }
       },
       "copilot": {
-        "version": "3.5.20,155-c7075f96",
+        "version": "4.0.3,192-d0538646",
         "options": {
           "full_name": "copilot"
         }
       },
       "mullvadvpn": {
-        "version": "2023.5",
+        "version": "2023.6",
         "options": {
           "full_name": "mullvadvpn"
         }
@@ -121,7 +121,7 @@
         }
       },
       "orion": {
-        "version": "0.99,126.3",
+        "version": "0.99,126.4.1",
         "options": {
           "full_name": "orion"
         }
@@ -154,6 +154,24 @@
         "version": "latest",
         "options": {
           "full_name": "firefox-nightly"
+        }
+      },
+      "pdf-expert": {
+        "version": "3.9.2,1038",
+        "options": {
+          "full_name": "pdf-expert"
+        }
+      },
+      "brave-browser": {
+        "version": "1.62.153.0",
+        "options": {
+          "full_name": "brave-browser"
+        }
+      },
+      "obsidian": {
+        "version": "1.5.8",
+        "options": {
+          "full_name": "obsidian"
         }
       }
     },
@@ -225,12 +243,12 @@
         "macOS": "13.5.2"
       },
       "sonoma": {
-        "HOMEBREW_VERSION": "4.1.23",
+        "HOMEBREW_VERSION": "4.2.12",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
-        "CLT": "15.0.0.0.1.1694021235",
-        "Xcode": "15.0",
-        "macOS": "14.1.1"
+        "CLT": "15.3.0.0.1.1708646388",
+        "Xcode": "15.1",
+        "macOS": "14.4"
       }
     }
   }
