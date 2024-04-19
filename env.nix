@@ -15,6 +15,8 @@ with import <nixpkgs>
   fzf
   gh
   gnumake
+  imagemagick
+  ghostscript # for pdf -> png conversion
   # hatch
   micromamba
   neovim

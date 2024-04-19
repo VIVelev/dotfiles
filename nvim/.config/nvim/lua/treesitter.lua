@@ -12,6 +12,7 @@ require "nvim-treesitter.configs".setup {
     "python",
     "scheme",
     "haskell",
+    "markdown",
     "javascript",
     "typescript",
   },

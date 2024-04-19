@@ -37,6 +37,11 @@ map("n", "<down>", "<nop>", opts)
 map("n", "<left>", "<nop>", opts)
 map("n", "<right>", "<nop>", opts)
 
+map("i", "<up>", "<nop>", opts)
+map("i", "<down>", "<nop>", opts)
+map("i", "<left>", "<nop>", opts)
+map("i", "<right>", "<nop>", opts)
+
 -- Nops
 map("n", "gd", "<nop>", opts)
 

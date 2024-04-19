@@ -8,7 +8,7 @@
         "revision": "28ea149a015fc4d3d41003f07aad2e300d47829f"
       },
       "homebrew/cask-versions": {
-        "revision": "850e999026f20bd41953a49d1cf50d2eadc88069"
+        "revision": "5819728d2340a21ac1855e7f1cd7fb2f50423d3e"
       },
       "homebrew/core": {
         "revision": "d8d3106d5c8f4f096d24442daa9417e77f761754"
@@ -19,13 +19,13 @@
     },
     "cask": {
       "betterdisplay": {
-        "version": "2.2.6",
+        "version": "2.3.1",
         "options": {
           "full_name": "betterdisplay"
         }
       },
       "google-chrome": {
-        "version": "122.0.6261.129",
+        "version": "123.0.6312.124",
         "options": {
           "full_name": "google-chrome"
         }
@@ -49,19 +49,19 @@
         }
       },
       "onyx": {
-        "version": "4.5.6",
+        "version": "4.5.7",
         "options": {
           "full_name": "onyx"
         }
       },
       "raycast": {
-        "version": "1.69.3",
+        "version": "1.71.3",
         "options": {
           "full_name": "raycast"
         }
       },
       "readdle-spark": {
-        "version": "3.14.4.68398",
+        "version": "3.15.2.71167",
         "options": {
           "full_name": "readdle-spark"
         }
@@ -73,13 +73,13 @@
         }
       },
       "stats": {
-        "version": "2.10.4",
+        "version": "2.10.7",
         "options": {
           "full_name": "stats"
         }
       },
       "telegram": {
-        "version": "10.9,260554",
+        "version": "10.10.2,261795",
         "options": {
           "full_name": "telegram"
         }
@@ -103,13 +103,13 @@
         }
       },
       "copilot": {
-        "version": "4.0.3,192-d0538646",
+        "version": "4.0.7,198-75dff20b",
         "options": {
           "full_name": "copilot"
         }
       },
       "mullvadvpn": {
-        "version": "2023.6",
+        "version": "2024.1",
         "options": {
           "full_name": "mullvadvpn"
         }
@@ -121,7 +121,7 @@
         }
       },
       "orion": {
-        "version": "0.99,126.4.1",
+        "version": "0.99,127.2",
         "options": {
           "full_name": "orion"
         }
@@ -169,7 +169,7 @@
         }
       },
       "obsidian": {
-        "version": "1.5.8",
+        "version": "1.5.12",
         "options": {
           "full_name": "obsidian"
         }
@@ -229,6 +229,50 @@
             }
           }
         }
+      },
+      "gnuplot": {
+        "version": "6.0.0",
+        "bottle": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_sonoma": {
+              "cellar": "/opt/homebrew/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/gnuplot/blobs/sha256:d92d1dc715458feb2d30d989d652c8fdd4d8dfb147bce1b45ead44bb02ceb829",
+              "sha256": "d92d1dc715458feb2d30d989d652c8fdd4d8dfb147bce1b45ead44bb02ceb829"
+            },
+            "arm64_ventura": {
+              "cellar": "/opt/homebrew/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/gnuplot/blobs/sha256:8a9d03d57efcf9873c2923b142417cc62fa15892a78469db57e5ec15cb179d17",
+              "sha256": "8a9d03d57efcf9873c2923b142417cc62fa15892a78469db57e5ec15cb179d17"
+            },
+            "arm64_monterey": {
+              "cellar": "/opt/homebrew/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/gnuplot/blobs/sha256:904fffc29054b3cf6d5c78f548fe67f71280188c710ece1f791c1246b12fd382",
+              "sha256": "904fffc29054b3cf6d5c78f548fe67f71280188c710ece1f791c1246b12fd382"
+            },
+            "sonoma": {
+              "cellar": "/usr/local/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/gnuplot/blobs/sha256:70eb518fbcfcd30c0f26a1fc8a0a3e9b575553c37f4a61c478fa8646b61e9c0c",
+              "sha256": "70eb518fbcfcd30c0f26a1fc8a0a3e9b575553c37f4a61c478fa8646b61e9c0c"
+            },
+            "ventura": {
+              "cellar": "/usr/local/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/gnuplot/blobs/sha256:d72c280d93c71dd20fcaf800145b5eef16242c1c0908f352347e3ca22e487d3d",
+              "sha256": "d72c280d93c71dd20fcaf800145b5eef16242c1c0908f352347e3ca22e487d3d"
+            },
+            "monterey": {
+              "cellar": "/usr/local/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/gnuplot/blobs/sha256:38d49f29e33cd79a583575f48822189109c46d0ce27abfab82bd47300905e079",
+              "sha256": "38d49f29e33cd79a583575f48822189109c46d0ce27abfab82bd47300905e079"
+            },
+            "x86_64_linux": {
+              "cellar": "/home/linuxbrew/.linuxbrew/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/gnuplot/blobs/sha256:18c5a4d8d1a6314539fd4f5cadefcfc0228130d5e4ec45d4a26f99c1f6037f85",
+              "sha256": "18c5a4d8d1a6314539fd4f5cadefcfc0228130d5e4ec45d4a26f99c1f6037f85"
+            }
+          }
+        }
       }
     }
   },
@@ -243,12 +287,12 @@
         "macOS": "13.5.2"
       },
       "sonoma": {
-        "HOMEBREW_VERSION": "4.2.12",
+        "HOMEBREW_VERSION": "4.2.14",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.3.0.0.1.1708646388",
         "Xcode": "15.1",
-        "macOS": "14.4"
+        "macOS": "14.4.1"
       }
     }
   }

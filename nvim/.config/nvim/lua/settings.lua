@@ -26,3 +26,15 @@ vim.o.signcolumn = "yes"
 vim.o.laststatus = 3
 
 vim.o.ignorecase = true
+
+vim.o.conceallevel = 2
+
+vim.opt.fillchars = {
+  horiz     = '━',
+  horizup   = '┻',
+  horizdown = '┳',
+  vert      = '┃',
+  vertleft  = '┫',
+  vertright = '┣',
+  verthoriz = '╋',
+}
