@@ -17,7 +17,6 @@ with import <nixpkgs>
   gnumake
   imagemagick
   ghostscript # for pdf -> png conversion
-  # hatch
   micromamba
   neovim
   nix-direnv

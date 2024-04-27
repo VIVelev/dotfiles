@@ -1,0 +1,12 @@
+# Dark background with neon-like lines
+axes.facecolor: "#222222"
+axes.edgecolor: "#00ff00"
+axes.labelcolor: "#00ff00"
+axes.prop_cycle: cycler("color", ["#ff00ff", "#00ffff", "#ffff00"])
+xtick.color: "#00ff00"
+ytick.color: "#00ff00"
+grid.color: "#404040"
+figure.facecolor: "#222222"
+figure.edgecolor: "#222222"
+savefig.facecolor: "#222222"
+savefig.edgecolor: "#222222"

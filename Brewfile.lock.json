@@ -2,13 +2,13 @@
   "entries": {
     "tap": {
       "homebrew/bundle": {
-        "revision": "faf12b3096f5e05aba220c380cfff6a223572917"
+        "revision": "bfeed4463404184c561460dcd7edaa0f7fe497c0"
       },
       "homebrew/cask": {
         "revision": "28ea149a015fc4d3d41003f07aad2e300d47829f"
       },
       "homebrew/cask-versions": {
-        "revision": "5819728d2340a21ac1855e7f1cd7fb2f50423d3e"
+        "revision": "66daea87cb3cf5797e4a321102fd10b7dc18a4b6"
       },
       "homebrew/core": {
         "revision": "d8d3106d5c8f4f096d24442daa9417e77f761754"
@@ -25,7 +25,7 @@
         }
       },
       "google-chrome": {
-        "version": "123.0.6312.124",
+        "version": "124.0.6367.62",
         "options": {
           "full_name": "google-chrome"
         }
@@ -55,7 +55,7 @@
         }
       },
       "raycast": {
-        "version": "1.71.3",
+        "version": "1.71.4",
         "options": {
           "full_name": "raycast"
         }
@@ -73,7 +73,7 @@
         }
       },
       "stats": {
-        "version": "2.10.7",
+        "version": "2.10.10",
         "options": {
           "full_name": "stats"
         }
@@ -85,7 +85,7 @@
         }
       },
       "zoom": {
-        "version": "5.17.11.31580",
+        "version": "6.0.2.33403",
         "options": {
           "full_name": "zoom"
         }
@@ -157,7 +157,7 @@
         }
       },
       "pdf-expert": {
-        "version": "3.9.2,1038",
+        "version": "3.10,1039",
         "options": {
           "full_name": "pdf-expert"
         }
@@ -287,7 +287,7 @@
         "macOS": "13.5.2"
       },
       "sonoma": {
-        "HOMEBREW_VERSION": "4.2.14",
+        "HOMEBREW_VERSION": "4.2.19",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.3.0.0.1.1708646388",

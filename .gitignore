@@ -13,3 +13,5 @@ nvim/.config/nvim/plugin/
 ipython/.config/ipython/profile_default/history.sqlite
 
 _*
+
+*.json
