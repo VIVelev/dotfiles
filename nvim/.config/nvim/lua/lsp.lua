@@ -30,20 +30,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<leader>fm", function()
       vim.lsp.buf.format { async = true }
     end, opts)
-
-    local clients = vim.lsp.get_active_clients({ bufnr = ev.buf })
-    for i = 1, #clients do
-      if clients[i].server_capabilities.documentFormattingProvider then
-        local aug = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
-        vim.api.nvim_create_autocmd("BufWritePre", {
-          group = aug,
-          buffer = ev.buf,
-          callback = function()
-            vim.lsp.buf.format()
-          end,
-        })
-      end
-    end
   end,
 })
 
@@ -87,7 +73,6 @@ require "lspconfig".lua_ls.setup {
 require "lspconfig".nil_ls.setup { capabilities = capabilities }
 
 -- Ruff
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
 require "lspconfig".ruff_lsp.setup {
   on_attach = function(client, bufnr)
     -- Detach from Conjure buffers

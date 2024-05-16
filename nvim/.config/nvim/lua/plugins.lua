@@ -23,6 +23,12 @@ return {
   {
     "Olical/conjure",
     ft = { "clojure", "scheme", "python" },
+    config = function()
+      vim.cmd [[
+        let g:conjure#client#scheme#stdio#command = "csi -quiet -:c"
+        let g:conjure#client#scheme#stdio#prompt_pattern = "\n-#;%d-> "
+      ]]
+    end,
     dependencies = {
       "PaterJason/cmp-conjure",
       "tpope/vim-dispatch",
@@ -47,8 +53,9 @@ return {
     cmd = "Copilot",
     event = "InsertEnter",
     opts = {
-      suggestion = { enabled = false },
-      panel = { enabled = false },
+      panel = {
+        keymap = { open = "<C-CR>" },
+      },
     },
   },
 
@@ -65,21 +72,93 @@ return {
       "hrsh7th/cmp-buffer",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
-      { "zbirenbaum/copilot-cmp", opts = {} },
     },
-    config = function()
-      require("completion")
-    end,
+    opts = function()
+      local cmp = require "cmp"
+
+      local kind_icons = {
+        Text = "󰉿 | Text",
+        Method = "󰆧 | Method",
+        Function = "󰊕 | Function",
+        Constructor = " | Constructor",
+        Field = "󰜢 | Field",
+        Variable = "󰀫 | Variable",
+        Class = "󰠱 | Class",
+        Interface = " | Interface",
+        Module = " | Module",
+        Property = "󰜢 | Property",
+        Unit = "󰑭 | Unit",
+        Value = "󰎠 | Value",
+        Enum = " | Enum",
+        Keyword = "󰌋 | Keyword",
+        Snippet = " | Snippet",
+        Color = "󰏘 | Color",
+        File = "󰈙 | File",
+        Reference = "󰈇 | Reference",
+        Folder = "󰉋 | Folder",
+        EnumMember = " | EnumMember",
+        Constant = "󰏿 | Constant",
+        Struct = "󰙅 | Struct",
+        Event = " | Event",
+        Operator = "󰆕 | Operator",
+        TypeParameter = "TypeParameter",
+      }
+
+      return {
+        snippet = {
+          expand = function(args)
+            require("luasnip").lsp_expand(args.body)
+          end,
+        },
+        mapping = {
+          ["<CR>"] = cmp.mapping.confirm(),
+          ["<Tab>"] = vim.schedule_wrap(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+            else
+              fallback()
+            end
+          end),
+          ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+          ["<C-q>"] = cmp.mapping.complete(),
+          ["<C-f>"] = cmp.mapping.scroll_docs(4),
+          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-e>"] = cmp.mapping.close(),
+        },
+        sources = {
+          { name = "nvim_lsp" },
+          { name = "path" },
+          { name = "buffer" },
+          { name = "conjure" },
+          { name = "luasnip" },
+        },
+        formatting = {
+          format = function(_, vim_item)
+            vim_item.kind = kind_icons[vim_item.kind]
+            return vim_item
+          end,
+        },
+        window = {
+          documentation = {
+            border = "rounded",
+          },
+        },
+      }
+    end
   },
 
   -- Motion
   {
     "folke/flash.nvim",
     event = "VeryLazy",
-    opts = {},
     keys = {
       { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-      -- { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
     },
   },
 
@@ -88,7 +167,16 @@ return {
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {},
+    keys = {
+      { "]t", function()
+        require("todo-comments").jump_next()
+      end,
+      },
+      { "[t", function()
+        require("todo-comments").jump_prev()
+      end
+      }
+    },
   },
 
   -- Git
@@ -136,7 +224,7 @@ return {
       end
     },
   },
-  "tpope/vim-fugitive",
+  { "tpope/vim-fugitive",              keys = { { "<leader>vf", ":G<cr>", silent = true } } },
 
   -- Editing support
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
@@ -148,11 +236,7 @@ return {
   "tpope/vim-eunuch",
 
   -- Typst
-  {
-    'kaarmu/typst.vim',
-    ft = 'typst',
-    lazy = false,
-  },
+  { 'kaarmu/typst.vim',                           ft = 'typst' },
 
   -- Text Objects
   "wellle/targets.vim",
@@ -164,7 +248,23 @@ return {
   {
     'stevearc/oil.nvim',
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {},
+    opts = {
+      keymaps = {
+        ["<C-h>"] = false,
+        ["<C-l>"] = false,
+        ["<C-s>"] = false,
+        ["<C-x>"] = "actions.select_split",
+        ["<C-v>"] = "actions.select_vsplit",
+      },
+      view_options = {
+        show_hidden = true,
+      },
+    },
+
+    -- Open parent directory in current window
+    keys = {
+      { "-", ":Oil<cr>" },
+    }
   },
 
   -- Telescope
