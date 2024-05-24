@@ -1,0 +1,5 @@
+#let ket(x) = [$bar.v$#x$angle.r$]
+#let bra(x) = [$angle.l$#x$bar.v$]
+#let braket(x,y) = [$angle.l$#x$bar.v$#y$angle.r$]
+#let Braket(x, A, y) = [$angle.l$#x$bar.v$#A$bar.v$#y$angle.r$]
+#let hbar = [$planck.reduce$]

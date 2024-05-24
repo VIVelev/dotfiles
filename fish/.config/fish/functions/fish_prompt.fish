@@ -8,9 +8,12 @@ function fish_prompt
     set_color red
   end
 
-  if test -n "$IN_NIX_SHELL"
+  # In "nix develop" shell?
+  # The second is hack to check if in "nix shell" shell.
+  if test -n "$IN_NIX_SHELL"; or echo $PATH | grep '/nix/store' --count > /dev/null
     set_color blue
-    echo -n  '(nix-shell) '
+    echo -n  "(nix:$name) "
+
     set_color green
   end
   echo -n  'λ'

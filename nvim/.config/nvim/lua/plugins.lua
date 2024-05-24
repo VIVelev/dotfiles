@@ -157,13 +157,16 @@ return {
   {
     "folke/flash.nvim",
     event = "VeryLazy",
+    opts = {
+      mode = { search = { enabled = true } }
+    },
     keys = {
       { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
     },
   },
 
   -- Comment
-  { "numToStr/Comment.nvim",           opts = {} },
+  { "numToStr/Comment.nvim", opts = {} },
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -224,10 +227,74 @@ return {
       end
     },
   },
-  { "tpope/vim-fugitive",              keys = { { "<leader>vf", ":G<cr>", silent = true } } },
+  { "tpope/vim-fugitive",    keys = { { "<leader>vf", ":G<cr>", silent = true } } },
 
-  -- Editing support
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  -- Tree sitter
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    lazy = false,
+    priority = 1001,
+    config = function()
+      local configs = require 'nvim-treesitter.configs';
+
+      ---@diagnostic disable: missing-fields
+      configs.setup {
+        ensure_installed = {
+          "c",
+          "css",
+          "lua",
+          "nix",
+          "html",
+          "bash",
+          "fish",
+          "vimdoc",
+          "python",
+          "scheme",
+          "haskell",
+          "markdown",
+          "javascript",
+          "typescript",
+        },
+        highlight = {
+          enable = true, -- false will disable the whole extension
+          additional_vim_regex_highlighting = false,
+        },
+        indent = {
+          enable = false,
+        },
+        textobjects = {
+          select = {
+            enable = true,
+
+            -- Automatically jump forward to textobj, similar to targets.vim
+            lookahead = true,
+
+            keymaps = {
+              ["ib"] = "@block.inner",
+              ["ab"] = "@block.outer",
+              ["il"] = "@call.inner",
+              ["al"] = "@call.outer",
+              ["ic"] = "@class.inner",
+              ["ac"] = "@class.outer",
+              ["ik"] = "@comment.inner",
+              ["ak"] = "@comment.outer",
+              ["id"] = "@conditional.inner",
+              ["ad"] = "@conditional.outer",
+              ["if"] = "@function.inner",
+              ["af"] = "@function.outer",
+              ["iu"] = "@loop.inner",
+              ["au"] = "@loop.outer",
+              ["im"] = "@parameter.inner",
+              ["am"] = "@parameter.outer",
+            },
+          },
+        },
+      }
+    end
+  },
+
+  -- I know my Pope!
   "tpope/vim-surround",
   "tpope/vim-ragtag",
   "tpope/vim-unimpaired",
@@ -236,7 +303,7 @@ return {
   "tpope/vim-eunuch",
 
   -- Typst
-  { 'kaarmu/typst.vim',                           ft = 'typst' },
+  { "kaarmu/typst.vim",                           ft = "typst" },
 
   -- Text Objects
   "wellle/targets.vim",
@@ -246,15 +313,14 @@ return {
 
   -- Tree editor
   {
-    'stevearc/oil.nvim',
+    "stevearc/oil.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    lazy = false,
     opts = {
       keymaps = {
         ["<C-h>"] = false,
         ["<C-l>"] = false,
-        ["<C-s>"] = false,
         ["<C-x>"] = "actions.select_split",
-        ["<C-v>"] = "actions.select_vsplit",
       },
       view_options = {
         show_hidden = true,
@@ -273,7 +339,7 @@ return {
     branch = "0.1.x",
     lazy = false,
     keys = {
-      { "<leader>ff", ":Telescope find_files<cr>",              noremap = true, silent = true },
+      { "<leader>ff", ":Telescope find_files<cr>",                noremap = true, silent = true },
       {
         "<leader>g",
         function()
@@ -283,11 +349,14 @@ return {
         noremap = true,
         silent = true
       },
-      { "<leader>b",  ":Telescope buffers<cr>",                 noremap = true, silent = true },
-      { "<leader>hh", ":Telescope help_tags<cr>",               noremap = true, silent = true },
-      { "<leader>m",  ":Telescope man_pages<cr>",               noremap = true, silent = true },
-      { "<leader>fb", ":Telescope file_browser<cr>",            noremap = true, silent = true },
-      { "<leader>n",  ":Telescope file_browser path=%:p:h<cr>", noremap = true, silent = true },
+      { "<leader>bb", ":Telescope buffers<cr>",                   noremap = true, silent = true },
+      { "<leader>bf", ":Telescope current_buffer_fuzzy_find<cr>", noremap = true, silent = true },
+      { "<leader>hh", ":Telescope help_tags<cr>",                 noremap = true, silent = true },
+      { "<leader>mm", ":Telescope man_pages<cr>",                 noremap = true, silent = true },
+      { "<leader>fb", ":Telescope file_browser<cr>",              noremap = true, silent = true },
+      { "<leader>n",  ":Telescope file_browser path=%:p:h<cr>",   noremap = true, silent = true },
+      { "<leader>mr", ":Telescope marks<cr>",                     noremap = true, silent = true },
+      { "<leader>rr", ":Telescope registers<cr>",                 noremap = true, silent = true },
     },
     dependencies = {
       "nvim-lua/plenary.nvim",

@@ -22,11 +22,9 @@ vim.o.updatetime = 400
 -- diagnostics appear/become resolved.
 vim.o.signcolumn = "yes"
 
--- A single status bar
+vim.o.scrolloff = 10
 vim.o.laststatus = 3
-
 vim.o.ignorecase = true
-
 vim.o.conceallevel = 2
 
 vim.opt.fillchars = {
