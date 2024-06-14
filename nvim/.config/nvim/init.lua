@@ -19,7 +19,6 @@ require("lazy").setup("plugins",
     },
   })
 require("keymaps")
-require("evil_lualine")
 require("lsp")
 
 vim.cmd.colorscheme "tokyonight"

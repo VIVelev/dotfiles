@@ -97,14 +97,10 @@ require "lspconfig".pylsp.setup {
 }
 
 -- TypeScript/JavaScript
-require "lspconfig".tsserver.setup {
-  capabilities = capabilities,
-}
+require "lspconfig".tsserver.setup { capabilities = capabilities }
 
 -- Haskell
-require "lspconfig".hls.setup {
-  capabilities = capabilities,
-}
+require "lspconfig".hls.setup { capabilities = capabilities }
 
 -- Typst
 require "lspconfig".typst_lsp.setup {

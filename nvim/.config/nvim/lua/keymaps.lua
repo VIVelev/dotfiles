@@ -2,8 +2,8 @@ local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 -- I hate Escape
-map("i", "jk", "<esc>")
-map("i", "kj", "<esc>")
+map("i", "jk", "<esc>:w<cr>")
+map("i", "kj", "<esc>:w<cr>")
 
 -- Easier movement
 map("n", "<c-h>", "<c-w>h", opts)
@@ -16,10 +16,6 @@ map("n", "<m-=>", "5<c-w>+", opts)
 map("n", "<m-->", "5<c-w>-", opts)
 map("n", "<m-[>", "5<c-w><", opts)
 map("n", "<m-]>", "5<c-w>>", opts)
-
--- Easy save
-map("n", "<c-w>", ":w<cr>", opts)
-map("i", "<c-w>", "<Esc>:w<cr>", opts)
 
 -- Keeping it centered
 map("n", "n", "nzz", opts)
@@ -50,3 +46,6 @@ map("x", "ar", "<Plug>(sexp_outer_top_list)")
 map("o", "ar", "<Plug>(sexp_outer_top_list)")
 map("x", "ir", "<Plug>(sexp_inner_top_list)")
 map("o", "ir", "<Plug>(sexp_inner_top_list)")
+
+-- Open pdf dual
+map("n", "<m-o>", ":silent !open %:p:s?.typ?.pdf? -a Preview<cr>", opts)

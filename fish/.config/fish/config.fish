@@ -4,10 +4,6 @@ set -gx fish_greeting ""
 
 fish_config theme choose tokyonight_night
 
-# FUN
-alias starwars "nc towel.blinkenlights.nl 23"
-alias stress "yes > /dev/null &"
-
 # git alias
 alias ga "git add"
 alias gaa "git add --all"
@@ -49,6 +45,9 @@ fzf_configure_bindings --directory=\cf --git_log=\cg --git_status=\cs
 if type -q nvim
   alias vim "nvim"
   alias vimdiff="nvim -d"
+  function viz
+    vim (rg . --colors 'match:none' | fzf --ansi --print0 | awk -F':' '{print $1}')
+  end
   set -gx EDITOR nvim
   set -gx VISUAL nvim
 end
@@ -65,6 +64,9 @@ if status is-interactive
 
     # Direnv
     direnv hook fish | source
+
+    # Fzf
+    fzf --fish | source
 end
 
 # >>> mamba initialize >>>

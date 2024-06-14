@@ -2,12 +2,6 @@ return {
   -- the colorscheme should be available when starting Neovim
   {
     "folke/tokyonight.nvim",
-    dependencies = {
-      {
-        "nvim-lualine/lualine.nvim",
-        dependencies = "kyazdani42/nvim-web-devicons"
-      },
-    },
     lazy = false,
     priority = 1000,
     opts = {
@@ -22,30 +16,20 @@ return {
   -- REPL
   {
     "Olical/conjure",
-    ft = { "clojure", "scheme", "python" },
-    config = function()
-      vim.cmd [[
-        let g:conjure#client#scheme#stdio#command = "csi -quiet -:c"
-        let g:conjure#client#scheme#stdio#prompt_pattern = "\n-#;%d-> "
-      ]]
+    ft = { "python", "scheme" },
+    init = function()
+      vim.g["conjure#mapping#doc_word"] = false
+      vim.g["conjure#client#scheme#stdio#command"] = "csi -quiet -:c"
+      vim.g["conjure#client#scheme#stdio#prompt_pattern"] = "\n-#;%d-> "
     end,
-    dependencies = {
-      "PaterJason/cmp-conjure",
-      "tpope/vim-dispatch",
-      "clojure-vim/vim-jack-in",
-      "radenling/vim-dispatch-neovim",
-    },
+    config = function()
+      require("conjure.main").main()
+      require("conjure.mapping")["on-filetype"]()
+    end,
   },
 
   -- LSP & other sources
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      {
-        "j-hui/fidget.nvim",
-      },
-    },
-  },
+  "neovim/nvim-lspconfig",
 
   -- Copilot
   {
@@ -62,16 +46,11 @@ return {
   -- Autocomplete
   {
     "hrsh7th/nvim-cmp",
-    -- load cmp on InsertEnter
     event = "InsertEnter",
-    -- these dependencies will only be loaded when cmp loads
-    -- dependencies are always lazy-loaded unless specified otherwise
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-buffer",
-      "L3MON4D3/LuaSnip",
-      "saadparwaiz1/cmp_luasnip",
     },
     opts = function()
       local cmp = require "cmp"
@@ -105,11 +84,6 @@ return {
       }
 
       return {
-        snippet = {
-          expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-          end,
-        },
         mapping = {
           ["<CR>"] = cmp.mapping.confirm(),
           ["<Tab>"] = vim.schedule_wrap(function(fallback)
@@ -135,8 +109,6 @@ return {
           { name = "nvim_lsp" },
           { name = "path" },
           { name = "buffer" },
-          { name = "conjure" },
-          { name = "luasnip" },
         },
         formatting = {
           format = function(_, vim_item)
@@ -158,7 +130,7 @@ return {
     "folke/flash.nvim",
     event = "VeryLazy",
     opts = {
-      mode = { search = { enabled = true } }
+      modes = { search = { enabled = true } }
     },
     keys = {
       { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
@@ -167,20 +139,6 @@ return {
 
   -- Comment
   { "numToStr/Comment.nvim", opts = {} },
-  {
-    "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    keys = {
-      { "]t", function()
-        require("todo-comments").jump_next()
-      end,
-      },
-      { "[t", function()
-        require("todo-comments").jump_prev()
-      end
-      }
-    },
-  },
 
   -- Git
   {
@@ -201,29 +159,29 @@ return {
           if vim.wo.diff then return "]c" end
           vim.schedule(function() gs.next_hunk() end)
           return "<Ignore>"
-        end, { expr = true })
+        end, { expr = true, silent = true })
 
         map("n", "[c", function()
           if vim.wo.diff then return "[c" end
           vim.schedule(function() gs.prev_hunk() end)
           return "<Ignore>"
-        end, { expr = true })
+        end, { expr = true, silent = true })
 
         -- Actions
-        map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
-        map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
-        map("n", "<leader>hS", gs.stage_buffer)
-        map("n", "<leader>hu", gs.undo_stage_hunk)
-        map("n", "<leader>hR", gs.reset_buffer)
-        map("n", "<leader>hp", gs.preview_hunk)
-        map("n", "<leader>hb", function() gs.blame_line { full = true } end)
-        map("n", "<leader>tb", gs.toggle_current_line_blame)
-        map("n", "<leader>hd", gs.diffthis)
-        map("n", "<leader>hD", function() gs.diffthis("~") end)
-        map("n", "<leader>td", gs.toggle_deleted)
+        map({ "n", "v" }, "<leader>hs", gs.stage_hunk, { silent = true })
+        map({ "n", "v" }, "<leader>hr", gs.reset_hunk, { silent = true })
+        map("n", "<leader>hS", gs.stage_buffer, { silent = true })
+        map("n", "<leader>hu", gs.undo_stage_hunk, { silent = true })
+        map("n", "<leader>hR", gs.reset_buffer, { silent = true })
+        map("n", "<leader>hp", gs.preview_hunk, { silent = true })
+        map("n", "<leader>hb", function() gs.blame_line { full = true } end, { silent = true })
+        map("n", "<leader>tb", gs.toggle_current_line_blame, { silent = true })
+        map("n", "<leader>hd", gs.diffthis, { silent = true })
+        map("n", "<leader>hD", function() gs.diffthis("~") end, { silent = true })
+        map("n", "<leader>td", gs.toggle_deleted, { silent = true })
 
         -- Text object
-        map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
+        map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { silent = true })
       end
     },
   },
@@ -234,9 +192,9 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     lazy = false,
-    priority = 1001,
+    priority = 999,
     config = function()
-      local configs = require 'nvim-treesitter.configs';
+      local configs = require "nvim-treesitter.configs";
 
       ---@diagnostic disable: missing-fields
       configs.setup {
@@ -296,26 +254,25 @@ return {
 
   -- I know my Pope!
   "tpope/vim-surround",
-  "tpope/vim-ragtag",
-  "tpope/vim-unimpaired",
+  { "tpope/vim-ragtag", ft = "html" },
   "tpope/vim-sleuth",
   "tpope/vim-repeat",
   "tpope/vim-eunuch",
 
   -- Typst
-  { "kaarmu/typst.vim",                           ft = "typst" },
+  { "kaarmu/typst.vim", ft = "typst" },
 
   -- Text Objects
   "wellle/targets.vim",
   "nvim-treesitter/nvim-treesitter-textobjects",
-  { "guns/vim-sexp",                              ft = { "clojure", "scheme" } },
-  { "tpope/vim-sexp-mappings-for-regular-people", ft = { "clojure", "scheme" } },
+  { "guns/vim-sexp",                              ft = { "scheme" } },
+  { "tpope/vim-sexp-mappings-for-regular-people", ft = { "scheme" } },
 
   -- Tree editor
   {
     "stevearc/oil.nvim",
+    lazy = false, -- Since otherwise "vim ." uses netrw
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    lazy = false,
     opts = {
       keymaps = {
         ["<C-h>"] = false,
@@ -329,62 +286,20 @@ return {
 
     -- Open parent directory in current window
     keys = {
-      { "-", ":Oil<cr>" },
+      { "-", ":Oil<cr>", noremap = true, silent = true },
     }
   },
 
-  -- Telescope
   {
-    "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
-    lazy = false,
+    "junegunn/fzf.vim",
+    dependencies = { "junegunn/fzf" },
     keys = {
-      { "<leader>ff", ":Telescope find_files<cr>",                noremap = true, silent = true },
-      {
-        "<leader>g",
-        function()
-          local builtins = require "telescope.builtin"
-          builtins.live_grep()
-        end,
-        noremap = true,
-        silent = true
-      },
-      { "<leader>bb", ":Telescope buffers<cr>",                   noremap = true, silent = true },
-      { "<leader>bf", ":Telescope current_buffer_fuzzy_find<cr>", noremap = true, silent = true },
-      { "<leader>hh", ":Telescope help_tags<cr>",                 noremap = true, silent = true },
-      { "<leader>mm", ":Telescope man_pages<cr>",                 noremap = true, silent = true },
-      { "<leader>fb", ":Telescope file_browser<cr>",              noremap = true, silent = true },
-      { "<leader>n",  ":Telescope file_browser path=%:p:h<cr>",   noremap = true, silent = true },
-      { "<leader>mr", ":Telescope marks<cr>",                     noremap = true, silent = true },
-      { "<leader>rr", ":Telescope registers<cr>",                 noremap = true, silent = true },
+      { "<leader>ff", ":Files <cr>",      noremap = true, silent = true },
+      { "<leader>n",  ":Files %:p:h<cr>", noremap = true, silent = true },
+      { "<leader>g",  ":Rg<cr>",          noremap = true, silent = true },
+      { "<leader>bb", ":Buffers<cr>",     noremap = true, silent = true },
+      { "<leader>bf", ":BLines<cr>",      noremap = true, silent = true },
+      { "<leader>hh", ":Helptags<cr>",    noremap = true, silent = true },
     },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "kyazdani42/nvim-web-devicons",
-      { "nvim-telescope/telescope-fzf-native.nvim",  build = "make" },
-      { "nvim-telescope/telescope-ui-select.nvim" },
-      { "nvim-telescope/telescope-file-browser.nvim" },
-    },
-    config = function()
-      local telescope = require "telescope"
-      telescope.setup {
-        defaults = {
-          file_ignore_patterns = { "**/*.min.js" },
-        },
-        extensions = {
-          fzf = {
-            fuzzy = true,                   -- false will only do exact matching
-            override_generic_sorter = true, -- override the generic sorter
-            override_file_sorter = true,    -- override the file sorter
-            case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
-            -- the default case_mode is "smart_case"
-          }
-        }
-      }
-
-      telescope.load_extension("fzf")
-      telescope.load_extension("ui-select")
-      telescope.load_extension("file_browser")
-    end,
   },
 }
