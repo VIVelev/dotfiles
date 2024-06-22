@@ -1,5 +1,8 @@
 vim.g.mapleader = " "
 
+-- Spelling
+vim.o.spell = true
+
 -- Cursor and mouse
 vim.o.mouse = "a"
 vim.o.mousemodel = "extend"
@@ -9,7 +12,6 @@ vim.o.splitright = true
 
 -- Performance tweaks
 vim.o.lazyredraw = true
-vim.o.synmaxcol = 300
 
 -- Disable showmode - i.e. Don"t show mode like --INSERT-- in current status line.
 vim.o.showmode = false
@@ -18,14 +20,26 @@ vim.o.showmode = false
 -- delays and poor user experience.
 vim.o.updatetime = 400
 
--- Always show the sign column, otherwise it would shift the text each time
--- diagnostics appear/become resolved.
+-- Relative line number
+vim.o.rnu = true
+
+-- Keep signcolumn so it doesn't disturb
 vim.o.signcolumn = "yes"
 
+-- Don't highlight search
+vim.o.hlsearch = false
+
+-- Keep cursor away from top/bottom
 vim.o.scrolloff = 10
-vim.o.laststatus = 3
+
+-- Ignore case for / and ?
 vim.o.ignorecase = true
-vim.o.conceallevel = 2
+
+-- Show a single status bar
+vim.o.laststatus = 3
+
+-- Don't use fancy markdowns
+vim.o.conceallevel = 0
 
 vim.opt.fillchars = {
   horiz     = '━',

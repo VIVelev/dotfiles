@@ -16,7 +16,7 @@ return {
   -- REPL
   {
     "Olical/conjure",
-    ft = { "python", "scheme" },
+    ft = { "scheme" },
     init = function()
       vim.g["conjure#mapping#doc_word"] = false
       vim.g["conjure#client#scheme#stdio#command"] = "csi -quiet -:c"
@@ -125,67 +125,17 @@ return {
     end
   },
 
-  -- Motion
-  {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    opts = {
-      modes = { search = { enabled = true } }
-    },
-    keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-    },
-  },
-
   -- Comment
   { "numToStr/Comment.nvim", opts = {} },
 
   -- Git
   {
-    "lewis6991/gitsigns.nvim",
-    dependencies = "nvim-lua/plenary.nvim",
-    opts = {
-      on_attach = function(bufnr)
-        local gs = package.loaded.gitsigns
-
-        local function map(mode, l, r, opts)
-          opts = opts or {}
-          opts.buffer = bufnr
-          vim.keymap.set(mode, l, r, opts)
-        end
-
-        -- Navigation
-        map("n", "]c", function()
-          if vim.wo.diff then return "]c" end
-          vim.schedule(function() gs.next_hunk() end)
-          return "<Ignore>"
-        end, { expr = true, silent = true })
-
-        map("n", "[c", function()
-          if vim.wo.diff then return "[c" end
-          vim.schedule(function() gs.prev_hunk() end)
-          return "<Ignore>"
-        end, { expr = true, silent = true })
-
-        -- Actions
-        map({ "n", "v" }, "<leader>hs", gs.stage_hunk, { silent = true })
-        map({ "n", "v" }, "<leader>hr", gs.reset_hunk, { silent = true })
-        map("n", "<leader>hS", gs.stage_buffer, { silent = true })
-        map("n", "<leader>hu", gs.undo_stage_hunk, { silent = true })
-        map("n", "<leader>hR", gs.reset_buffer, { silent = true })
-        map("n", "<leader>hp", gs.preview_hunk, { silent = true })
-        map("n", "<leader>hb", function() gs.blame_line { full = true } end, { silent = true })
-        map("n", "<leader>tb", gs.toggle_current_line_blame, { silent = true })
-        map("n", "<leader>hd", gs.diffthis, { silent = true })
-        map("n", "<leader>hD", function() gs.diffthis("~") end, { silent = true })
-        map("n", "<leader>td", gs.toggle_deleted, { silent = true })
-
-        -- Text object
-        map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { silent = true })
-      end
-    },
+    "tpope/vim-fugitive",
+    keys = {
+      { "<leader>vf", ":G<cr>",           silent = true },
+      { "<leader>vd", ":Gvdiffsplit<cr>", silent = true },
+    }
   },
-  { "tpope/vim-fugitive",    keys = { { "<leader>vf", ":G<cr>", silent = true } } },
 
   -- Tree sitter
   {
@@ -225,7 +175,7 @@ return {
           select = {
             enable = true,
 
-            -- Automatically jump forward to textobj, similar to targets.vim
+            -- Automatically jump forward to text object, similar to targets.vim
             lookahead = true,
 
             keymaps = {
@@ -254,7 +204,7 @@ return {
 
   -- I know my Pope!
   "tpope/vim-surround",
-  { "tpope/vim-ragtag", ft = "html" },
+  { "tpope/vim-ragtag",      ft = "html" },
   "tpope/vim-sleuth",
   "tpope/vim-repeat",
   "tpope/vim-eunuch",
@@ -265,8 +215,7 @@ return {
   -- Text Objects
   "wellle/targets.vim",
   "nvim-treesitter/nvim-treesitter-textobjects",
-  { "guns/vim-sexp",                              ft = { "scheme" } },
-  { "tpope/vim-sexp-mappings-for-regular-people", ft = { "scheme" } },
+  { "guns/vim-sexp",    ft = { "scheme" } },
 
   -- Tree editor
   {
@@ -295,11 +244,13 @@ return {
     dependencies = { "junegunn/fzf" },
     keys = {
       { "<leader>ff", ":Files <cr>",      noremap = true, silent = true },
+      { "<leader>gf", ":GFiles <cr>",     noremap = true, silent = true },
       { "<leader>n",  ":Files %:p:h<cr>", noremap = true, silent = true },
-      { "<leader>g",  ":Rg<cr>",          noremap = true, silent = true },
+      { "<leader>gg", ":Rg<cr>",          noremap = true, silent = true },
       { "<leader>bb", ":Buffers<cr>",     noremap = true, silent = true },
       { "<leader>bf", ":BLines<cr>",      noremap = true, silent = true },
       { "<leader>hh", ":Helptags<cr>",    noremap = true, silent = true },
+      { "<leader>jj", ":Jumps<cr>",       noremap = true, silent = true },
     },
   },
 }

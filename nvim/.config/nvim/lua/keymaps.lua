@@ -14,12 +14,8 @@ map("n", "<c-l>", "<c-w>l", opts)
 -- Increase/decrease split size
 map("n", "<m-=>", "5<c-w>+", opts)
 map("n", "<m-->", "5<c-w>-", opts)
-map("n", "<m-[>", "5<c-w><", opts)
-map("n", "<m-]>", "5<c-w>>", opts)
-
--- Keeping it centered
-map("n", "n", "nzz", opts)
-map("n", "N", "Nzz", opts)
+map("n", "<m-.>", "5<c-w><", opts)
+map("n", "<m-,>", "5<c-w>>", opts)
 
 -- Moving text
 map("v", "J", ":m '>+1<cr>gv=gv", opts)
@@ -32,7 +28,6 @@ map("n", "<up>", "<nop>", opts)
 map("n", "<down>", "<nop>", opts)
 map("n", "<left>", "<nop>", opts)
 map("n", "<right>", "<nop>", opts)
-
 map("i", "<up>", "<nop>", opts)
 map("i", "<down>", "<nop>", opts)
 map("i", "<left>", "<nop>", opts)

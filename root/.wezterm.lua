@@ -9,11 +9,11 @@ if wezterm.config_builder then
 end
 
 config.color_scheme = "MaterialOcean"
-config.font = wezterm.font "JetBrains Mono", { weight = "ExtraBold" }
-config.window_decorations = "RESIZE|MACOS_FORCE_DISABLE_SHADOW"
+config.font = wezterm.font "JetBrains Mono"
+config.window_decorations = "RESIZE"--|MACOS_FORCE_DISABLE_SHADOW"
 config.hide_tab_bar_if_only_one_tab = true
-config.front_end = "WebGpu"
--- config.window_background_opacity = 0.99
+config.initial_rows = 50
+config.initial_cols = 175
 
 local act = wezterm.action
 config.keys = {
