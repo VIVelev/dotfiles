@@ -3,7 +3,7 @@ vim.g.mapleader = " "
 -- Spelling
 vim.o.spell = true
 
--- Cursor and mouse
+-- Yes, I use the mouse sometimes.
 vim.o.mouse = "a"
 vim.o.mousemodel = "extend"
 
@@ -41,6 +41,10 @@ vim.o.laststatus = 3
 -- Don't use fancy markdowns
 vim.o.conceallevel = 0
 
+-- Don't wrap lines
+vim.o.wrap = false
+
+-- Nice pane separators
 vim.opt.fillchars = {
   horiz     = '━',
   horizup   = '┻',

@@ -140,6 +140,7 @@ return {
   -- Tree sitter
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     build = ":TSUpdate",
     lazy = false,
     priority = 999,
@@ -172,12 +173,19 @@ return {
           enable = false,
         },
         textobjects = {
+          swap = {
+            enable = true,
+            swap_next = {
+              ["<localleader>a"] = "@parameter.inner",
+            },
+            swap_previous = {
+              ["<localleader>A"] = "@parameter.inner",
+            },
+          },
           select = {
             enable = true,
-
             -- Automatically jump forward to text object, similar to targets.vim
             lookahead = true,
-
             keymaps = {
               ["ib"] = "@block.inner",
               ["ab"] = "@block.outer",
@@ -214,7 +222,6 @@ return {
 
   -- Text Objects
   "wellle/targets.vim",
-  "nvim-treesitter/nvim-treesitter-textobjects",
   { "guns/vim-sexp",    ft = { "scheme" } },
 
   -- Tree editor
@@ -250,7 +257,6 @@ return {
       { "<leader>bb", ":Buffers<cr>",     noremap = true, silent = true },
       { "<leader>bf", ":BLines<cr>",      noremap = true, silent = true },
       { "<leader>hh", ":Helptags<cr>",    noremap = true, silent = true },
-      { "<leader>jj", ":Jumps<cr>",       noremap = true, silent = true },
     },
   },
 }
