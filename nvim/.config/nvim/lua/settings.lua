@@ -3,9 +3,8 @@ vim.g.mapleader = " "
 -- Spelling
 vim.o.spell = true
 
--- Yes, I use the mouse sometimes.
+-- Yes, I use the mouse sometimes...
 vim.o.mouse = "a"
-vim.o.mousemodel = "extend"
 
 -- Split to the right
 vim.o.splitright = true
@@ -39,7 +38,7 @@ vim.o.ignorecase = true
 vim.o.laststatus = 3
 
 -- Don't use fancy markdowns
-vim.o.conceallevel = 0
+vim.o.conceallevel = 3
 
 -- Don't wrap lines
 vim.o.wrap = false

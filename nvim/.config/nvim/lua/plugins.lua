@@ -13,21 +13,6 @@ return {
     },
   },
 
-  -- REPL
-  {
-    "Olical/conjure",
-    ft = { "scheme" },
-    init = function()
-      vim.g["conjure#mapping#doc_word"] = false
-      vim.g["conjure#client#scheme#stdio#command"] = "csi -quiet -:c"
-      vim.g["conjure#client#scheme#stdio#prompt_pattern"] = "\n-#;%d-> "
-    end,
-    config = function()
-      require("conjure.main").main()
-      require("conjure.mapping")["on-filetype"]()
-    end,
-  },
-
   -- LSP & other sources
   "neovim/nvim-lspconfig",
 
@@ -162,6 +147,7 @@ return {
           "scheme",
           "haskell",
           "markdown",
+          "markdown_inline",
           "javascript",
           "typescript",
         },
@@ -250,13 +236,12 @@ return {
     "junegunn/fzf.vim",
     dependencies = { "junegunn/fzf" },
     keys = {
-      { "<leader>ff", ":Files <cr>",      noremap = true, silent = true },
-      { "<leader>gf", ":GFiles <cr>",     noremap = true, silent = true },
-      { "<leader>n",  ":Files %:p:h<cr>", noremap = true, silent = true },
-      { "<leader>gg", ":Rg<cr>",          noremap = true, silent = true },
-      { "<leader>bb", ":Buffers<cr>",     noremap = true, silent = true },
-      { "<leader>bf", ":BLines<cr>",      noremap = true, silent = true },
-      { "<leader>hh", ":Helptags<cr>",    noremap = true, silent = true },
+      { "<leader>ff", ":Files <cr>",   noremap = true, silent = true },
+      { "<leader>n",  ":GFiles <cr>",  noremap = true, silent = true },
+      { "<leader>gg", ":Rg<cr>",       noremap = true, silent = true },
+      { "<leader>bb", ":Buffers<cr>",  noremap = true, silent = true },
+      { "<leader>bf", ":BLines<cr>",   noremap = true, silent = true },
+      { "<leader>hh", ":Helptags<cr>", noremap = true, silent = true },
     },
   },
 }

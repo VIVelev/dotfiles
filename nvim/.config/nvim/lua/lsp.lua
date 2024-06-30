@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local opts = { buffer = ev.buf }
+    local opts = { buffer = ev.buf, silent = true }
     vim.keymap.set("n", "gdd", vim.lsp.buf.definition, opts)
     vim.keymap.set("n", "gds", "<cmd>vsplit<cr><cmd>lua vim.lsp.buf.definition()<cr>", opts)
     vim.keymap.set("n", "gdx", "<cmd>split<cr><cmd>lua vim.lsp.buf.definition()<cr>", opts)
@@ -29,10 +29,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<leader>fm", function()
       vim.lsp.buf.format { async = true }
     end, opts)
+    vim.keymap.set("v", "<leader>f", function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
   end,
 })
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = false -- I don't like snippets!
 
 -- C
 require "lspconfig".clangd.setup { capabilities = capabilities }

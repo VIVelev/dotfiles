@@ -44,3 +44,17 @@ map("o", "ir", "<Plug>(sexp_inner_top_list)")
 
 -- Open pdf dual
 map("n", "<m-o>", ":silent !open %:p:s?.typ?.pdf? -a Preview<cr>", opts)
+
+-- Toggle markdown checkbox
+map("n", "<leader>x", function()
+  local line = vim.api.nvim_get_current_line()
+  local new_line
+  if line:match("%[ %]") then
+    new_line = line:gsub("%[ %]", "[x]", 1)
+  elseif line:match("%[x%]") then
+    new_line = line:gsub("%[x%]", "[ ]", 1)
+  else
+    return -- No checkbox found, do nothing
+  end
+  vim.api.nvim_set_current_line(new_line)
+end, vim.tbl_extend("error", opts, { desc = "Toggle markdown checkbox" }))
