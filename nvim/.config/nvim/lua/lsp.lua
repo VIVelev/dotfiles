@@ -1,38 +1,36 @@
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "rounded",
-})
-
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(ev)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
-
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = ev.buf, silent = true }
-    vim.keymap.set("n", "gdd", vim.lsp.buf.definition, opts)
-    vim.keymap.set("n", "gds", "<cmd>vsplit<cr><cmd>lua vim.lsp.buf.definition()<cr>", opts)
-    vim.keymap.set("n", "gdx", "<cmd>split<cr><cmd>lua vim.lsp.buf.definition()<cr>", opts)
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-    vim.keymap.set("n", "gii", vim.lsp.buf.implementation, opts)
-    vim.keymap.set("n", "gis", "<cmd>vsplit<cr><cmd>lua vim.lsp.buf.implementation()<cr>", opts)
-    vim.keymap.set("n", "gix", "<cmd>split<cr><cmd>lua vim.lsp.buf.implementation()<cr>", opts)
-    vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
-    vim.keymap.set("n", "<leader>mv", vim.lsp.buf.rename, opts)
-    vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-    vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, opts)
-    vim.keymap.set("n", "<leader>sd", vim.diagnostic.open_float, opts)
-    vim.keymap.set("n", "<leader>fm", function()
+    local map = vim.keymap.set
+    map("n", "gdd", vim.lsp.buf.definition, opts)
+    map("n", "gds", "<cmd>vsplit<cr><cmd>lua vim.lsp.buf.definition()<cr>", opts)
+    map("n", "gdx", "<cmd>split<cr><cmd>lua vim.lsp.buf.definition()<cr>", opts)
+    map("n", "K", vim.lsp.buf.hover, opts)
+    map("n", "gii", vim.lsp.buf.implementation, opts)
+    map("n", "gis", "<cmd>vsplit<cr><cmd>lua vim.lsp.buf.implementation()<cr>", opts)
+    map("n", "gix", "<cmd>split<cr><cmd>lua vim.lsp.buf.implementation()<cr>", opts)
+    map("n", "<leader>D", vim.lsp.buf.type_definition, opts)
+    map("n", "<leader>mv", vim.lsp.buf.rename, opts)
+    map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+    map("n", "gr", vim.lsp.buf.references, opts)
+    map("i", "<C-s>", vim.lsp.buf.signature_help, opts)
+    map("n", "<leader>sd", vim.diagnostic.open_float, opts)
+    map("n", "<leader>fm", function()
       vim.lsp.buf.format { async = true }
     end, opts)
-    vim.keymap.set("v", "<leader>f", function()
+    map("v", "<leader>f", function()
       vim.lsp.buf.format { async = true }
     end, opts)
   end,
+})
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
 })
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -88,16 +86,17 @@ require "lspconfig".ruff_lsp.setup {
 }
 
 -- Python
-require "lspconfig".pylsp.setup {
-  on_attach = function(client, bufnr)
-    -- Detach from Conjure buffers
-    local buffer_name = vim.api.nvim_buf_get_name(bufnr)
-    if string.find(buffer_name, "conjure") then
-      vim.lsp.buf_detach_client(bufnr, client.id)
-    end
-  end,
+require "lspconfig".basedpyright.setup {
   capabilities = capabilities,
+  settings = {
+    basedpyright = {
+      analysis = {
+        typeCheckingMode = "off",
+      },
+    },
+  },
 }
+
 
 -- TypeScript/JavaScript
 require "lspconfig".tsserver.setup { capabilities = capabilities }

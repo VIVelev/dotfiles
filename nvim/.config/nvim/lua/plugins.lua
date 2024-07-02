@@ -16,18 +16,6 @@ return {
   -- LSP & other sources
   "neovim/nvim-lspconfig",
 
-  -- Copilot
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    opts = {
-      panel = {
-        keymap = { open = "<C-CR>" },
-      },
-    },
-  },
-
   -- Autocomplete
   {
     "hrsh7th/nvim-cmp",
