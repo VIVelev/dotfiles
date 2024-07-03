@@ -13,5 +13,3 @@ cask "stats"
 cask "telegram"
 cask "wezterm"
 cask "zoom"
-
-cask "visual-studio-code"

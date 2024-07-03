@@ -1,3 +1,21 @@
+local treesitter_ft = {
+  "c",
+  "css",
+  "lua",
+  "nix",
+  "html",
+  "bash",
+  "fish",
+  "vimdoc",
+  "python",
+  "scheme",
+  "haskell",
+  "markdown",
+  "markdown_inline",
+  "javascript",
+  "typescript",
+}
+
 return {
   -- the colorscheme should be available when starting Neovim
   {
@@ -13,93 +31,19 @@ return {
     },
   },
 
-  -- LSP & other sources
+  -- LSP & Autocomplete
   "neovim/nvim-lspconfig",
-
-  -- Autocomplete
   {
-    "hrsh7th/nvim-cmp",
+    "echasnovski/mini.completion",
     event = "InsertEnter",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-buffer",
+    opts = {
+      lsp_completion = {
+        source_func = "omnifunc",
+        auto_setup = false,
+      },
     },
-    opts = function()
-      local cmp = require "cmp"
-
-      local kind_icons = {
-        Text = "󰉿 | Text",
-        Method = "󰆧 | Method",
-        Function = "󰊕 | Function",
-        Constructor = " | Constructor",
-        Field = "󰜢 | Field",
-        Variable = "󰀫 | Variable",
-        Class = "󰠱 | Class",
-        Interface = " | Interface",
-        Module = " | Module",
-        Property = "󰜢 | Property",
-        Unit = "󰑭 | Unit",
-        Value = "󰎠 | Value",
-        Enum = " | Enum",
-        Keyword = "󰌋 | Keyword",
-        Snippet = " | Snippet",
-        Color = "󰏘 | Color",
-        File = "󰈙 | File",
-        Reference = "󰈇 | Reference",
-        Folder = "󰉋 | Folder",
-        EnumMember = " | EnumMember",
-        Constant = "󰏿 | Constant",
-        Struct = "󰙅 | Struct",
-        Event = " | Event",
-        Operator = "󰆕 | Operator",
-        TypeParameter = "TypeParameter",
-      }
-
-      return {
-        mapping = {
-          ["<CR>"] = cmp.mapping.confirm(),
-          ["<Tab>"] = vim.schedule_wrap(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-            else
-              fallback()
-            end
-          end),
-          ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
-          ["<C-q>"] = cmp.mapping.complete(),
-          ["<C-f>"] = cmp.mapping.scroll_docs(4),
-          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-e>"] = cmp.mapping.close(),
-        },
-        sources = {
-          { name = "nvim_lsp" },
-          { name = "path" },
-          { name = "buffer" },
-        },
-        formatting = {
-          format = function(_, vim_item)
-            vim_item.kind = kind_icons[vim_item.kind]
-            return vim_item
-          end,
-        },
-        window = {
-          documentation = {
-            border = "rounded",
-          },
-        },
-      }
-    end
+    version = "*",
   },
-
-  -- Comment
-  { "numToStr/Comment.nvim", opts = {} },
 
   -- Git
   {
@@ -115,37 +59,14 @@ return {
     "nvim-treesitter/nvim-treesitter",
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     build = ":TSUpdate",
-    lazy = false,
-    priority = 999,
+    ft = treesitter_ft,
     config = function()
       local configs = require "nvim-treesitter.configs";
-
       ---@diagnostic disable: missing-fields
       configs.setup {
-        ensure_installed = {
-          "c",
-          "css",
-          "lua",
-          "nix",
-          "html",
-          "bash",
-          "fish",
-          "vimdoc",
-          "python",
-          "scheme",
-          "haskell",
-          "markdown",
-          "markdown_inline",
-          "javascript",
-          "typescript",
-        },
-        highlight = {
-          enable = true, -- false will disable the whole extension
-          additional_vim_regex_highlighting = false,
-        },
-        indent = {
-          enable = false,
-        },
+        ensure_installed = treesitter_ft,
+        highlight = { enable = true, },
+        indent = { enable = false },
         textobjects = {
           swap = {
             enable = true,
@@ -184,19 +105,16 @@ return {
     end
   },
 
-  -- I know my Pope!
-  "tpope/vim-surround",
-  { "tpope/vim-ragtag",      ft = "html" },
-  "tpope/vim-sleuth",
-  "tpope/vim-repeat",
-  "tpope/vim-eunuch",
-
   -- Typst
   { "kaarmu/typst.vim", ft = "typst" },
 
-  -- Text Objects
-  "wellle/targets.vim",
-  { "guns/vim-sexp",    ft = { "scheme" } },
+  -- Misc
+  { "tpope/vim-ragtag", ft = "html" },
+  "tpope/vim-sleuth",
+  "tpope/vim-eunuch",
+  { "echasnovski/mini.surround", opts = {},        version = "*" },
+  { "echasnovski/mini.ai",       opts = {},        version = "*" },
+  { "guns/vim-sexp",             ft = { "scheme" } },
 
   -- Tree editor
   {

@@ -58,3 +58,8 @@ map("n", "<leader>x", function()
   end
   vim.api.nvim_set_current_line(new_line)
 end, vim.tbl_extend("error", opts, { desc = "Toggle markdown checkbox" }))
+
+
+-- Autocomplete mappings
+map("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
+map("i", "<S-Tab>", [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })

@@ -1,10 +1,9 @@
--- Use LspAttach autocommand to only map the following keys
--- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(ev)
-    -- Buffer local mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    -- Setup LSP autocomplete
+    vim.bo[ev.buf].omnifunc = "v:lua.MiniCompletion.completefunc_lsp"
+    -- LSP keymaps
     local opts = { buffer = ev.buf, silent = true }
     local map = vim.keymap.set
     map("n", "gdd", vim.lsp.buf.definition, opts)
@@ -29,15 +28,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
+-- Rounded hover window
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = "rounded",
 })
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = false -- I don't like snippets!
-
 -- C
-require "lspconfig".clangd.setup { capabilities = capabilities }
+require "lspconfig".clangd.setup {}
 
 -- Lua
 local runtime_path = vim.split(package.path, ";")
@@ -45,7 +42,6 @@ table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
 require "lspconfig".lua_ls.setup {
-  capabilities = capabilities,
   settings = {
     Lua = {
       runtime = {
@@ -71,7 +67,7 @@ require "lspconfig".lua_ls.setup {
 }
 
 -- Nix
-require "lspconfig".nil_ls.setup { capabilities = capabilities }
+require "lspconfig".nil_ls.setup {}
 
 -- Ruff
 require "lspconfig".ruff_lsp.setup {
@@ -82,12 +78,10 @@ require "lspconfig".ruff_lsp.setup {
       vim.lsp.buf_detach_client(bufnr, client.id)
     end
   end,
-  capabilities = capabilities,
 }
 
 -- Python
 require "lspconfig".basedpyright.setup {
-  capabilities = capabilities,
   settings = {
     basedpyright = {
       analysis = {
@@ -97,16 +91,14 @@ require "lspconfig".basedpyright.setup {
   },
 }
 
-
 -- TypeScript/JavaScript
-require "lspconfig".tsserver.setup { capabilities = capabilities }
+require "lspconfig".tsserver.setup {}
 
 -- Haskell
-require "lspconfig".hls.setup { capabilities = capabilities }
+require "lspconfig".hls.setup {}
 
 -- Typst
 require "lspconfig".typst_lsp.setup {
-  capabilities = capabilities,
   settings = {
     exportPdf = "onType", -- Choose onType, onSave or never.
     serverPath = ""       -- Normally, there is no need to uncomment it.
