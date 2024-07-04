@@ -112,9 +112,9 @@ return {
   { "tpope/vim-ragtag", ft = "html" },
   "tpope/vim-sleuth",
   "tpope/vim-eunuch",
-  { "echasnovski/mini.surround", opts = {},        version = "*" },
-  { "echasnovski/mini.ai",       opts = {},        version = "*" },
-  { "guns/vim-sexp",             ft = { "scheme" } },
+  "tpope/vim-surround",
+  { "guns/vim-sexp",       ft = { "scheme" } },
+  { "echasnovski/mini.ai", opts = {},        version = "*" },
 
   -- Tree editor
   {

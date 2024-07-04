@@ -33,33 +33,29 @@ map("i", "<down>", "<nop>", opts)
 map("i", "<left>", "<nop>", opts)
 map("i", "<right>", "<nop>", opts)
 
--- Nops
-map("n", "gd", "<nop>", opts)
-
--- S-exp
-map("x", "ar", "<Plug>(sexp_outer_top_list)")
-map("o", "ar", "<Plug>(sexp_outer_top_list)")
-map("x", "ir", "<Plug>(sexp_inner_top_list)")
-map("o", "ir", "<Plug>(sexp_inner_top_list)")
-
 -- Open pdf dual
 map("n", "<m-o>", ":silent !open %:p:s?.typ?.pdf? -a Preview<cr>", opts)
-
--- Toggle markdown checkbox
-map("n", "<leader>x", function()
-  local line = vim.api.nvim_get_current_line()
-  local new_line
-  if line:match("%[ %]") then
-    new_line = line:gsub("%[ %]", "[x]", 1)
-  elseif line:match("%[x%]") then
-    new_line = line:gsub("%[x%]", "[ ]", 1)
-  else
-    return -- No checkbox found, do nothing
-  end
-  vim.api.nvim_set_current_line(new_line)
-end, vim.tbl_extend("error", opts, { desc = "Toggle markdown checkbox" }))
-
 
 -- Autocomplete mappings
 map("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
 map("i", "<S-Tab>", [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
+
+local keys = {
+  ["cr"]        = vim.api.nvim_replace_termcodes("<cr>", true, true, true),
+  ["ctrl-y"]    = vim.api.nvim_replace_termcodes("<C-y>", true, true, true),
+  ["ctrl-y_cr"] = vim.api.nvim_replace_termcodes("<C-y><cr>", true, true, true),
+}
+
+---@diagnostic disable-next-line: duplicate-set-field
+_G.cr_action = function()
+  if vim.fn.pumvisible() ~= 0 then
+    -- If popup is visible, confirm selected item or add new line otherwise
+    local item_selected = vim.fn.complete_info()["selected"] ~= -1
+    return item_selected and keys["ctrl-y"] or keys["ctrl-y_cr"]
+  else
+    -- If popup is not visible, use plain `<CR>`.
+    return keys["cr"]
+  end
+end
+
+vim.keymap.set("i", "<cr>", "v:lua._G.cr_action()", { expr = true })

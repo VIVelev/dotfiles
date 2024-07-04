@@ -70,15 +70,7 @@ require "lspconfig".lua_ls.setup {
 require "lspconfig".nil_ls.setup {}
 
 -- Ruff
-require "lspconfig".ruff_lsp.setup {
-  on_attach = function(client, bufnr)
-    -- Detach from Conjure buffers
-    local buffer_name = vim.api.nvim_buf_get_name(bufnr)
-    if string.find(buffer_name, "conjure") then
-      vim.lsp.buf_detach_client(bufnr, client.id)
-    end
-  end,
-}
+require "lspconfig".ruff_lsp.setup {}
 
 -- Python
 require "lspconfig".basedpyright.setup {
@@ -101,6 +93,6 @@ require "lspconfig".hls.setup {}
 require "lspconfig".typst_lsp.setup {
   settings = {
     exportPdf = "onType", -- Choose onType, onSave or never.
-    serverPath = ""       -- Normally, there is no need to uncomment it.
+    serverPath = ""
   }
 }

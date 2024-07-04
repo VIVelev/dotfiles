@@ -37,11 +37,14 @@ vim.o.ignorecase = true
 -- Show a single status bar
 vim.o.laststatus = 3
 
--- Don't use fancy markdowns
+-- Use fancy markdowns
 vim.o.conceallevel = 3
 
 -- Don't wrap lines
 vim.o.wrap = false
+
+-- Keep panes as they are
+vim.o.equalalways = false
 
 -- Nice pane separators
 vim.opt.fillchars = {
