@@ -46,16 +46,11 @@ local keys = {
   ["ctrl-y_cr"] = vim.api.nvim_replace_termcodes("<C-y><cr>", true, true, true),
 }
 
----@diagnostic disable-next-line: duplicate-set-field
-_G.cr_action = function()
+map("i", "<cr>", function()
   if vim.fn.pumvisible() ~= 0 then
-    -- If popup is visible, confirm selected item or add new line otherwise
     local item_selected = vim.fn.complete_info()["selected"] ~= -1
     return item_selected and keys["ctrl-y"] or keys["ctrl-y_cr"]
   else
-    -- If popup is not visible, use plain `<CR>`.
     return keys["cr"]
   end
-end
-
-vim.keymap.set("i", "<cr>", "v:lua._G.cr_action()", { expr = true })
+end, { expr = true })
