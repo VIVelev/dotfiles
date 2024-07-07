@@ -1,3 +1,4 @@
+-- What is the <leader> key:
 vim.g.mapleader = " "
 
 -- Spelling
@@ -8,9 +9,6 @@ vim.o.mouse = "a"
 
 -- Split to the right
 vim.o.splitright = true
-
--- Performance tweaks
-vim.o.lazyredraw = true
 
 -- Disable showmode - i.e. Don"t show mode like --INSERT-- in current status line.
 vim.o.showmode = false
@@ -45,14 +43,3 @@ vim.o.wrap = false
 
 -- Keep panes as they are
 vim.o.equalalways = false
-
--- Nice pane separators
-vim.opt.fillchars = {
-  horiz     = '━',
-  horizup   = '┻',
-  horizdown = '┳',
-  vert      = '┃',
-  vertleft  = '┫',
-  vertright = '┣',
-  verthoriz = '╋',
-}

@@ -21,5 +21,3 @@ require("lazy").setup("plugins",
 require("keymaps")
 require("lsp")
 require("markdown")
-
-vim.cmd.colorscheme "tokyonight"

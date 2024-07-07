@@ -2,8 +2,8 @@ local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 -- I hate Escape
-map("i", "jk", "<esc>:w<cr>")
-map("i", "kj", "<esc>:w<cr>")
+map("i", "jk", "<esc>")
+map("i", "kj", "<esc>")
 
 -- Easier movement
 map("n", "<c-h>", "<c-w>h", opts)
@@ -35,6 +35,12 @@ map("i", "<right>", "<nop>", opts)
 
 -- Open pdf dual
 map("n", "<m-o>", ":silent !open %:p:s?.typ?.pdf? -a Preview<cr>", opts)
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  pattern = { "*.typ" },
+  callback = function(ev)
+    vim.system({ "typst", "compile", vim.api.nvim_buf_get_name(ev.buf) })
+  end
+})
 
 -- Autocomplete mappings
 map("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
@@ -54,3 +60,7 @@ map("i", "<cr>", function()
     return keys["cr"]
   end
 end, { expr = true })
+
+-- Misc
+map("n", "<leader>hp", ":lua MiniDiff.toggle_overlay()<cr>", opts)
+map("n", "-", ":Oil<cr>", opts)

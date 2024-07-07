@@ -2,7 +2,7 @@ set -gx LANG en_US.UTF-8
 set -gx PAGER "less -FirSwX"
 set -gx fish_greeting ""
 
-fish_config theme choose tokyonight_night
+fish_config theme choose "Nord"
 
 # git alias
 alias ga "git add"
@@ -24,9 +24,6 @@ if test (uname) = Darwin
   end
 end
 
-# Eza (ls in Rust) alias
-alias ls "eza -la --icons --color=always --git --sort=Name"
-
 # Grep with color
 alias rg "rg --color always"
 alias grep "rg"
@@ -45,9 +42,6 @@ fzf_configure_bindings --directory=\cf --git_log=\cg --git_status=\cs
 if type -q nvim
   alias vim "nvim"
   alias vimdiff="nvim -d"
-  function viz
-    vim (rg . --colors 'match:none' | fzf --ansi --print0 | awk -F':' '{print $1}')
-  end
   set -gx EDITOR nvim
   set -gx VISUAL nvim
 end

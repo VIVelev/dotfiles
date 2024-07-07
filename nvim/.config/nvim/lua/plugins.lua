@@ -1,36 +1,4 @@
-local treesitter_ft = {
-  "c",
-  "css",
-  "lua",
-  "nix",
-  "html",
-  "bash",
-  "fish",
-  "vimdoc",
-  "python",
-  "scheme",
-  "haskell",
-  "markdown",
-  "markdown_inline",
-  "javascript",
-  "typescript",
-}
-
 return {
-  -- the colorscheme should be available when starting Neovim
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {
-      style = "night",
-      transparent = true,
-      on_colors = function(colors)
-        colors.border = "#565f89"
-      end
-    },
-  },
-
   -- LSP & Autocomplete
   "neovim/nvim-lspconfig",
   {
@@ -46,25 +14,35 @@ return {
   },
 
   -- Git
-  {
-    "tpope/vim-fugitive",
-    keys = {
-      { "<leader>vf", ":G<cr>",           silent = true },
-      { "<leader>vd", ":Gvdiffsplit<cr>", silent = true },
-    }
-  },
+  { "echasnovski/mini.diff", opts = {},   version = "*" },
 
   -- Tree sitter
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     build = ":TSUpdate",
-    ft = treesitter_ft,
     config = function()
       local configs = require "nvim-treesitter.configs";
       ---@diagnostic disable: missing-fields
       configs.setup {
-        ensure_installed = treesitter_ft,
+        ensure_installed = {
+          "c",
+          "css",
+          "lua",
+          "nix",
+          "html",
+          "bash",
+          "fish",
+          "typst",
+          "vimdoc",
+          "python",
+          "scheme",
+          "haskell",
+          "markdown",
+          "markdown_inline",
+          "javascript",
+          "typescript",
+        },
         highlight = { enable = true, },
         indent = { enable = false },
         textobjects = {
@@ -105,11 +83,8 @@ return {
     end
   },
 
-  -- Typst
-  { "kaarmu/typst.vim", ft = "typst" },
-
   -- Misc
-  { "tpope/vim-ragtag", ft = "html" },
+  { "tpope/vim-ragtag",      ft = "html" },
   "tpope/vim-sleuth",
   "tpope/vim-eunuch",
   "tpope/vim-surround",
@@ -119,7 +94,6 @@ return {
   -- Tree editor
   {
     "stevearc/oil.nvim",
-    lazy = false, -- Since otherwise "vim ." uses netrw
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
       keymaps = {
@@ -131,11 +105,6 @@ return {
         show_hidden = true,
       },
     },
-
-    -- Open parent directory in current window
-    keys = {
-      { "-", ":Oil<cr>", noremap = true, silent = true },
-    }
   },
 
   {

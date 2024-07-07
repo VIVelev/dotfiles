@@ -88,11 +88,3 @@ require "lspconfig".tsserver.setup {}
 
 -- Haskell
 require "lspconfig".hls.setup {}
-
--- Typst
-require "lspconfig".typst_lsp.setup {
-  settings = {
-    exportPdf = "onType", -- Choose onType, onSave or never.
-    serverPath = ""
-  }
-}
