@@ -64,3 +64,5 @@ end, { expr = true })
 -- Misc
 map("n", "<leader>hp", ":lua MiniDiff.toggle_overlay()<cr>", opts)
 map("n", "-", ":Oil<cr>", opts)
+map("n", "]d", vim.diagnostic.goto_next, opts)
+map("n", "[d", vim.diagnostic.goto_prev, opts)
