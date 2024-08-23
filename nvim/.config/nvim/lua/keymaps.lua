@@ -35,6 +35,8 @@ map("i", "<right>", "<nop>", opts)
 
 -- Open pdf dual
 map("n", "<m-o>", ":silent !open %:p:s?.typ?.pdf? -a Preview<cr>", opts)
+
+-- Compile typst on save
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
   pattern = { "*.typ" },
   callback = function(ev)

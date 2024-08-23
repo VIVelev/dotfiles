@@ -9,10 +9,12 @@ alias ga "git add"
 alias gaa "git add --all"
 alias gst "git status"
 alias gcm "git commit -m"
-alias glg "git log --stat"
 
 alias gb "git branch"
 alias gco "git checkout"
+
+alias gd "git diff"
+alias gds "git diff --stat"
 
 alias gl "git pull"
 alias gp "git push"
@@ -25,18 +27,26 @@ if test (uname) = Darwin
 end
 
 # Grep with color
-alias rg "rg --color always"
-alias grep "rg"
+if type -q rg
+  alias rg "rg --color always"
+  alias grep "rg"
+end
 
 # Less with color
 alias less "less -R"
 
 # Micrmomamba
-alias umba "micromamba"
+if type -q micromamba
+  alias umba "micromamba"
+end
 
-# fzf.fish
-set fzf_fd_opts --hidden --exclude=.git
-fzf_configure_bindings --directory=\cf --git_log=\cg --git_status=\cs
+# Fzf
+if type -q fzf
+  fzf --fish | source
+
+  set fzf_fd_opts --hidden --exclude=.git
+  fzf_configure_bindings --directory=\cf --git_log=\cg --git_status=\cs
+end
 
 # Neovim
 if type -q nvim
@@ -51,16 +61,15 @@ if type -q bat
   set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
 end
 
-if status is-interactive
-    # Zoxide
-    alias d "z"
-    zoxide init fish | source
+if type -q zoxide
+  # Zoxide
+  alias d "z"
+  zoxide init fish | source
+end
 
-    # Direnv
-    direnv hook fish | source
-
-    # Fzf
-    fzf --fish | source
+if type -q direnv
+  # Direnv
+  direnv hook fish | source
 end
 
 # >>> mamba initialize >>>

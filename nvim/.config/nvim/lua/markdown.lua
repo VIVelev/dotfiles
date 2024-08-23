@@ -1,5 +1,6 @@
--- Toggle markdown checkbox
-vim.keymap.set("n", "<leader>x", function()
+local checkbox = "^%s*-%s%[[%sx]?%]"
+
+local function toggle_checkbox()
   local line = vim.api.nvim_get_current_line()
   local new_line
   if line:match("%[ %]") then
@@ -10,26 +11,45 @@ vim.keymap.set("n", "<leader>x", function()
     return -- No checkbox found, do nothing
   end
   vim.api.nvim_set_current_line(new_line)
-end, { desc = "Toggle markdown checkbox", noremap = true, silent = true })
-
-local function auto_insert_checkbox()
-  local line = vim.api.nvim_get_current_line()
-  if line:match("^%s*-%s%[%s?%]") then
-    return "- [ ] "
-  end
-  return false
 end
 
-local keys = {
-  ["cr"] = vim.api.nvim_replace_termcodes("<cr>", true, true, true),
-}
+local usual_insert = vim.fn.maparg("<cr>", "i", false, true).callback
+local function insert_checkbox()
+  local new_line = usual_insert()
+  local line = vim.api.nvim_get_current_line()
+  local item_not_selected = vim.fn.complete_info()["selected"] == -1
+  if line:match(checkbox) and item_not_selected then
+    new_line = new_line .. "- [ ] "
+  end
+  return new_line
+end
+
+local function indent_checkbox()
+  local line = vim.api.nvim_get_current_line()
+  local pum_not_visible = vim.fn.pumvisible() == 0
+  if line:match(checkbox) and pum_not_visible then
+    vim.api.nvim_set_current_line("  " .. line)
+    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+    vim.api.nvim_win_set_cursor(0, { row, col + 2 })
+  else
+    -- Select next item from pum
+    local cn = vim.api.nvim_replace_termcodes("<C-n>",
+      true, true, true)
+    vim.fn.feedkeys(cn, "i")
+  end
+end
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
   callback = function()
-    vim.keymap.set("i", "<cr>", function()
-      local new_line = auto_insert_checkbox()
-      return new_line and keys["cr"] .. new_line or keys["cr"]
-    end, { buffer = true, expr = true })
+    -- Toggle checkbox
+    vim.keymap.set("n", "<leader>x", toggle_checkbox,
+      { buffer = true, silent = true })
+    -- New line
+    vim.keymap.set("i", "<cr>", insert_checkbox,
+      { buffer = true, expr = true })
+    -- Indent checkbox
+    vim.keymap.set("i", "<tab>", indent_checkbox,
+      { buffer = true, silent = true })
   end,
 })

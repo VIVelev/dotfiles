@@ -7,9 +7,6 @@ vim.o.spell = true
 -- Yes, I use the mouse sometimes...
 vim.o.mouse = "a"
 
--- Split to the right
-vim.o.splitright = true
-
 -- Disable showmode - i.e. Don"t show mode like --INSERT-- in current status line.
 vim.o.showmode = false
 
@@ -43,3 +40,13 @@ vim.o.wrap = false
 
 -- Keep panes as they are
 vim.o.equalalways = false
+
+-- Custom filetypes for OCaml
+vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
+  pattern = "*.mll",
+  command = "setfiletype ocaml.lex"
+})
+vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
+  pattern = "*.mly",
+  command = "setfiletype ocaml.menhir"
+})
