@@ -34,13 +34,17 @@ map("i", "<left>", "<nop>", opts)
 map("i", "<right>", "<nop>", opts)
 
 -- Open pdf dual
-map("n", "<m-o>", ":silent !open %:p:s?.typ?.pdf? -a Preview<cr>", opts)
+map("n", "<m-o>", ":silent !open %:p:s?.md?.pdf? -a Preview<cr>", opts)
 
--- Compile typst on save
+-- Compile md on save
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  pattern = { "*.typ" },
+  pattern = { "*.md" },
   callback = function(ev)
-    vim.system({ "typst", "compile", vim.api.nvim_buf_get_name(ev.buf) })
+    local name = vim.api.nvim_buf_get_name(ev.buf)
+    local out = string.gsub(name, ".md", ".pdf");
+    vim.system({ "pandoc", name, "-o", out },
+      {},
+      function() print("Pandoc wrote to: " .. vim.fn.fnamemodify(out, ":t")) end)
   end
 })
 

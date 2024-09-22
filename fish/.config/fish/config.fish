@@ -19,6 +19,8 @@ alias gds "git diff --stat"
 alias gl "git pull"
 alias gp "git push"
 
+bind \ca "fg && commandline -f execute"
+
 if test (uname) = Darwin
   # Homebrew setup
   if test -z "$HOMEBREW_PREFIX"
@@ -28,17 +30,11 @@ end
 
 # Grep with color
 if type -q rg
-  alias rg "rg --color always"
-  alias grep "rg"
+  alias rg "rg --color=always"
 end
 
 # Less with color
 alias less "less -R"
-
-# Micrmomamba
-if type -q micromamba
-  alias umba "micromamba"
-end
 
 # Fzf
 if type -q fzf
@@ -71,10 +67,3 @@ if type -q direnv
   # Direnv
   direnv hook fish | source
 end
-
-# >>> mamba initialize >>>
-# !! Contents within this block are managed by 'mamba init' !!
-set -gx MAMBA_EXE "/Users/vivelev/.nix-profile/bin/micromamba"
-set -gx MAMBA_ROOT_PREFIX "/Users/vivelev/micromamba"
-$MAMBA_EXE shell hook --shell fish $MAMBA_ROOT_PREFIX | source
-# <<< mamba initialize <<<

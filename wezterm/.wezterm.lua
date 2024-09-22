@@ -3,10 +3,9 @@ local config = wezterm.config_builder()
 
 config.color_scheme = "Default Dark (base16)"
 config.font = wezterm.font "JetBrains Mono"
-config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
-config.initial_rows = 50
-config.initial_cols = 205
+config.initial_rows = 63
+config.initial_cols = 143
 
 local act = wezterm.action
 config.keys = {

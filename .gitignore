@@ -10,7 +10,8 @@ fish/.config/fish/conf.d/
 nvim/.config/nvim/plugin/
 *.spl
 
-ipython/.config/ipython/profile_default/history.sqlite
+ipython/.ipython/profile_default/history.sqlite
+ipython/.ipython/profile_default/startup/
 
 _*
 

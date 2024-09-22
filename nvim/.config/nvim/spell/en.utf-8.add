@@ -45,3 +45,15 @@ keymaps
 defmacro
 typst
 Bruijn
+env
+usr
+nix
+nixpkgs
+python3
+python3Packages
+matplotlib
+nix
+cdot
+mapsto
+Sym
+rightarrow

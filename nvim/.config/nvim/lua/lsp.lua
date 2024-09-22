@@ -84,7 +84,7 @@ require "lspconfig".basedpyright.setup {
 }
 
 -- TypeScript/JavaScript
-require "lspconfig".tsserver.setup {}
+require "lspconfig".ts_ls.setup {}
 
 -- Haskell
 require "lspconfig".hls.setup {}
