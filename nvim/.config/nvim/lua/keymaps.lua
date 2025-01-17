@@ -42,8 +42,13 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
   callback = function(ev)
     local name = vim.api.nvim_buf_get_name(ev.buf)
     local out = string.gsub(name, ".md", ".pdf");
-    vim.system({ "pandoc", name, "-o", out },
-      {},
+    local cmd = { "pandoc", name, "-o", out }
+    if vim.w.pandoc_opts ~= nil then
+      for _, h in ipairs(vim.split(vim.w.pandoc_opts, " ")) do
+        table.insert(cmd, h)
+      end
+    end
+    vim.system(cmd, {},
       function() print("Pandoc wrote to: " .. vim.fn.fnamemodify(out, ":t")) end)
   end
 })

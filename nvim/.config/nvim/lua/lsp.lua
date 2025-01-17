@@ -70,7 +70,7 @@ require "lspconfig".lua_ls.setup {
 require "lspconfig".nil_ls.setup {}
 
 -- Ruff
-require "lspconfig".ruff_lsp.setup {}
+require "lspconfig".ruff.setup {}
 
 -- Python
 require "lspconfig".basedpyright.setup {

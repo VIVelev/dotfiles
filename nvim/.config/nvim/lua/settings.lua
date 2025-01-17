@@ -32,8 +32,8 @@ vim.o.ignorecase = true
 -- Show a single status bar
 vim.o.laststatus = 3
 
--- Use fancy markdowns
-vim.o.conceallevel = 3
+-- Don't use fancy markdowns
+vim.o.conceallevel = 0
 
 -- Don't wrap lines
 vim.o.wrap = false

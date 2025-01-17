@@ -2,7 +2,7 @@ set -gx LANG en_US.UTF-8
 set -gx PAGER "less -FirSwX"
 set -gx fish_greeting ""
 
-fish_config theme choose "Base16 Default Dark"
+fish_config theme choose fish\ default
 
 # git alias
 alias ga "git add"
