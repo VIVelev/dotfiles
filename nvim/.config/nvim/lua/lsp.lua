@@ -88,6 +88,3 @@ require "lspconfig".ts_ls.setup {}
 
 -- Haskell
 require "lspconfig".hls.setup {}
-
--- OCaml
-require "lspconfig".ocamllsp.setup {}

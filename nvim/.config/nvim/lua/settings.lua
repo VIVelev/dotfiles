@@ -40,13 +40,3 @@ vim.o.wrap = false
 
 -- Keep panes as they are
 vim.o.equalalways = false
-
--- Custom filetypes for OCaml
-vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
-  pattern = "*.mll",
-  command = "setfiletype ocaml.lex"
-})
-vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
-  pattern = "*.mly",
-  command = "setfiletype ocaml.menhir"
-})

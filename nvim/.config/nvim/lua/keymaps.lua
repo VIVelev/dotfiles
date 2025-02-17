@@ -36,23 +36,6 @@ map("i", "<right>", "<nop>", opts)
 -- Open pdf dual
 map("n", "<m-o>", ":silent !open %:p:s?.md?.pdf? -a Preview<cr>", opts)
 
--- Compile md on save
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  pattern = { "*.md" },
-  callback = function(ev)
-    local name = vim.api.nvim_buf_get_name(ev.buf)
-    local out = string.gsub(name, ".md", ".pdf");
-    local cmd = { "pandoc", name, "-o", out }
-    if vim.w.pandoc_opts ~= nil then
-      for _, h in ipairs(vim.split(vim.w.pandoc_opts, " ")) do
-        table.insert(cmd, h)
-      end
-    end
-    vim.system(cmd, {},
-      function() print("Pandoc wrote to: " .. vim.fn.fnamemodify(out, ":t")) end)
-  end
-})
-
 -- Autocomplete mappings
 map("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
 map("i", "<S-Tab>", [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { expr = true })
