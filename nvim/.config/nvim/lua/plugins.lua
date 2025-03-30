@@ -33,8 +33,6 @@ return {
           "html",
           "bash",
           "fish",
-          "ocaml",
-          "typst",
           "vimdoc",
           "python",
           "scheme",

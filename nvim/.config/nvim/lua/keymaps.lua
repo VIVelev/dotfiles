@@ -34,7 +34,7 @@ map("i", "<left>", "<nop>", opts)
 map("i", "<right>", "<nop>", opts)
 
 -- Open pdf dual
-map("n", "<m-o>", ":silent !open %:p:s?.md?.pdf? -a Preview<cr>", opts)
+map("n", "<m-o>", ":silent !open %:p:s?.tex?.pdf? -a Preview<cr>", opts)
 
 -- Autocomplete mappings
 map("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
