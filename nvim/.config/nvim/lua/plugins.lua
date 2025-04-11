@@ -13,6 +13,14 @@ return {
     version = "*",
   },
 
+  {
+    dir = "~/.config/nvim/lua/ipython/",
+    config = function()
+      require('ipython')
+    end,
+    cmd = { "IPythonConnect", "IPythonSend" }
+  },
+
   -- Git
   { "echasnovski/mini.diff", opts = {},  version = "*" },
 

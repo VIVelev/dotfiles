@@ -5,7 +5,7 @@ vim.g.mapleader = " "
 vim.o.spell = true
 
 -- Yes, I use the mouse sometimes...
-vim.o.mouse = "a"
+vim.o.mouse = "n"
 
 -- Disable showmode - i.e. Don"t show mode like --INSERT-- in current status line.
 vim.o.showmode = false
