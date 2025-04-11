@@ -124,53 +124,39 @@ function M.send_to_repl(lines)
     return
   end
 
-  -- Join lines with newline and add a final carriage return (\r) needed by many terminals
-  local command_to_send = table.concat(lines, "\n") .. "\r"
+  -- Join lines with <C-q><C-j> and add a final carriage return (\r) needed by many terminals
+  local command_to_send = table.concat(lines, "\x11\x0a") .. "\r"
 
   -- Send the command string to the terminal's job ID
   vim.api.nvim_chan_send(state.job_id, command_to_send)
-end
-
--- Helper function to get whole lines based on command range.
-local function get_lines_from_range(line1, line2)
-  -- Use current buffer (0) since sending is usually from the active code buffer
-  return vim.api.nvim_buf_get_lines(0, line1 - 1, line2, false)
 end
 
 -- Determines the text to send based on the current mode and selection.
 -- @param opts table: The options table passed to the user command callback,
 --                    containing line1 and line2 for range context.
 -- @return table: A table of strings representing the text lines/chunks to send.
-local function get_selected_text(opts)
+local function get_selected_text()
   local lines_to_send = {}
 
-  -- getpos returns: [bufnum, lnum, col, off] (1-based)
+  -- getpos returns: [bufnum, lnum, col, off]
   local start_pos = vim.fn.getpos("v")
   local end_pos = vim.fn.getpos(".")
-  local buf_nr = start_pos[1] -- Use buffer where selection started
+  local buf_nr = start_pos[1]
 
-  -- Check if the visual markers seem valid and represent an actual selection
-  local is_visual_selection = buf_nr and start_pos[2] > 0 and end_pos[2] > 0 and
-      (start_pos[2] ~= end_pos[2] or start_pos[3] ~= end_pos[3])
+  local is_visual_selection_on_line = buf_nr and
+      start_pos[2] == end_pos[2] and
+      start_pos[3] ~= end_pos[3]
 
-  if is_visual_selection then
-    -- Use precise selection logic based on markers
-    -- Convert to 0-based row/col for the API call
+  if is_visual_selection_on_line then
     local start_row = start_pos[2] - 1
     local start_col = start_pos[3] - 1
-    local end_row = end_pos[2] - 1
-    local end_col = end_pos[3] -- API end_col is exclusive byte index
+    local end_col = end_pos[3]
 
     -- Fetch the precise text selection using the buffer where selection occurred
-    lines_to_send = vim.api.nvim_buf_get_text(buf_nr, start_row, start_col, end_row, end_col, {})
+    lines_to_send = vim.api.nvim_buf_get_text(buf_nr, start_row, start_col, start_row, end_col, {})
   else
-    -- No valid visual selection markers detected, assume Normal mode invocation.
-    -- Use the line range provided by opts (which will be the current line in Normal mode)
-    if opts.line1 and opts.line2 and opts.line1 > 0 and opts.line2 > 0 then
-      lines_to_send = get_lines_from_range(opts.line1, opts.line2) -- Use original helper
-    else
-      return {}
-    end
+    print(start_pos[2], end_pos[2])
+    return vim.api.nvim_buf_get_lines(buf_nr, start_pos[2] - 1, end_pos[2], false)
   end
 
   return lines_to_send
@@ -184,11 +170,10 @@ vim.api.nvim_create_user_command(
 )
 vim.api.nvim_create_user_command(
   'IPythonSend',
-  function(opts)
-    local lines = get_selected_text(opts)
+  function()
+    local lines = get_selected_text()
     if lines and #lines > 0 then
       M.send_to_repl(lines)
-      print("after")
     else
       vim.notify("IPythonSend: No text selected or retrieved to send.", vim.log.levels.WARN)
     end
@@ -206,7 +191,7 @@ local map = vim.keymap.set
 local map_opts = { noremap = true, silent = true, buffer = true }
 
 -- Send current line (Normal mode) -> Calls :IPythonSend on the current line
-map({ 'n', 'v' }, '<localleader>ee', '<Cmd>silent IPythonSend<CR>', vim.tbl_extend('keep', {
+map({ 'n', 'v' }, '<localleader>ee', "<Cmd>silent IPythonSend<CR>", vim.tbl_extend('keep', {
   desc = "IPython: Send Current Line"
 }, map_opts))
 
