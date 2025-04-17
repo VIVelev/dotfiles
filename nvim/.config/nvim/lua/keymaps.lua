@@ -11,30 +11,11 @@ map("n", "<c-j>", "<c-w>j", opts)
 map("n", "<c-k>", "<c-w>k", opts)
 map("n", "<c-l>", "<c-w>l", opts)
 
--- Increase/decrease split size
-map("n", "<m-=>", "5<c-w>+", opts)
-map("n", "<m-->", "5<c-w>-", opts)
-map("n", "<m-.>", "5<c-w><", opts)
-map("n", "<m-,>", "5<c-w>>", opts)
-
 -- Moving text
 map("v", "J", ":m '>+1<cr>gv=gv", opts)
 map("v", "K", ":m '<-2<cr>gv=gv", opts)
 map("n", "<leader>j", ":m .+1<cr>==", opts)
 map("n", "<leader>k", ":m .-2<cr>==", opts)
-
--- No arrows
-map("n", "<up>", "<nop>", opts)
-map("n", "<down>", "<nop>", opts)
-map("n", "<left>", "<nop>", opts)
-map("n", "<right>", "<nop>", opts)
-map("i", "<up>", "<nop>", opts)
-map("i", "<down>", "<nop>", opts)
-map("i", "<left>", "<nop>", opts)
-map("i", "<right>", "<nop>", opts)
-
--- Open pdf dual
-map("n", "<m-o>", ":silent !open %:p:s?.tex?.pdf? -a Preview<cr>", opts)
 
 -- Autocomplete mappings
 map("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
@@ -58,5 +39,3 @@ end, { expr = true })
 -- Misc
 map("n", "<leader>hp", ":lua MiniDiff.toggle_overlay()<cr>", opts)
 map("n", "-", ":Oil<cr>", opts)
-map("n", "]d", vim.diagnostic.goto_next, opts)
-map("n", "[d", vim.diagnostic.goto_prev, opts)

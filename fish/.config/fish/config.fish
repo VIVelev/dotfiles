@@ -28,61 +28,35 @@ if test (uname) = Darwin
   end
 end
 
-# Grep with color
-if type -q rg
-  alias rg "rg --color=always"
-end
-
-# Less with color
-alias less "less -R"
-
-# Fzf
-if type -q fzf
-  fzf --fish | source
-
-  set fzf_fd_opts --hidden --exclude=.git
-  fzf_configure_bindings --directory=\cf --git_log=\cg --git_status=\cs
-end
-
-# Neovim
-if type -q nvim
-  alias vim "nvim"
-  alias vimdiff="nvim -d"
-  set -gx EDITOR nvim
-  set -gx VISUAL nvim
-end
-
-if type -q bat
-  alias cat "bat"
-  set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
-end
-
-if type -q zoxide
-  # Zoxide
-  alias d "z"
-  zoxide init fish | source
-end
-
-if type -q direnv
-  # Direnv
-  direnv hook fish | source
-end
-
-function rga-fzf
-  set RG_PREFIX 'rga --files-with-matches'
-  if test (count $argv) -gt 1
-    set RG_PREFIX "$RG_PREFIX $argv[1..-2]"
+# Setup tool aliases and configurations if they exist
+function setup_tool
+  set -l tool $argv[1]
+  set -l setup_commands $argv[2..]
+  
+  if type -q $tool
+    for cmd in $setup_commands
+      eval $cmd
+    end
   end
-  set -l file $file
-  set file (
-    FZF_DEFAULT_COMMAND="$RG_PREFIX '$argv[-1]'" \
-    fzf --sort \
-        --preview='test ! -z {} && \
-            rga --pretty --context 5 {q} {}' \
-        --phony -q "$argv[-1]" \
-        --bind "change:reload:$RG_PREFIX {q}" \
-        --preview-window='50%:wrap'
-  ) && \
-  echo "opening $file" && \
-  open "$file"
 end
+
+# Apply tool configurations
+setup_tool rg "alias rg 'rg --color=always'"
+setup_tool less "alias less 'less -R'"
+
+setup_tool fzf "fzf --fish | source" \
+          "set fzf_fd_opts --hidden --exclude=.git" \
+          "fzf_configure_bindings --directory=\\cf --git_log=\\cg --git_status=\\cs"
+
+setup_tool nvim "alias vim 'nvim'" \
+           "alias vimdiff='nvim -d'" \
+           "set -gx EDITOR nvim" \
+           "set -gx VISUAL nvim"
+
+setup_tool bat "alias cat 'bat'" \
+           "set -gx MANPAGER \"sh -c 'col -bx | bat -l man -p'\""
+
+setup_tool zoxide "alias d 'z'" \
+             "zoxide init fish | source"
+
+setup_tool direnv "direnv hook fish | source"

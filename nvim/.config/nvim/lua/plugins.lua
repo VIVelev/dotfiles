@@ -1,17 +1,6 @@
 return {
   -- LSP & Autocomplete
   "neovim/nvim-lspconfig",
-  {
-    "echasnovski/mini.completion",
-    event = "InsertEnter",
-    opts = {
-      lsp_completion = {
-        source_func = "omnifunc",
-        auto_setup = false,
-      },
-    },
-    version = "*",
-  },
 
   {
     dir = "~/.config/nvim/lua/ipython/",
@@ -27,7 +16,6 @@ return {
   -- Tree sitter
   {
     "nvim-treesitter/nvim-treesitter",
-    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     build = ":TSUpdate",
     config = function()
       local configs = require "nvim-treesitter.configs";
@@ -52,40 +40,6 @@ return {
         },
         highlight = { enable = true, },
         indent = { enable = false },
-        textobjects = {
-          swap = {
-            enable = true,
-            swap_next = {
-              ["<localleader>a"] = "@parameter.inner",
-            },
-            swap_previous = {
-              ["<localleader>A"] = "@parameter.inner",
-            },
-          },
-          select = {
-            enable = true,
-            -- Automatically jump forward to text object, similar to targets.vim
-            lookahead = true,
-            keymaps = {
-              ["ib"] = "@block.inner",
-              ["ab"] = "@block.outer",
-              ["il"] = "@call.inner",
-              ["al"] = "@call.outer",
-              ["ic"] = "@class.inner",
-              ["ac"] = "@class.outer",
-              ["ik"] = "@comment.inner",
-              ["ak"] = "@comment.outer",
-              ["id"] = "@conditional.inner",
-              ["ad"] = "@conditional.outer",
-              ["if"] = "@function.inner",
-              ["af"] = "@function.outer",
-              ["iu"] = "@loop.inner",
-              ["au"] = "@loop.outer",
-              ["im"] = "@parameter.inner",
-              ["am"] = "@parameter.outer",
-            },
-          },
-        },
       }
     end
   },
@@ -93,10 +47,8 @@ return {
   -- Misc
   { "tpope/vim-ragtag",      ft = "html" },
   "tpope/vim-sleuth",
-  "tpope/vim-eunuch",
   "tpope/vim-surround",
-  { "guns/vim-sexp",       ft = { "scheme" } },
-  { "echasnovski/mini.ai", opts = {},        version = "*" },
+  { "echasnovski/mini.ai", opts = {}, version = "*" },
 
   -- Tree editor
   {

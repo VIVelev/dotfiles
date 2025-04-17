@@ -56,7 +56,8 @@ function M.connect()
   vim.api.nvim_win_set_buf(term_win_id, state.buf_nr)
 
   -- Open the terminal in the current window (the new split)
-  local job_id = vim.fn.termopen('ipython', {
+  local job_id = vim.fn.jobstart('ipython', {
+    term = true,
     on_exit = function(j_id, code, event)
       -- Check against the job ID passed to the callback
       if state.job_id == j_id then
@@ -124,8 +125,12 @@ function M.send_to_repl(lines)
     return
   end
 
-  -- Join lines with <C-q><C-j> and add a final carriage return (\r) needed by many terminals
-  local command_to_send = table.concat(lines, "\x11\x0a") .. "\r"
+  -- Join lines with <C-q><C-j>
+  if string.find(lines[#lines], "return") then
+    lines[#lines] = lines[#lines] .. "\n"
+  end
+  local command_to_send = table.concat(lines, "\x11\x0a") .. "\n"
+  vim.print(command_to_send)
 
   -- Send the command string to the terminal's job ID
   vim.api.nvim_chan_send(state.job_id, command_to_send)
