@@ -17,9 +17,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
--- C
-require "lspconfig".clangd.setup {}
-
 -- Lua
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
@@ -50,12 +47,6 @@ require "lspconfig".lua_ls.setup {
   },
 }
 
--- Nix
-require "lspconfig".nil_ls.setup {}
-
--- Ruff
-require "lspconfig".ruff.setup {}
-
 -- Python
 require "lspconfig".basedpyright.setup {
   settings = {
@@ -67,5 +58,7 @@ require "lspconfig".basedpyright.setup {
   },
 }
 
--- TypeScript/JavaScript
-require "lspconfig".ts_ls.setup {}
+vim.lsp.enable("clangd")
+vim.lsp.enable("nil_ls")
+vim.lsp.enable("ruff")
+vim.lsp.enable("ts_ls")

@@ -125,10 +125,11 @@ function M.send_to_repl(lines)
     return
   end
 
-  -- Join lines with <C-q><C-j>
+  -- IPython needs a second <Enter> after a "return" keyword
   if string.find(lines[#lines], "return") then
     lines[#lines] = lines[#lines] .. "\n"
   end
+  -- Join lines with <C-q><C-j>
   local command_to_send = table.concat(lines, "\x11\x0a") .. "\n"
   vim.print(command_to_send)
 

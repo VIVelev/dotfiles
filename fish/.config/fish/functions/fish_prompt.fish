@@ -2,7 +2,7 @@
 # Green and red depending on exit status.
 
 function fish_prompt
-  if is_status_okay
+  if test $status -eq 0
     set_color green
   else
     set_color red
