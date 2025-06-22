@@ -48,12 +48,10 @@ return {
   { "tpope/vim-ragtag",      ft = "html" },
   "tpope/vim-sleuth",
   "tpope/vim-surround",
-  { "echasnovski/mini.ai", opts = {}, version = "*" },
 
   -- Tree editor
   {
     "stevearc/oil.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
       keymaps = {
         ["<C-h>"] = false,
