@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
-name = Victor Velev
-email = vivelev@icloud.com
+name = Viktor Velev
+email = 75shocks-rewrite@icloud.com
 [core]
     editor = nvim
 [github]

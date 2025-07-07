@@ -46,7 +46,7 @@ function M.connect()
   vim.api.nvim_command('bel vsplit')
   local term_win_id = vim.api.nvim_get_current_win()
 
-  local scratch_buf = vim.api.nvim_create_buf(false, true) -- Create unnamed scratch buffer
+  local scratch_buf = vim.api.nvim_create_buf(true, true) -- Create unnamed scratch buffer
   if not scratch_buf or scratch_buf == 0 then
     vim.notify("Error: Failed to create scratch buffer.", vim.log.levels.ERROR)
     if vim.api.nvim_win_is_valid(term_win_id) then vim.api.nvim_win_close(term_win_id, true) end -- Close the split

@@ -19,7 +19,7 @@ alias gds "git diff --stat"
 alias gl "git pull"
 alias gp "git push"
 
-bind \ca "fg && commandline -f execute"
+bind \co "fg && commandline -f execute"
 
 if test (uname) = Darwin
   # Homebrew setup
@@ -46,7 +46,6 @@ setup_tool less "alias less 'less -R'"
 
 setup_tool fzf "fzf --fish | source" \
           "set fzf_fd_opts --hidden --exclude=.git" \
-          "fzf_configure_bindings --directory=\\cf --git_log=\\cg --git_status=\\cs"
 
 setup_tool nvim "alias vim 'nvim'" \
            "alias vimdiff='nvim -d'" \
@@ -55,8 +54,5 @@ setup_tool nvim "alias vim 'nvim'" \
 
 setup_tool bat "alias cat 'bat'" \
            "set -gx MANPAGER \"sh -c 'col -bx | bat -l man -p'\""
-
-setup_tool zoxide "alias d 'z'" \
-             "zoxide init fish | source"
 
 setup_tool direnv "direnv hook fish | source"

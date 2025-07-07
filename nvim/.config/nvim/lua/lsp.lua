@@ -47,18 +47,6 @@ require "lspconfig".lua_ls.setup {
   },
 }
 
--- Python
-require "lspconfig".basedpyright.setup {
-  settings = {
-    basedpyright = {
-      analysis = {
-        typeCheckingMode = "off",
-      },
-    },
-  },
-}
-
 vim.lsp.enable("clangd")
 vim.lsp.enable("nil_ls")
-vim.lsp.enable("ruff")
 vim.lsp.enable("ts_ls")
