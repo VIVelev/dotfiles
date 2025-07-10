@@ -1,18 +1,18 @@
 # This is Git's per-user configuration file.
 [user]
-name = Viktor Velev
-email = 75shocks-rewrite@icloud.com
+  name = Viktor Velev
+  email = 75shocks-rewrite@icloud.com
 [core]
-    editor = nvim
+  editor = nvim
 [github]
-    user = VIVelev
+  user = VIVelev
 [init]
-    defaultBranch = main
+  defaultBranch = main
 [pull]
-    ff = true
+  ff = true
 [credential "https://github.com"]
-	helper = 
-	helper = !/Users/vivelev/.nix-profile/bin/gh auth git-credential
+  helper = 
+  helper = !/Users/vivelev/.nix-profile/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
-	helper = !/Users/vivelev/.nix-profile/bin/gh auth git-credential
+  helper = 
+  helper = !/Users/vivelev/.nix-profile/bin/gh auth git-credential

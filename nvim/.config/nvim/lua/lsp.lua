@@ -48,5 +48,4 @@ require "lspconfig".lua_ls.setup {
 }
 
 vim.lsp.enable("clangd")
-vim.lsp.enable("nil_ls")
 vim.lsp.enable("ts_ls")

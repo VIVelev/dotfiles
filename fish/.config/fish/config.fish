@@ -8,6 +8,7 @@ fish_config theme choose fish\ default
 alias ga "git add"
 alias gaa "git add --all"
 alias gst "git status"
+alias glg "git log --graph"
 alias gcm "git commit -m"
 
 alias gb "git branch"
