@@ -1,9 +1,0 @@
-# Dark background style
-figure.facecolor: 1a1a1a
-axes.facecolor: 212121
-axes.edgecolor: 4e4e4e
-axes.labelcolor: e5e5e5
-xtick.color: e5e5e5
-ytick.color: e5e5e5
-text.color: e5e5e5
-grid.color: 4e4e4e
