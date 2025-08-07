@@ -1,15 +1,10 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+-- Bootstrap mini.deps
+local minipath = vim.fn.stdpath("data") .. "/mini"
+if not vim.loop.fs_stat(minipath .. "/deps") then
+  vim.cmd("!git clone https://github.com/echasnovski/mini.nvim " .. minipath)
 end
-vim.opt.rtp:prepend(lazypath)
+vim.opt.rtp:prepend(minipath)
+require("mini.deps").setup()
 
 vim.g.mapleader = " "
 vim.o.showmode = false
@@ -22,19 +17,23 @@ vim.o.laststatus = 3
 vim.o.wrap = false
 vim.o.equalalways = false
 
-require("lazy").setup({
-  {
-    dir = "~/.config/nvim/lua/ipython/",
+-- Add plugins
+local add = require("mini.deps").add
+add({
+    source = "echasnovski/mini.nvim",
+    -- No need to do anything extra, as `mini.deps` is now managing itself
+})
+add({
+    source = "~/.config/nvim/lua/ipython/",
     config = function() require("ipython") end,
-    cmd = { "IPythonConnect", "IPythonSend" }
-  },
-  "neovim/nvim-lspconfig",
-  { "echasnovski/mini.diff", opts = {}, version = "*" },
-  { "tpope/vim-ragtag", ft = "html" },
-  "tpope/vim-sleuth",
-  "tpope/vim-surround",
-  {
-    "stevearc/oil.nvim",
+    event = { "CmdPre IPythonConnect", "CmdPre IPythonSend" }
+})
+add("neovim/nvim-lspconfig")
+add({ source = "tpope/vim-ragtag", ft = "html" })
+add("tpope/vim-sleuth")
+add("tpope/vim-surround")
+add({
+    source = "stevearc/oil.nvim",
     opts = {
       keymaps = {
         ["<C-h>"] = false,
@@ -45,10 +44,9 @@ require("lazy").setup({
         show_hidden = true,
       },
     },
-  },
-},
-{
-  change_detection = { notify = false },
+    config = function(_, opts)
+        require("oil").setup(opts)
+    end,
 })
 
 --- Keymaps ---
