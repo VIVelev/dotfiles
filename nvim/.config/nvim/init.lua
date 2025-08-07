@@ -12,9 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = " "
-vim.o.et = true
-vim.o.ts = 2
-vim.o.sw = 2
+vim.o.showmode = false
 vim.o.rnu = true
 vim.o.signcolumn = "yes"
 vim.o.hlsearch = false
@@ -30,8 +28,10 @@ require("lazy").setup({
     config = function() require("ipython") end,
     cmd = { "IPythonConnect", "IPythonSend" }
   },
-  { "echasnovski/mini.diff", opts = {},  version = "*" },
-  { "tpope/vim-ragtag",      ft = "html" },
+  "neovim/nvim-lspconfig",
+  { "echasnovski/mini.diff", opts = {}, version = "*" },
+  { "tpope/vim-ragtag", ft = "html" },
+  "tpope/vim-sleuth",
   "tpope/vim-surround",
   {
     "stevearc/oil.nvim",
@@ -93,3 +93,27 @@ end, { expr = true })
 -- Misc
 map("n", "<leader>hp", ":lua MiniDiff.toggle_overlay()<cr>", opts)
 map("n", "-", ":Oil<cr>", opts)
+
+--- LSP ---
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if client:supports_method('textDocument/completion') then
+      vim.lsp.completion.enable(true, client.id, ev.buf)
+    end
+    -- LSP keymaps
+    local opts = { buffer = ev.buf, silent = true }
+    local map = vim.keymap.set
+    map("n", "<leader>fm", function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+    map("v", "<leader>f", function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+  end,
+})
+
+vim.lsp.enable("ty")
+vim.lsp.enable("clangd")
+vim.lsp.enable("ts_ls")
