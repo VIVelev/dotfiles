@@ -41,9 +41,7 @@ require("lazy").setup({
         ["<C-l>"] = false,
         ["<C-x>"] = "actions.select_split",
       },
-      view_options = {
-        show_hidden = true,
-      },
+      view_options = { show_hidden = true },
     },
   },
 },
@@ -102,15 +100,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if client:supports_method('textDocument/completion') then
       vim.lsp.completion.enable(true, client.id, ev.buf)
     end
-    -- LSP keymaps
-    local opts = { buffer = ev.buf, silent = true }
-    local map = vim.keymap.set
-    map("n", "<leader>fm", function()
-      vim.lsp.buf.format { async = true }
-    end, opts)
-    map("v", "<leader>f", function()
-      vim.lsp.buf.format { async = true }
-    end, opts)
   end,
 })
 
