@@ -13,12 +13,19 @@ alias gp="git push"
 
 alias ll="ls -lG"
 
+setopt SHARE_HISTORY
+autoload -Uz compinit && compinit
+
 fg-and-execute() {
   fg
   zle accept-line
 }
 zle -N fg-and-execute
 bindkey '^o' fg-and-execute
+
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^Xe' edit-command-line
 
 # Homebrew setup for macOS
 if [[ "$(uname)" == "Darwin" ]]; then
@@ -48,7 +55,7 @@ setup_tool "nvim" \
 setup_tool "bat" \
   "alias cat='bat'" \
   "export MANPAGER=\"sh -c 'col -bx | bat -l man -p'\""
-source <(fzf --zsh)
-
-setopt SHARE_HISTORY
-autoload -Uz compinit && compinit
+setup_tool "uv" \
+  "$(uv generate-shell-completion zsh)"
+setup_tool "fzf" \
+  "source <(fzf --zsh)"
