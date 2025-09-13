@@ -21,6 +21,8 @@ vim.o.ignorecase = true
 vim.o.laststatus = 3
 vim.o.wrap = false
 vim.o.equalalways = false
+vim.o.mouse = 'a'
+vim.o.spell = true
 
 require("lazy").setup({
   {
