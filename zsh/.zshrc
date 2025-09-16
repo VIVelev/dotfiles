@@ -27,13 +27,6 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^Xe' edit-command-line
 
-# Homebrew setup for macOS
-if [[ "$(uname)" == "Darwin" ]]; then
-  if [[ -z "$HOMEBREW_PREFIX" ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-  fi
-fi
-
 # Setup tool aliases and configurations if they exist
 setup_tool() {
   local tool="$1"

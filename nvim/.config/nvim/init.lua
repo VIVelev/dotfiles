@@ -24,6 +24,13 @@ vim.o.equalalways = false
 vim.o.mouse = 'a'
 vim.o.spell = true
 
+vim.cmd [[
+  highlight Normal guibg=none
+  highlight NonText guibg=none
+  highlight Normal ctermbg=none
+  highlight NonText ctermbg=none
+]]
+
 require("lazy").setup({
   {
     dir = "~/.config/nvim/lua/ipython/",
