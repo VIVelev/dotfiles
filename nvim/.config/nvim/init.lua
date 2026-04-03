@@ -1,15 +1,4 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
+vim.loader.enable()
 
 vim.g.mapleader = " "
 vim.o.showmode = false
@@ -31,32 +20,37 @@ vim.cmd [[
   highlight NonText ctermbg=none
 ]]
 
-require("lazy").setup({
-  {
-    dir = "~/.config/nvim/lua/ipython/",
-    config = function() require("ipython") end,
-    cmd = { "IPythonConnect", "IPythonSend" }
-  },
-  "neovim/nvim-lspconfig",
-  { "echasnovski/mini.diff", opts = {}, version = "*" },
-  { "tpope/vim-ragtag", ft = "html" },
-  "tpope/vim-sleuth",
-  "tpope/vim-surround",
-  {
-    "stevearc/oil.nvim",
-    opts = {
-      keymaps = {
-        ["<C-h>"] = false,
-        ["<C-l>"] = false,
-        ["<C-x>"] = "actions.select_split",
-      },
-      view_options = { show_hidden = true },
-    },
-  },
-},
-{
-  change_detection = { notify = false },
+--- Plugins ---
+vim.pack.add({
+  "https://github.com/neovim/nvim-lspconfig",
+  "https://github.com/tpope/vim-sleuth",
+  "https://github.com/tpope/vim-surround",
+  { src = "https://github.com/echasnovski/mini.diff", version = vim.version.range("*") },
+  "https://github.com/stevearc/oil.nvim",
 })
+
+require("mini.diff").setup({})
+
+require("oil").setup({
+  keymaps = {
+    ["<C-h>"] = false,
+    ["<C-l>"] = false,
+    ["<C-x>"] = "actions.select_split",
+  },
+  view_options = { show_hidden = true },
+})
+
+-- Lazy-load vim-ragtag on html filetype
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "html",
+  once = true,
+  callback = function()
+    vim.pack.add({ "https://github.com/tpope/vim-ragtag" })
+  end,
+})
+
+-- IPython is a local plugin already on the runtimepath
+require("ipython")
 
 --- Keymaps ---
 local map = vim.keymap.set
