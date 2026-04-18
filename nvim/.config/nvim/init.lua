@@ -25,12 +25,11 @@ vim.pack.add({
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/tpope/vim-sleuth",
   "https://github.com/tpope/vim-surround",
+  "https://github.com/tpope/vim-ragtag",
   { src = "https://github.com/echasnovski/mini.diff", version = vim.version.range("*") },
   "https://github.com/stevearc/oil.nvim",
 })
-
 require("mini.diff").setup({})
-
 require("oil").setup({
   keymaps = {
     ["<C-h>"] = false,
@@ -39,17 +38,6 @@ require("oil").setup({
   },
   view_options = { show_hidden = true },
 })
-
--- Lazy-load vim-ragtag on html filetype
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "html",
-  once = true,
-  callback = function()
-    vim.pack.add({ "https://github.com/tpope/vim-ragtag" })
-  end,
-})
-
--- IPython is a local plugin already on the runtimepath
 require("ipython")
 
 --- Keymaps ---
