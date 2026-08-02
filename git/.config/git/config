@@ -12,7 +12,7 @@
   ff = true
 [credential "https://github.com"]
   helper = 
-  helper = !/Users/vivelev/.nix-profile/bin/gh auth git-credential
+  helper = !~/.nix-profile/bin/gh auth git-credential
 [credential "https://gist.github.com"]
   helper = 
-  helper = !/Users/vivelev/.nix-profile/bin/gh auth git-credential
+  helper = !~/.nix-profile/bin/gh auth git-credential
